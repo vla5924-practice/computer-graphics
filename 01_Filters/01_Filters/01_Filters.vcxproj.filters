@@ -8,6 +8,12 @@
     <ClCompile Include="TInvertFilter.cpp">
       <Filter>TFilter\TInvertFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TMatrixFilter.cpp">
+      <Filter>TFilter\TMatrixFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TBlurFilter.cpp">
+      <Filter>TFilter\TMatrixFilter\TBlurFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -21,6 +27,12 @@
     <Filter Include="TFilter\TInvertFilter">
       <UniqueIdentifier>{7dc751c3-9a06-45ae-ae37-8245592ba4c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TMatrixFilter">
+      <UniqueIdentifier>{c285eb8e-5bc5-4391-903c-ef2eb7359467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TMatrixFilter\TBlurFilter">
+      <UniqueIdentifier>{e32ace34-a61e-474c-ae12-d6c2f8d58a9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -30,6 +42,12 @@
       <Filter>TFilter\TInvertFilter</Filter>
     </ClInclude>
     <ClInclude Include="includes.h" />
+    <ClInclude Include="TMatrixFilter.h">
+      <Filter>TFilter\TMatrixFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TBlurFilter.h">
+      <Filter>TFilter\TMatrixFilter\TBlurFilter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="test.png">

@@ -1,6 +1,6 @@
 #include "TInvertFilter.h"
 
-QImage TInvertFilter::applyToImage(const QImage& image, int radius)
+QImage TInvertFilter::applyToImage(const QImage& image)
 {
     QImage invImage(image);
     for(int x = 0; x < image.width(); x++)

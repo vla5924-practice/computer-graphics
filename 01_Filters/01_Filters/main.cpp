@@ -15,5 +15,9 @@ int main(int argc, char *argv[])
     QImage invImage = invFilter.applyToImage(image);
     invImage.save("test_inv.png");
 
+    TBlurFilter blurFilter(2);
+    QImage blurredImage = blurFilter.applyToImage(image);
+    blurredImage.save("test_blur.png");
+
     return 0;
 }

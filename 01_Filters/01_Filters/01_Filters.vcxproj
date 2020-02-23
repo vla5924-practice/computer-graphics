@@ -80,14 +80,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="TBlurFilter.cpp" />
     <ClCompile Include="TFilter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TInvertFilter.cpp" />
+    <ClCompile Include="TMatrixFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
+    <ClInclude Include="TBlurFilter.h" />
     <ClInclude Include="TFilter.h" />
     <ClInclude Include="TInvertFilter.h" />
+    <ClInclude Include="TMatrixFilter.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="test.png" />

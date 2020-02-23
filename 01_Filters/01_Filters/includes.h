@@ -5,3 +5,4 @@
 #include <cstring>
 #include <ciso646>
 #include "TInvertFilter.h"
+#include "TBlurFilter.h"
