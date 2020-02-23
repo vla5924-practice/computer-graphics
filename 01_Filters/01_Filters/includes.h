@@ -12,5 +12,6 @@
 /* Filters */
 #include "TInvertFilter.h"
 #include "TGrayScaleFilter.h"
+#include "TSepiaFilter.h"
 #include "TBlurFilter.h"
 #include "TGaussianBlurFilter.h"

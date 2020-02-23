@@ -23,6 +23,9 @@
     <ClCompile Include="TGrayScaleFilter.cpp">
       <Filter>TFilter\TPointFilter\TGrayScaleFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TSepiaFilter.cpp">
+      <Filter>TFilter\TPointFilter\TSepiaFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -51,6 +54,9 @@
     <Filter Include="TFilter\TPointFilter\TGrayScaleFilter">
       <UniqueIdentifier>{3b6da0e8-2a9a-457a-a22c-abeed8c2df41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TPointFilter\TSepiaFilter">
+      <UniqueIdentifier>{2d7a79b8-d89f-4579-a090-816004818c40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -75,6 +81,9 @@
     </ClInclude>
     <ClInclude Include="TGrayScaleFilter.h">
       <Filter>TFilter\TPointFilter\TGrayScaleFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TSepiaFilter.h">
+      <Filter>TFilter\TPointFilter\TSepiaFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

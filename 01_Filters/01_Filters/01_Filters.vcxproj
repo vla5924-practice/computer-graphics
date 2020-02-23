@@ -88,6 +88,7 @@
     <ClCompile Include="TInvertFilter.cpp" />
     <ClCompile Include="TMatrixFilter.cpp" />
     <ClCompile Include="TPointFilter.cpp" />
+    <ClCompile Include="TSepiaFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Exception.h" />
@@ -99,6 +100,7 @@
     <ClInclude Include="TInvertFilter.h" />
     <ClInclude Include="TMatrixFilter.h" />
     <ClInclude Include="TPointFilter.h" />
+    <ClInclude Include="TSepiaFilter.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="test.png" />

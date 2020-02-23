@@ -19,6 +19,10 @@ int main(int argc, char *argv[])
     filteredImage = grayFilter.applyToImage(image);
     filteredImage.save("test_gray.png");
 
+    TSepiaFilter sepiaFilter;
+    filteredImage = sepiaFilter.applyToImage(image);
+    filteredImage.save("test_sepia.png");
+
     TBlurFilter blurFilter(2);
     filteredImage = blurFilter.applyToImage(image);
     filteredImage.save("test_blur.png");
