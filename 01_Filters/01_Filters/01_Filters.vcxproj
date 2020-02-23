@@ -84,6 +84,7 @@
     <ClCompile Include="TFilter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TGaussianBlurFilter.cpp" />
+    <ClCompile Include="TGrayScaleFilter.cpp" />
     <ClCompile Include="TInvertFilter.cpp" />
     <ClCompile Include="TMatrixFilter.cpp" />
     <ClCompile Include="TPointFilter.cpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="TBlurFilter.h" />
     <ClInclude Include="TFilter.h" />
     <ClInclude Include="TGaussianBlurFilter.h" />
+    <ClInclude Include="TGrayScaleFilter.h" />
     <ClInclude Include="TInvertFilter.h" />
     <ClInclude Include="TMatrixFilter.h" />
     <ClInclude Include="TPointFilter.h" />

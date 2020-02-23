@@ -7,21 +7,25 @@ int main(int argc, char *argv[])
         if (!strcmp(argv[i], "-p") and (i + 1 < argc))
             fileName = argv[i + 1];
 
-    QImage image;
+    QImage image, filteredImage;
     image.load(fileName.c_str());
     image.save("test_copy.png");
 
     TInvertFilter invFilter;
-    QImage invImage = invFilter.applyToImage(image);
-    invImage.save("test_inv.png");
+    filteredImage = invFilter.applyToImage(image);
+    filteredImage.save("test_inv.png");
+
+    TGrayScaleFilter grayFilter;
+    filteredImage = grayFilter.applyToImage(image);
+    filteredImage.save("test_gray.png");
 
     TBlurFilter blurFilter(2);
-    QImage blurredImage = blurFilter.applyToImage(image);
-    blurredImage.save("test_blur.png");
+    filteredImage = blurFilter.applyToImage(image);
+    filteredImage.save("test_blur.png");
 
     TGaussianBlurFilter gBlurFilter;
-    QImage gBlurredImage = gBlurFilter.applyToImage(image);
-    gBlurredImage.save("test_gblur.png");
+    filteredImage = gBlurFilter.applyToImage(image);
+    filteredImage.save("test_gblur.png");
 
     return 0;
 }

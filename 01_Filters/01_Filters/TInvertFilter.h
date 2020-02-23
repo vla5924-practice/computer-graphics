@@ -3,8 +3,9 @@
 
 class TInvertFilter : public TPointFilter
 {
+protected:
+    QColor caclulatePixelColor(QColor color);
 public:
     TInvertFilter() = default;
     ~TInvertFilter() = default;
-    QImage applyToImage(const QImage& image);
 };

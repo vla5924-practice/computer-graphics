@@ -20,6 +20,9 @@
     <ClCompile Include="TPointFilter.cpp">
       <Filter>TFilter\TPointFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TGrayScaleFilter.cpp">
+      <Filter>TFilter\TPointFilter\TGrayScaleFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -45,6 +48,9 @@
     <Filter Include="TFilter\TPointFilter\TInvertFilter">
       <UniqueIdentifier>{7dc751c3-9a06-45ae-ae37-8245592ba4c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TPointFilter\TGrayScaleFilter">
+      <UniqueIdentifier>{3b6da0e8-2a9a-457a-a22c-abeed8c2df41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -66,6 +72,9 @@
     <ClInclude Include="Exception.h" />
     <ClInclude Include="TPointFilter.h">
       <Filter>TFilter\TPointFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TGrayScaleFilter.h">
+      <Filter>TFilter\TPointFilter\TGrayScaleFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
