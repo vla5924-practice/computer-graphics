@@ -6,7 +6,7 @@
       <Filter>TFilter</Filter>
     </ClCompile>
     <ClCompile Include="TInvertFilter.cpp">
-      <Filter>TFilter\TInvertFilter</Filter>
+      <Filter>TFilter\TPointFilter\TInvertFilter</Filter>
     </ClCompile>
     <ClCompile Include="TMatrixFilter.cpp">
       <Filter>TFilter\TMatrixFilter</Filter>
@@ -16,6 +16,9 @@
     </ClCompile>
     <ClCompile Include="TGaussianBlurFilter.cpp">
       <Filter>TFilter\TMatrixFilter\TGaussianBlurFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TPointFilter.cpp">
+      <Filter>TFilter\TPointFilter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -27,9 +30,6 @@
     <Filter Include="TFilter">
       <UniqueIdentifier>{7fd82cbd-3b90-4ab0-b583-e0734cc2d65a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TFilter\TInvertFilter">
-      <UniqueIdentifier>{7dc751c3-9a06-45ae-ae37-8245592ba4c1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TFilter\TMatrixFilter">
       <UniqueIdentifier>{c285eb8e-5bc5-4391-903c-ef2eb7359467}</UniqueIdentifier>
     </Filter>
@@ -39,13 +39,19 @@
     <Filter Include="TFilter\TMatrixFilter\TGaussianBlurFilter">
       <UniqueIdentifier>{f5936a4b-2118-40da-9fb9-ec59230081e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TPointFilter">
+      <UniqueIdentifier>{35bae201-9593-4250-86f0-6f943458928d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TPointFilter\TInvertFilter">
+      <UniqueIdentifier>{7dc751c3-9a06-45ae-ae37-8245592ba4c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
       <Filter>TFilter</Filter>
     </ClInclude>
     <ClInclude Include="TInvertFilter.h">
-      <Filter>TFilter\TInvertFilter</Filter>
+      <Filter>TFilter\TPointFilter\TInvertFilter</Filter>
     </ClInclude>
     <ClInclude Include="includes.h" />
     <ClInclude Include="TMatrixFilter.h">
@@ -58,6 +64,9 @@
       <Filter>TFilter\TMatrixFilter\TGaussianBlurFilter</Filter>
     </ClInclude>
     <ClInclude Include="Exception.h" />
+    <ClInclude Include="TPointFilter.h">
+      <Filter>TFilter\TPointFilter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="test.png">

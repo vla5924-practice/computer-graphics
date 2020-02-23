@@ -1,7 +1,7 @@
 #pragma once
-#include "TFilter.h"
+#include "TPointFilter.h"
 
-class TInvertFilter : public TFilter
+class TInvertFilter : public TPointFilter
 {
 public:
     TInvertFilter() = default;
