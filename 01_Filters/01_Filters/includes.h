@@ -16,3 +16,4 @@
 #include "TBrightnessFilter.h"
 #include "TBlurFilter.h"
 #include "TGaussianBlurFilter.h"
+#include "TSobelYFilter.h"

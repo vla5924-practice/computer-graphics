@@ -29,6 +29,9 @@
     <ClCompile Include="TBrightnessFilter.cpp">
       <Filter>TFilter\TPointFilter\TBrightnessFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TSobelYFilter.cpp">
+      <Filter>TFilter\TMatrixFilter\TSobelYFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -63,6 +66,9 @@
     <Filter Include="TFilter\TPointFilter\TBrightnessFilter">
       <UniqueIdentifier>{15884604-169c-4661-b83d-20175b167397}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TMatrixFilter\TSobelYFilter">
+      <UniqueIdentifier>{0b8796f6-5a8c-4d29-830f-2ee32b783371}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -93,6 +99,9 @@
     </ClInclude>
     <ClInclude Include="TBrightnessFilter.h">
       <Filter>TFilter\TPointFilter\TBrightnessFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TSobelYFilter.h">
+      <Filter>TFilter\TMatrixFilter\TSobelYFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

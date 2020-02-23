@@ -35,5 +35,9 @@ int main(int argc, char *argv[])
     filteredImage = gBlurFilter.applyToImage(image);
     filteredImage.save("test_gblur.png");
 
+    TSobelYFilter sobelFilter;
+    filteredImage = sobelFilter.applyToImage(image);
+    filteredImage.save("test_sobel.png");
+
     return 0;
 }
