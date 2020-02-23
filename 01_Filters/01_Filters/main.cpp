@@ -23,6 +23,10 @@ int main(int argc, char *argv[])
     filteredImage = sepiaFilter.applyToImage(image);
     filteredImage.save("test_sepia.png");
 
+    TBrightnessFilter brightnessFilter(50);
+    filteredImage = brightnessFilter.applyToImage(image);
+    filteredImage.save("test_brightness.png");
+
     TBlurFilter blurFilter(2);
     filteredImage = blurFilter.applyToImage(image);
     filteredImage.save("test_blur.png");

@@ -26,6 +26,9 @@
     <ClCompile Include="TSepiaFilter.cpp">
       <Filter>TFilter\TPointFilter\TSepiaFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TBrightnessFilter.cpp">
+      <Filter>TFilter\TPointFilter\TBrightnessFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -57,6 +60,9 @@
     <Filter Include="TFilter\TPointFilter\TSepiaFilter">
       <UniqueIdentifier>{2d7a79b8-d89f-4579-a090-816004818c40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TPointFilter\TBrightnessFilter">
+      <UniqueIdentifier>{15884604-169c-4661-b83d-20175b167397}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -84,6 +90,9 @@
     </ClInclude>
     <ClInclude Include="TSepiaFilter.h">
       <Filter>TFilter\TPointFilter\TSepiaFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TBrightnessFilter.h">
+      <Filter>TFilter\TPointFilter\TBrightnessFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

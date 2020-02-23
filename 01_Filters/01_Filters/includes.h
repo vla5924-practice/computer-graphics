@@ -13,5 +13,6 @@
 #include "TInvertFilter.h"
 #include "TGrayScaleFilter.h"
 #include "TSepiaFilter.h"
+#include "TBrightnessFilter.h"
 #include "TBlurFilter.h"
 #include "TGaussianBlurFilter.h"

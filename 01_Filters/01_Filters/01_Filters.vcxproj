@@ -81,6 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="TBlurFilter.cpp" />
+    <ClCompile Include="TBrightnessFilter.cpp" />
     <ClCompile Include="TFilter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TGaussianBlurFilter.cpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="Exception.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="TBlurFilter.h" />
+    <ClInclude Include="TBrightnessFilter.h" />
     <ClInclude Include="TFilter.h" />
     <ClInclude Include="TGaussianBlurFilter.h" />
     <ClInclude Include="TGrayScaleFilter.h" />
