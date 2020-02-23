@@ -39,5 +39,9 @@ int main(int argc, char *argv[])
     filteredImage = sobelFilter.applyToImage(image);
     filteredImage.save("test_sobel.png");
 
+    TSharpnessFilter sharpnessFilter;
+    filteredImage = sharpnessFilter.applyToImage(image);
+    filteredImage.save("test_sharpness.png");
+
     return 0;
 }

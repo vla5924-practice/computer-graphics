@@ -90,6 +90,7 @@
     <ClCompile Include="TMatrixFilter.cpp" />
     <ClCompile Include="TPointFilter.cpp" />
     <ClCompile Include="TSepiaFilter.cpp" />
+    <ClCompile Include="TSharpnessFilter.cpp" />
     <ClCompile Include="TSobelYFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +105,7 @@
     <ClInclude Include="TMatrixFilter.h" />
     <ClInclude Include="TPointFilter.h" />
     <ClInclude Include="TSepiaFilter.h" />
+    <ClInclude Include="TSharpnessFilter.h" />
     <ClInclude Include="TSobelYFilter.h" />
   </ItemGroup>
   <ItemGroup>

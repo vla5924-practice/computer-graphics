@@ -9,11 +9,14 @@
 #include <cstring>
 #include <ciso646>
 
-/* Filters */
+/* Point filters */
 #include "TInvertFilter.h"
 #include "TGrayScaleFilter.h"
 #include "TSepiaFilter.h"
 #include "TBrightnessFilter.h"
+
+/* Matrix filters */
 #include "TBlurFilter.h"
 #include "TGaussianBlurFilter.h"
 #include "TSobelYFilter.h"
+#include "TSharpnessFilter.h"

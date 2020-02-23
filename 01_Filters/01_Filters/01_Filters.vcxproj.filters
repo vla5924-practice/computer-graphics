@@ -32,6 +32,9 @@
     <ClCompile Include="TSobelYFilter.cpp">
       <Filter>TFilter\TMatrixFilter\TSobelYFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TSharpnessFilter.cpp">
+      <Filter>TFilter\TMatrixFilter\TSharpnessFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -69,6 +72,9 @@
     <Filter Include="TFilter\TMatrixFilter\TSobelYFilter">
       <UniqueIdentifier>{0b8796f6-5a8c-4d29-830f-2ee32b783371}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TMatrixFilter\TSharpnessFilter">
+      <UniqueIdentifier>{a5428cf3-9367-41a1-af0d-606495b0b827}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -102,6 +108,9 @@
     </ClInclude>
     <ClInclude Include="TSobelYFilter.h">
       <Filter>TFilter\TMatrixFilter\TSobelYFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TSharpnessFilter.h">
+      <Filter>TFilter\TMatrixFilter\TSharpnessFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
