@@ -8,6 +8,7 @@
 #include <string>
 #include <cstring>
 #include <ciso646>
+#include <iostream>
 
 /* Point filters */
 #include "TInvertFilter.h"
@@ -20,3 +21,4 @@
 #include "TGaussianBlurFilter.h"
 #include "TSobelYFilter.h"
 #include "TSharpnessFilter.h"
+#include "TMedianFilter.h"

@@ -35,6 +35,9 @@
     <ClCompile Include="TSharpnessFilter.cpp">
       <Filter>TFilter\TMatrixFilter\TSharpnessFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TMedianFilter.cpp">
+      <Filter>TFilter\TMatrixFilter\TMedianFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -75,6 +78,9 @@
     <Filter Include="TFilter\TMatrixFilter\TSharpnessFilter">
       <UniqueIdentifier>{a5428cf3-9367-41a1-af0d-606495b0b827}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TMatrixFilter\TMedianFilter">
+      <UniqueIdentifier>{40e93e19-1ed7-41a4-9797-a44a20c1ad81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -111,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="TSharpnessFilter.h">
       <Filter>TFilter\TMatrixFilter\TSharpnessFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TMedianFilter.h">
+      <Filter>TFilter\TMatrixFilter\TMedianFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
