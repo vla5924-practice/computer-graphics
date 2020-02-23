@@ -19,5 +19,9 @@ int main(int argc, char *argv[])
     QImage blurredImage = blurFilter.applyToImage(image);
     blurredImage.save("test_blur.png");
 
+    TGaussianBlurFilter gBlurFilter;
+    QImage gBlurredImage = gBlurFilter.applyToImage(image);
+    gBlurredImage.save("test_gblur.png");
+
     return 0;
 }

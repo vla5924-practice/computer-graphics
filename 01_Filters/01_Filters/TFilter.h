@@ -1,14 +1,14 @@
 #pragma once
 #include <QImage>
+#include "Exception.h"
 
 class TFilter
 {
 protected:
-    template <typename Ty> Ty clamp(Ty value, int min, int max) const;
-public:
     TFilter() = default;
     ~TFilter() = default;
-
+    template <typename Ty> Ty clamp(Ty value, int min, int max) const;
+public:
     virtual QImage applyToImage(const QImage& image) = 0;
 };
 

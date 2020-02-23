@@ -4,6 +4,6 @@
 class TBlurFilter : public TMatrixFilter
 {
 public:
-    explicit TBlurFilter(int matrixRadius_ = 1);
+    explicit TBlurFilter(int radius = 1);
     ~TBlurFilter() = default;
 };

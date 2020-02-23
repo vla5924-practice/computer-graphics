@@ -14,6 +14,9 @@
     <ClCompile Include="TBlurFilter.cpp">
       <Filter>TFilter\TMatrixFilter\TBlurFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TGaussianBlurFilter.cpp">
+      <Filter>TFilter\TMatrixFilter\TGaussianBlurFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -33,6 +36,9 @@
     <Filter Include="TFilter\TMatrixFilter\TBlurFilter">
       <UniqueIdentifier>{e32ace34-a61e-474c-ae12-d6c2f8d58a9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TMatrixFilter\TGaussianBlurFilter">
+      <UniqueIdentifier>{f5936a4b-2118-40da-9fb9-ec59230081e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -48,6 +54,10 @@
     <ClInclude Include="TBlurFilter.h">
       <Filter>TFilter\TMatrixFilter\TBlurFilter</Filter>
     </ClInclude>
+    <ClInclude Include="TGaussianBlurFilter.h">
+      <Filter>TFilter\TMatrixFilter\TGaussianBlurFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="test.png">

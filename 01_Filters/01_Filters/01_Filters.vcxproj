@@ -83,13 +83,16 @@
     <ClCompile Include="TBlurFilter.cpp" />
     <ClCompile Include="TFilter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TGaussianBlurFilter.cpp" />
     <ClCompile Include="TInvertFilter.cpp" />
     <ClCompile Include="TMatrixFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Exception.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="TBlurFilter.h" />
     <ClInclude Include="TFilter.h" />
+    <ClInclude Include="TGaussianBlurFilter.h" />
     <ClInclude Include="TInvertFilter.h" />
     <ClInclude Include="TMatrixFilter.h" />
   </ItemGroup>

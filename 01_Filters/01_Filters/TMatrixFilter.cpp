@@ -28,7 +28,11 @@ QColor TMatrixFilter::calculatePixelColor(const QImage& image, int x, int y) con
 
 TMatrixFilter::TMatrixFilter(int matrixRadius_)
 {
+    if (matrixRadius_ <= 0)
+        throw InvalidRadiusError();
     matrixRadius = matrixRadius_;
+    int matrixSize = getMatrixSize();
+    matrix.resize(static_cast<size_t>(matrixSize * matrixSize));
 }
 
 QImage TMatrixFilter::applyToImage(const QImage& image)
