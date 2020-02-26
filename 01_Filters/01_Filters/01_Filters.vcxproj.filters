@@ -44,6 +44,9 @@
     <ClCompile Include="TShiftFilter.cpp">
       <Filter>TFilter\TDirectPointFilter\TShiftFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TWavesFilter.cpp">
+      <Filter>TFilter\TDirectPointFilter\TWavesFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -93,6 +96,9 @@
     <Filter Include="TFilter\TDirectPointFilter\TShiftFilter">
       <UniqueIdentifier>{87f7f5aa-b4c5-493f-8082-5605a81e8c1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TDirectPointFilter\TWavesFilter">
+      <UniqueIdentifier>{d6caa873-6d31-47c0-aac8-bd0588068c3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -138,6 +144,9 @@
     </ClInclude>
     <ClInclude Include="TShiftFilter.h">
       <Filter>TFilter\TDirectPointFilter\TShiftFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TWavesFilter.h">
+      <Filter>TFilter\TDirectPointFilter\TWavesFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

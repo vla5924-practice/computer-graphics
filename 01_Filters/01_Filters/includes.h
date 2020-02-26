@@ -18,6 +18,7 @@
 
 /* Direct Point Filters */
 #include "TShiftFilter.h"
+#include "TWavesFilter.h"
 
 /* Matrix filters */
 #include "TBlurFilter.h"

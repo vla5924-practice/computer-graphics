@@ -1,9 +1,9 @@
 #include "TShiftFilter.h"
 
-QPoint TShiftFilter::caclulatePixelCoordinates(QPoint pixelCoordinates)
+QPoint TShiftFilter::caclulatePixelCoordinates(QPoint pixel)
 {
-    int x = pixelCoordinates.x() + dx;
-    int y = pixelCoordinates.y() + dy;
+    int x = pixel.x() + dx;
+    int y = pixel.y() + dy;
     return QPoint(x, y);
 }
 

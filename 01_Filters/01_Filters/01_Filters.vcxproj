@@ -95,6 +95,7 @@
     <ClCompile Include="TSharpnessFilter.cpp" />
     <ClCompile Include="TShiftFilter.cpp" />
     <ClCompile Include="TSobelYFilter.cpp" />
+    <ClCompile Include="TWavesFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Exception.h" />
@@ -113,6 +114,7 @@
     <ClInclude Include="TSharpnessFilter.h" />
     <ClInclude Include="TShiftFilter.h" />
     <ClInclude Include="TSobelYFilter.h" />
+    <ClInclude Include="TWavesFilter.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="test.png" />
