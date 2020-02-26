@@ -26,3 +26,4 @@
 #include "TSobelYFilter.h"
 #include "TSharpnessFilter.h"
 #include "TMedianFilter.h"
+#include "TMotionBlurFilter.h"

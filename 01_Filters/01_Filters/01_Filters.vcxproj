@@ -90,6 +90,7 @@
     <ClCompile Include="TInvertFilter.cpp" />
     <ClCompile Include="TMatrixFilter.cpp" />
     <ClCompile Include="TMedianFilter.cpp" />
+    <ClCompile Include="TMotionBlurFilter.cpp" />
     <ClCompile Include="TPointFilter.cpp" />
     <ClCompile Include="TSepiaFilter.cpp" />
     <ClCompile Include="TSharpnessFilter.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="TInvertFilter.h" />
     <ClInclude Include="TMatrixFilter.h" />
     <ClInclude Include="TMedianFilter.h" />
+    <ClInclude Include="TMotionBlurFilter.h" />
     <ClInclude Include="TPointFilter.h" />
     <ClInclude Include="TSepiaFilter.h" />
     <ClInclude Include="TSharpnessFilter.h" />

@@ -47,6 +47,9 @@
     <ClCompile Include="TWavesFilter.cpp">
       <Filter>TFilter\TDirectPointFilter\TWavesFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TMotionBlurFilter.cpp">
+      <Filter>TFilter\TMatrixFilter\TMotionBlurFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -99,6 +102,9 @@
     <Filter Include="TFilter\TDirectPointFilter\TWavesFilter">
       <UniqueIdentifier>{d6caa873-6d31-47c0-aac8-bd0588068c3e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TMatrixFilter\TMotionBlurFilter">
+      <UniqueIdentifier>{da6bb59f-effe-4a06-b55c-f19941e5a0a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -147,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="TWavesFilter.h">
       <Filter>TFilter\TDirectPointFilter\TWavesFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TMotionBlurFilter.h">
+      <Filter>TFilter\TMatrixFilter\TMotionBlurFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
