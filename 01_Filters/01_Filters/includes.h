@@ -16,7 +16,7 @@
 #include "TSepiaFilter.h"
 #include "TBrightnessFilter.h"
 
-/* Direct Point Filters */
+/* Direct point filters */
 #include "TShiftFilter.h"
 #include "TWavesFilter.h"
 
@@ -27,3 +27,7 @@
 #include "TSharpnessFilter.h"
 #include "TMedianFilter.h"
 #include "TMotionBlurFilter.h"
+#include "TMaximumFilter.h"
+
+/* Complex filters */
+#include "TGlowingEdgesFilter.h"

@@ -41,6 +41,8 @@ QColor TMedianFilter::calculatePixelColor(const QImage& image, int x, int y) con
 
 TMedianFilter::TMedianFilter(int radius) : TMatrixFilter()
 {
+    if (radius < 1)
+        throw InvalidRadiusError();
     matrix.resize(1);
     matrixRadius = radius;
 }

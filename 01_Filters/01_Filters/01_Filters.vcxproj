@@ -82,13 +82,16 @@
   <ItemGroup>
     <ClCompile Include="TBlurFilter.cpp" />
     <ClCompile Include="TBrightnessFilter.cpp" />
+    <ClCompile Include="TComplexFilter.cpp" />
     <ClCompile Include="TDirectPointFilter.cpp" />
     <ClCompile Include="TFilter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TGaussianBlurFilter.cpp" />
+    <ClCompile Include="TGlowingEdgesFilter.cpp" />
     <ClCompile Include="TGrayScaleFilter.cpp" />
     <ClCompile Include="TInvertFilter.cpp" />
     <ClCompile Include="TMatrixFilter.cpp" />
+    <ClCompile Include="TMaximumFilter.cpp" />
     <ClCompile Include="TMedianFilter.cpp" />
     <ClCompile Include="TMotionBlurFilter.cpp" />
     <ClCompile Include="TPointFilter.cpp" />
@@ -103,12 +106,15 @@
     <ClInclude Include="includes.h" />
     <ClInclude Include="TBlurFilter.h" />
     <ClInclude Include="TBrightnessFilter.h" />
+    <ClInclude Include="TComplexFilter.h" />
     <ClInclude Include="TDirectPointFilter.h" />
     <ClInclude Include="TFilter.h" />
     <ClInclude Include="TGaussianBlurFilter.h" />
+    <ClInclude Include="TGlowingEdgesFilter.h" />
     <ClInclude Include="TGrayScaleFilter.h" />
     <ClInclude Include="TInvertFilter.h" />
     <ClInclude Include="TMatrixFilter.h" />
+    <ClInclude Include="TMaximumFilter.h" />
     <ClInclude Include="TMedianFilter.h" />
     <ClInclude Include="TMotionBlurFilter.h" />
     <ClInclude Include="TPointFilter.h" />

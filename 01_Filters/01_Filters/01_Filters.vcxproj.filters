@@ -50,6 +50,15 @@
     <ClCompile Include="TMotionBlurFilter.cpp">
       <Filter>TFilter\TMatrixFilter\TMotionBlurFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TComplexFilter.cpp">
+      <Filter>TFilter\TComplexFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TGlowingEdgesFilter.cpp">
+      <Filter>TFilter\TComplexFilter\TGlowingEdgesFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TMaximumFilter.cpp">
+      <Filter>TFilter\TMatrixFilter\TMaximumFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -105,6 +114,15 @@
     <Filter Include="TFilter\TMatrixFilter\TMotionBlurFilter">
       <UniqueIdentifier>{da6bb59f-effe-4a06-b55c-f19941e5a0a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TComplexFilter">
+      <UniqueIdentifier>{0493c232-7e74-414a-b918-15407062de39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TComplexFilter\TGlowingEdgesFilter">
+      <UniqueIdentifier>{bb07d845-8d32-47c0-ab6e-e06b42b5fbfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TMatrixFilter\TMaximumFilter">
+      <UniqueIdentifier>{9300c085-37c1-4317-a0eb-760fe0d8fe70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -156,6 +174,15 @@
     </ClInclude>
     <ClInclude Include="TMotionBlurFilter.h">
       <Filter>TFilter\TMatrixFilter\TMotionBlurFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TComplexFilter.h">
+      <Filter>TFilter\TComplexFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TGlowingEdgesFilter.h">
+      <Filter>TFilter\TComplexFilter\TGlowingEdgesFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TMaximumFilter.h">
+      <Filter>TFilter\TMatrixFilter\TMaximumFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
