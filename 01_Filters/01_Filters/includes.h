@@ -16,6 +16,9 @@
 #include "TSepiaFilter.h"
 #include "TBrightnessFilter.h"
 
+/* Direct Point Filters */
+#include "TShiftFilter.h"
+
 /* Matrix filters */
 #include "TBlurFilter.h"
 #include "TGaussianBlurFilter.h"

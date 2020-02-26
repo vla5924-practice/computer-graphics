@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClCompile Include="TBlurFilter.cpp" />
     <ClCompile Include="TBrightnessFilter.cpp" />
+    <ClCompile Include="TDirectPointFilter.cpp" />
     <ClCompile Include="TFilter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TGaussianBlurFilter.cpp" />
@@ -92,6 +93,7 @@
     <ClCompile Include="TPointFilter.cpp" />
     <ClCompile Include="TSepiaFilter.cpp" />
     <ClCompile Include="TSharpnessFilter.cpp" />
+    <ClCompile Include="TShiftFilter.cpp" />
     <ClCompile Include="TSobelYFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +101,7 @@
     <ClInclude Include="includes.h" />
     <ClInclude Include="TBlurFilter.h" />
     <ClInclude Include="TBrightnessFilter.h" />
+    <ClInclude Include="TDirectPointFilter.h" />
     <ClInclude Include="TFilter.h" />
     <ClInclude Include="TGaussianBlurFilter.h" />
     <ClInclude Include="TGrayScaleFilter.h" />
@@ -108,6 +111,7 @@
     <ClInclude Include="TPointFilter.h" />
     <ClInclude Include="TSepiaFilter.h" />
     <ClInclude Include="TSharpnessFilter.h" />
+    <ClInclude Include="TShiftFilter.h" />
     <ClInclude Include="TSobelYFilter.h" />
   </ItemGroup>
   <ItemGroup>

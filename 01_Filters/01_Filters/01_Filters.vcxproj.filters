@@ -38,6 +38,12 @@
     <ClCompile Include="TMedianFilter.cpp">
       <Filter>TFilter\TMatrixFilter\TMedianFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TDirectPointFilter.cpp">
+      <Filter>TFilter\TDirectPointFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TShiftFilter.cpp">
+      <Filter>TFilter\TDirectPointFilter\TShiftFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -81,6 +87,12 @@
     <Filter Include="TFilter\TMatrixFilter\TMedianFilter">
       <UniqueIdentifier>{40e93e19-1ed7-41a4-9797-a44a20c1ad81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TDirectPointFilter">
+      <UniqueIdentifier>{2c01af67-ea99-4a07-9613-626506172236}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TDirectPointFilter\TShiftFilter">
+      <UniqueIdentifier>{87f7f5aa-b4c5-493f-8082-5605a81e8c1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -120,6 +132,12 @@
     </ClInclude>
     <ClInclude Include="TMedianFilter.h">
       <Filter>TFilter\TMatrixFilter\TMedianFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TDirectPointFilter.h">
+      <Filter>TFilter\TDirectPointFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TShiftFilter.h">
+      <Filter>TFilter\TDirectPointFilter\TShiftFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
