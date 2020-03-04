@@ -37,6 +37,9 @@
 #include "TDilationFilter.h"
 #include "TErosionFilter.h"
 #include "TOpeningFilter.h"
+#include "TClosingFilter.h"
+#include "TTopHatFilter.h"
+#include "TBlackHatFilter.h"
 
 /* Complex filters */
 #include "TGlowingEdgesFilter.h"

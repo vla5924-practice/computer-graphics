@@ -101,7 +101,15 @@ int main(int argc, char *argv[])
         1, 0, 0, 0, 1
     };
 
-    std::cout << "Applying filter: Dilation(2)\n";
+    std::vector<bool> morph2Mask = {
+        0, 1, 1, 1, 0,
+        1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1,
+        0, 1, 1, 1, 0
+    };
+
+    /*std::cout << "Applying filter: Dilation(2)\n";
     TDilationFilter dilationFilter(morphMask);
     filteredImage = dilationFilter.applyToImage(image);
     filteredImage.save("test_dilation.png");
@@ -110,6 +118,26 @@ int main(int argc, char *argv[])
     TErosionFilter erosionFilter(morphMask);
     filteredImage = erosionFilter.applyToImage(image);
     filteredImage.save("test_erosion.png");
+
+    std::cout << "Applying filter: Opening(2)\n";
+    TOpeningFilter openingFilter(morphMask);
+    filteredImage = openingFilter.applyToImage(image);
+    filteredImage.save("test_opening.png");
+
+    std::cout << "Applying filter: Closing(2)\n";
+    TClosingFilter closingFilter(morphMask);
+    filteredImage = closingFilter.applyToImage(image);
+    filteredImage.save("test_closing.png");
+
+    std::cout << "Applying filter: TopHat(2)\n";
+    TTopHatFilter topHatFilter(morphMask);
+    filteredImage = topHatFilter.applyToImage(image);
+    filteredImage.save("test_tophat.png");*/
+
+    std::cout << "Applying filter: BlackHat(2)\n";
+    TBlackHatFilter blackHatFilter(morph2Mask);
+    filteredImage = blackHatFilter.applyToImage(image);
+    filteredImage.save("test_blackhat.png");
 
     return 0;
 }

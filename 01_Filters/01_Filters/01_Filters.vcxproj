@@ -81,6 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="TBaseMatrixFilter.cpp" />
+    <ClCompile Include="TBlackHatFilter.cpp" />
     <ClCompile Include="TBlurFilter.cpp" />
     <ClCompile Include="TBrightnessFilter.cpp" />
     <ClCompile Include="TClosingFilter.cpp" />
@@ -107,12 +108,14 @@
     <ClCompile Include="TSharpnessFilter.cpp" />
     <ClCompile Include="TShiftFilter.cpp" />
     <ClCompile Include="TSobelYFilter.cpp" />
+    <ClCompile Include="TTopHatFilter.cpp" />
     <ClCompile Include="TWavesFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Exception.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="TBaseMatrixFilter.h" />
+    <ClInclude Include="TBlackHatFilter.h" />
     <ClInclude Include="TBlurFilter.h" />
     <ClInclude Include="TBrightnessFilter.h" />
     <ClInclude Include="TClosingFilter.h" />
@@ -138,6 +141,7 @@
     <ClInclude Include="TSharpnessFilter.h" />
     <ClInclude Include="TShiftFilter.h" />
     <ClInclude Include="TSobelYFilter.h" />
+    <ClInclude Include="TTopHatFilter.h" />
     <ClInclude Include="TWavesFilter.h" />
   </ItemGroup>
   <ItemGroup>

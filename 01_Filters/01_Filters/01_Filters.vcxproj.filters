@@ -83,6 +83,12 @@
     <ClCompile Include="TClosingFilter.cpp">
       <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TClosingFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TTopHatFilter.cpp">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TTopHatFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TBlackHatFilter.cpp">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TBlackHatFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -171,6 +177,12 @@
     <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TClosingFilter">
       <UniqueIdentifier>{f734deb4-c779-44ed-afe0-5f563012621c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TTopHatFilter">
+      <UniqueIdentifier>{b3ad9dfe-9cb2-4ecf-aff5-1e427dafb67b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TBlackHatFilter">
+      <UniqueIdentifier>{658dd651-6b70-4777-a528-942567e14864}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -255,6 +267,12 @@
     </ClInclude>
     <ClInclude Include="TClosingFilter.h">
       <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TClosingFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TTopHatFilter.h">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TTopHatFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TBlackHatFilter.h">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TBlackHatFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

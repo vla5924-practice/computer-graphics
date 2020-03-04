@@ -1,10 +1,10 @@
 #include "TClosingFilter.h"
 
-TClosingFilter::TClosingFilter(int radius) : TDilationFilter(radius)
+TClosingFilter::TClosingFilter(int radius) : TDilationFilter(radius), TErosionFilter(radius)
 {
 }
 
-TClosingFilter::TClosingFilter(std::vector<bool> mask) : TDilationFilter(mask)
+TClosingFilter::TClosingFilter(std::vector<bool> mask) : TDilationFilter(mask), TErosionFilter(mask)
 {
 }
 

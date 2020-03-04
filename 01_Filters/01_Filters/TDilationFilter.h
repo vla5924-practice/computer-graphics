@@ -3,6 +3,7 @@
 
 class TDilationFilter : public TMorphMatrixFilter
 {
+    friend class TOpeningFilter;
 protected:
     int calculateProperty(std::vector<int>& values) const;
 public:

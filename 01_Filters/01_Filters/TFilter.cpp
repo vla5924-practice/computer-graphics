@@ -6,3 +6,11 @@ bool TFilter::validCoordinate(QPoint point, int width, int height) const
     bool yValid = (point.y() >= 0) && (point.y() <= height - 1);
     return xValid && yValid;
 }
+
+QColor TFilter::colorSubtraction(QColor left, QColor right) const
+{
+    int red   = clamp(left.red()   - right.red(),   0, 255);
+    int green = clamp(left.green() - right.green(), 0, 255);
+    int blue  = clamp(left.blue()  - right.blue(),  0, 255);
+    return QColor(red, green, blue);
+}

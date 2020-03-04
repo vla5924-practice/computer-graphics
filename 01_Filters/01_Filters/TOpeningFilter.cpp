@@ -1,11 +1,12 @@
 #include "TOpeningFilter.h"
 
-TOpeningFilter::TOpeningFilter(int radius) : TErosionFilter(radius)
+TOpeningFilter::TOpeningFilter(int radius) : TErosionFilter(radius), TDilationFilter(radius)
 {
 }
 
-TOpeningFilter::TOpeningFilter(std::vector<bool> mask) : TErosionFilter(mask)
+TOpeningFilter::TOpeningFilter(std::vector<bool> mask) : TErosionFilter(mask), TDilationFilter(mask)
 {
+
 }
 
 QImage TOpeningFilter::applyToImage(const QImage& image)
