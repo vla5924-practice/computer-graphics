@@ -59,6 +59,9 @@
     <ClCompile Include="TMaximumFilter.cpp">
       <Filter>TFilter\TMatrixFilter\TMaximumFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TRotateFilter.cpp">
+      <Filter>TFilter\TDirectPointFilter\TRotateFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -123,6 +126,12 @@
     <Filter Include="TFilter\TMatrixFilter\TMaximumFilter">
       <UniqueIdentifier>{9300c085-37c1-4317-a0eb-760fe0d8fe70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TDirectPointFilter\TRotateFilter">
+      <UniqueIdentifier>{dead774b-b440-4407-92dc-73d785645505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TDynamicMatrixFilter">
+      <UniqueIdentifier>{d22e8fed-b838-451e-b344-b21d0f3369c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -183,6 +192,12 @@
     </ClInclude>
     <ClInclude Include="TMaximumFilter.h">
       <Filter>TFilter\TMatrixFilter\TMaximumFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TRotateFilter.h">
+      <Filter>TFilter\TDirectPointFilter\TRotateFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TDynamicMatrixFilter.h">
+      <Filter>TFilter\TDynamicMatrixFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

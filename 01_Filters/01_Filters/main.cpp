@@ -18,7 +18,12 @@ int main(int argc, char *argv[])
     filteredImage = invFilter.applyToImage(image);
     filteredImage.save("test_inv.png");
 
-    std::cout << "Applying filter: GrayScale\n";
+    std::cout << "Applying filter: Rotate(20, 40, 30)\n";
+    TRotateFilter rotateFilter(20, 40, 30);
+    filteredImage = rotateFilter.applyToImage(image);
+    filteredImage.save("test_rotate.png");
+
+    /*std::cout << "Applying filter: GrayScale\n";
     TGrayScaleFilter grayFilter;
     filteredImage = grayFilter.applyToImage(image);
     filteredImage.save("test_gray.png");
@@ -33,8 +38,8 @@ int main(int argc, char *argv[])
     filteredImage = brightnessFilter.applyToImage(image);
     filteredImage.save("test_brightness.png");
 
-    std::cout << "Applying filter: Blur(2)\n";
-    TBlurFilter blurFilter(2);
+    std::cout << "Applying filter: Blur(3)\n";
+    TBlurFilter blurFilter(3);
     filteredImage = blurFilter.applyToImage(image);
     filteredImage.save("test_blur.png");
 
@@ -59,22 +64,22 @@ int main(int argc, char *argv[])
     filteredImage.save("test_median1.png");
 
     std::cout << "Applying filter: Median(10)\n";
-    TMedianFilter median2Filter(1);
+    TMedianFilter median2Filter(10);
     filteredImage = median2Filter.applyToImage(image);
     filteredImage.save("test_median10.png");
 
-    std::cout << "Applying filter: Shift(30, 10)\n";
+    */std::cout << "Applying filter: Shift(30, 10)\n";
     TShiftFilter shiftFilter(30, 10);
     filteredImage = shiftFilter.applyToImage(image);
-    filteredImage.save("test_shift.png");
+    filteredImage.save("test_shift.png");/*
 
     std::cout << "Applying filter: Waves\n";
     TWavesFilter wavesFilter;
     filteredImage = wavesFilter.applyToImage(image);
     filteredImage.save("test_waves.png");
 
-    std::cout << "Applying filter: Motion blur(2)\n";
-    TMotionBlurFilter mBlurFilter(2);
+    std::cout << "Applying filter: Motion blur(4)\n";
+    TMotionBlurFilter mBlurFilter(4);
     filteredImage = mBlurFilter.applyToImage(image);
     filteredImage.save("test_mblur.png");
 
@@ -83,9 +88,10 @@ int main(int argc, char *argv[])
     filteredImage = maximumFilter.applyToImage(image);
     filteredImage.save("test_max.png");
 
+    std::cout << "Applying filter: Glowing Edges\n";
     TGlowingEdgesFilter glowingEdgesFilter;
     filteredImage = glowingEdgesFilter.applyToImage(image);
-    filteredImage.save("test_gedges.png");
+    filteredImage.save("test_gedges.png");*/
 
     return 0;
 }

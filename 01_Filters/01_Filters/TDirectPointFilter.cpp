@@ -7,10 +7,19 @@ QImage TDirectPointFilter::applyToImage(const QImage& image)
         for (int y = 0; y < image.height(); y++)
         {
             QPoint pixelCoord = caclulatePixelCoordinates(QPoint(x, y));
-            pixelCoord.setX(clamp(pixelCoord.x(), 0, image.width() - 1));
-            pixelCoord.setY(clamp(pixelCoord.y(), 0, image.height() - 1));
-            QColor color = image.pixelColor(pixelCoord);
-            filteredImage.setPixelColor(x, y, color);
+            if (validCoordinate(pixelCoord, image.width(), image.height()))
+            {
+                pixelCoord.setX(clamp(pixelCoord.x(), 0, image.width() - 1));
+                pixelCoord.setY(clamp(pixelCoord.y(), 0, image.height() - 1));
+                QColor color = image.pixelColor(pixelCoord);
+                filteredImage.setPixelColor(x, y, color);
+            }
+            else
+            {
+                filteredImage.setPixelColor(x, y, QColor(0, 0, 0));
+            }
+            
+            
         }
     return filteredImage;
 }

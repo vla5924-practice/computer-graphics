@@ -8,6 +8,7 @@ protected:
     TFilter() = default;
     ~TFilter() = default;
     template <typename Ty> Ty clamp(Ty value, int min, int max) const;
+    bool validCoordinate(QPoint point, int width, int height) const;
 public:
     virtual QImage applyToImage(const QImage& image) = 0;
 };
