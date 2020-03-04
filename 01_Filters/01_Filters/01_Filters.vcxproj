@@ -96,6 +96,7 @@
     <ClCompile Include="TGaussianBlurFilter.cpp" />
     <ClCompile Include="TGlowingEdgesFilter.cpp" />
     <ClCompile Include="TGrayScaleFilter.cpp" />
+    <ClCompile Include="TGrayWorldFilter.cpp" />
     <ClCompile Include="TInvertFilter.cpp" />
     <ClCompile Include="TLinearCorrectionFilter.cpp" />
     <ClCompile Include="TMatrixFilter.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="TGaussianBlurFilter.h" />
     <ClInclude Include="TGlowingEdgesFilter.h" />
     <ClInclude Include="TGrayScaleFilter.h" />
+    <ClInclude Include="TGrayWorldFilter.h" />
     <ClInclude Include="TInvertFilter.h" />
     <ClInclude Include="TLinearCorrectionFilter.h" />
     <ClInclude Include="TMatrixFilter.h" />

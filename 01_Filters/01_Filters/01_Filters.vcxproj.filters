@@ -95,6 +95,9 @@
     <ClCompile Include="TLinearCorrectionFilter.cpp">
       <Filter>TFilter\TCorrectionFilter\TLinearCorrectionFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TGrayWorldFilter.cpp">
+      <Filter>TFilter\TCorrectionFilter\TGrayWorldFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -195,6 +198,9 @@
     <Filter Include="TFilter\TCorrectionFilter\TLinearCorrectionFilter">
       <UniqueIdentifier>{2905f5ca-f22a-4487-bd5f-57ec801cd959}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TCorrectionFilter\TGrayWorldFilter">
+      <UniqueIdentifier>{dbe69416-7347-4df7-b7b3-a8cc5e4176fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -291,6 +297,9 @@
     </ClInclude>
     <ClInclude Include="TLinearCorrectionFilter.h">
       <Filter>TFilter\TCorrectionFilter\TLinearCorrectionFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TGrayWorldFilter.h">
+      <Filter>TFilter\TCorrectionFilter\TGrayWorldFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

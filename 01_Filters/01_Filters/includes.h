@@ -46,3 +46,4 @@
 
 /* Correction filters */
 #include "TLinearCorrectionFilter.h"
+#include "TGrayWorldFilter.h"
