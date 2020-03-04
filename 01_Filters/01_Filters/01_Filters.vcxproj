@@ -107,6 +107,7 @@
     <ClCompile Include="TOpeningFilter.cpp" />
     <ClCompile Include="TPerfectReflectorFilter.cpp" />
     <ClCompile Include="TPointFilter.cpp" />
+    <ClCompile Include="TReferenceColorFilter.cpp" />
     <ClCompile Include="TRotateFilter.cpp" />
     <ClCompile Include="TSepiaFilter.cpp" />
     <ClCompile Include="TSharpnessFilter.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="TOpeningFilter.h" />
     <ClInclude Include="TPerfectReflectorFilter.h" />
     <ClInclude Include="TPointFilter.h" />
+    <ClInclude Include="TReferenceColorFilter.h" />
     <ClInclude Include="TRotateFilter.h" />
     <ClInclude Include="TSepiaFilter.h" />
     <ClInclude Include="TSharpnessFilter.h" />

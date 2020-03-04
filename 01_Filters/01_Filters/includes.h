@@ -48,3 +48,4 @@
 #include "TLinearCorrectionFilter.h"
 #include "TGrayWorldFilter.h"
 #include "TPerfectReflectorFilter.h"
+#include "TReferenceColorFilter.h"

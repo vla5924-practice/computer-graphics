@@ -101,6 +101,9 @@
     <ClCompile Include="TPerfectReflectorFilter.cpp">
       <Filter>TFilter\TCorrectionFilter\TPerfectReflectorFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TReferenceColorFilter.cpp">
+      <Filter>TFilter\TCorrectionFilter\TReferenceColorFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -207,6 +210,9 @@
     <Filter Include="TFilter\TCorrectionFilter\TPerfectReflectorFilter">
       <UniqueIdentifier>{a22fdcf7-4410-4e48-8147-fedbe8532b9b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TCorrectionFilter\TReferenceColorFilter">
+      <UniqueIdentifier>{808bd7a9-8c31-49ac-8617-fafe2c77cd83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -309,6 +315,9 @@
     </ClInclude>
     <ClInclude Include="TPerfectReflectorFilter.h">
       <Filter>TFilter\TCorrectionFilter\TPerfectReflectorFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TReferenceColorFilter.h">
+      <Filter>TFilter\TCorrectionFilter\TReferenceColorFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
