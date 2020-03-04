@@ -43,3 +43,6 @@
 
 /* Complex filters */
 #include "TGlowingEdgesFilter.h"
+
+/* Correction filters */
+#include "TLinearCorrectionFilter.h"

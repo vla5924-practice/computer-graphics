@@ -11,7 +11,8 @@ protected:
     bool validCoordinate(QPoint point, int width, int height) const;
     //forEachPixel(const QImage& image, QImage& resultImage, void(*procedure)(QImage& image, int x, int y)) const;
     QColor colorSubtraction(QColor left, QColor right) const;
-public:
+    float colorIntensity(QColor color) const;
+ public:
     virtual QImage applyToImage(const QImage& image) = 0;
 };
 

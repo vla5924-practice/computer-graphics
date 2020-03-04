@@ -14,3 +14,8 @@ QColor TFilter::colorSubtraction(QColor left, QColor right) const
     int blue  = clamp(left.blue()  - right.blue(),  0, 255);
     return QColor(red, green, blue);
 }
+
+float TFilter::colorIntensity(QColor color) const
+{
+    return 0.36 * color.red() + 0.53 * color.green() + 0.11 * color.blue();
+}

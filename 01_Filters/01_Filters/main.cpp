@@ -132,12 +132,17 @@ int main(int argc, char *argv[])
     std::cout << "Applying filter: TopHat(2)\n";
     TTopHatFilter topHatFilter(morphMask);
     filteredImage = topHatFilter.applyToImage(image);
-    filteredImage.save("test_tophat.png");*/
+    filteredImage.save("test_tophat.png");
 
     std::cout << "Applying filter: BlackHat(2)\n";
     TBlackHatFilter blackHatFilter(morph2Mask);
     filteredImage = blackHatFilter.applyToImage(image);
-    filteredImage.save("test_blackhat.png");
+    filteredImage.save("test_blackhat.png");*/
+
+    std::cout << "Applying filter: Linear correction\n";
+    TLinearCorrectionFilter linearFilter;
+    filteredImage = linearFilter.applyToImage(image);
+    filteredImage.save("test_linear.png");
 
     return 0;
 }

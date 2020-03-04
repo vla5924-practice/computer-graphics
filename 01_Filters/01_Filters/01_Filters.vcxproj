@@ -86,6 +86,7 @@
     <ClCompile Include="TBrightnessFilter.cpp" />
     <ClCompile Include="TClosingFilter.cpp" />
     <ClCompile Include="TComplexFilter.cpp" />
+    <ClCompile Include="TCorrectionFilter.cpp" />
     <ClCompile Include="TDilationFilter.cpp" />
     <ClCompile Include="TDirectPointFilter.cpp" />
     <ClCompile Include="TDynamicMatrixFilter.cpp" />
@@ -96,6 +97,7 @@
     <ClCompile Include="TGlowingEdgesFilter.cpp" />
     <ClCompile Include="TGrayScaleFilter.cpp" />
     <ClCompile Include="TInvertFilter.cpp" />
+    <ClCompile Include="TLinearCorrectionFilter.cpp" />
     <ClCompile Include="TMatrixFilter.cpp" />
     <ClCompile Include="TMaximumFilter.cpp" />
     <ClCompile Include="TMedianFilter.cpp" />
@@ -120,6 +122,7 @@
     <ClInclude Include="TBrightnessFilter.h" />
     <ClInclude Include="TClosingFilter.h" />
     <ClInclude Include="TComplexFilter.h" />
+    <ClInclude Include="TCorrectionFilter.h" />
     <ClInclude Include="TDilationFilter.h" />
     <ClInclude Include="TDirectPointFilter.h" />
     <ClInclude Include="TDynamicMatrixFilter.h" />
@@ -129,6 +132,7 @@
     <ClInclude Include="TGlowingEdgesFilter.h" />
     <ClInclude Include="TGrayScaleFilter.h" />
     <ClInclude Include="TInvertFilter.h" />
+    <ClInclude Include="TLinearCorrectionFilter.h" />
     <ClInclude Include="TMatrixFilter.h" />
     <ClInclude Include="TMaximumFilter.h" />
     <ClInclude Include="TMedianFilter.h" />

@@ -89,6 +89,12 @@
     <ClCompile Include="TBlackHatFilter.cpp">
       <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TBlackHatFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TCorrectionFilter.cpp">
+      <Filter>TFilter\TCorrectionFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TLinearCorrectionFilter.cpp">
+      <Filter>TFilter\TCorrectionFilter\TLinearCorrectionFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -183,6 +189,12 @@
     <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TBlackHatFilter">
       <UniqueIdentifier>{658dd651-6b70-4777-a528-942567e14864}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TCorrectionFilter">
+      <UniqueIdentifier>{9faa0195-70bc-482d-8e1f-22c94b38941a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TCorrectionFilter\TLinearCorrectionFilter">
+      <UniqueIdentifier>{2905f5ca-f22a-4487-bd5f-57ec801cd959}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -273,6 +285,12 @@
     </ClInclude>
     <ClInclude Include="TBlackHatFilter.h">
       <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TBlackHatFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TCorrectionFilter.h">
+      <Filter>TFilter\TCorrectionFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TLinearCorrectionFilter.h">
+      <Filter>TFilter\TCorrectionFilter\TLinearCorrectionFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
