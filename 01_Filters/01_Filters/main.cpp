@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QImage image, filteredImage;
     image.load(fileName.c_str());
 
-    std::cout << "Copying\n";
+    /*std::cout << "Copying\n";
     image.save("test_copy.png");
 
     std::cout << "Applying filter: Invert\n";
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     filteredImage = rotateFilter.applyToImage(image);
     filteredImage.save("test_rotate.png");
 
-    /*std::cout << "Applying filter: GrayScale\n";
+    std::cout << "Applying filter: GrayScale\n";
     TGrayScaleFilter grayFilter;
     filteredImage = grayFilter.applyToImage(image);
     filteredImage.save("test_gray.png");
@@ -68,30 +68,48 @@ int main(int argc, char *argv[])
     filteredImage = median2Filter.applyToImage(image);
     filteredImage.save("test_median10.png");
 
-    */std::cout << "Applying filter: Shift(30, 10)\n";
+    std::cout << "Applying filter: Shift(30, 10)\n";
     TShiftFilter shiftFilter(30, 10);
     filteredImage = shiftFilter.applyToImage(image);
-    filteredImage.save("test_shift.png");/*
+    filteredImage.save("test_shift.png");
 
     std::cout << "Applying filter: Waves\n";
     TWavesFilter wavesFilter;
     filteredImage = wavesFilter.applyToImage(image);
     filteredImage.save("test_waves.png");
-
+    
     std::cout << "Applying filter: Motion blur(4)\n";
     TMotionBlurFilter mBlurFilter(4);
     filteredImage = mBlurFilter.applyToImage(image);
     filteredImage.save("test_mblur.png");
 
-    std::cout << "Applying filter: Maximum\n";
-    TMaximumFilter maximumFilter;
+    std::cout << "Applying filter: Maximum(2)\n";
+    TMaximumFilter maximumFilter(2);
     filteredImage = maximumFilter.applyToImage(image);
     filteredImage.save("test_max.png");
-
+    
     std::cout << "Applying filter: Glowing Edges\n";
     TGlowingEdgesFilter glowingEdgesFilter;
     filteredImage = glowingEdgesFilter.applyToImage(image);
     filteredImage.save("test_gedges.png");*/
+
+    std::vector<bool> morphMask = {
+        1, 0, 0, 0, 1,
+        0, 1, 0, 1, 0,
+        0, 0, 1, 0, 0,
+        0, 1, 0, 1, 0,
+        1, 0, 0, 0, 1
+    };
+
+    std::cout << "Applying filter: Dilation(2)\n";
+    TDilationFilter dilationFilter(morphMask);
+    filteredImage = dilationFilter.applyToImage(image);
+    filteredImage.save("test_dilation.png");
+
+    std::cout << "Applying filter: Erosion(2)\n";
+    TErosionFilter erosionFilter(morphMask);
+    filteredImage = erosionFilter.applyToImage(image);
+    filteredImage.save("test_erosion.png");
 
     return 0;
 }

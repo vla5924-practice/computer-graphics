@@ -57,7 +57,7 @@
       <Filter>TFilter\TComplexFilter\TGlowingEdgesFilter</Filter>
     </ClCompile>
     <ClCompile Include="TMaximumFilter.cpp">
-      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter\TMaximumFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMaximumFilter</Filter>
     </ClCompile>
     <ClCompile Include="TRotateFilter.cpp">
       <Filter>TFilter\TDirectPointFilter\TRotateFilter</Filter>
@@ -67,6 +67,15 @@
     </ClCompile>
     <ClCompile Include="TBaseMatrixFilter.cpp">
       <Filter>TFilter\TBaseMatrixFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TMorphMatrixFilter.cpp">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TDilationFilter.cpp">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TDilationFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TErosionFilter.cpp">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TErosionFilter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,8 +152,17 @@
     <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter">
       <UniqueIdentifier>{40e93e19-1ed7-41a4-9797-a44a20c1ad81}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter\TMaximumFilter">
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter">
+      <UniqueIdentifier>{14828b85-91fb-4229-8494-7523dcbd9654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TDilationFilter">
+      <UniqueIdentifier>{a6da6621-4740-4713-ada9-2ef8b9dc4994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMaximumFilter">
       <UniqueIdentifier>{9300c085-37c1-4317-a0eb-760fe0d8fe70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TErosionFilter">
+      <UniqueIdentifier>{69ec4de4-c023-4752-8f1d-e172f471d3d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -205,7 +223,7 @@
       <Filter>TFilter\TComplexFilter\TGlowingEdgesFilter</Filter>
     </ClInclude>
     <ClInclude Include="TMaximumFilter.h">
-      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter\TMaximumFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMaximumFilter</Filter>
     </ClInclude>
     <ClInclude Include="TRotateFilter.h">
       <Filter>TFilter\TDirectPointFilter\TRotateFilter</Filter>
@@ -215,6 +233,15 @@
     </ClInclude>
     <ClInclude Include="TBaseMatrixFilter.h">
       <Filter>TFilter\TBaseMatrixFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TMorphMatrixFilter.h">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TDilationFilter.h">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TDilationFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TErosionFilter.h">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TErosionFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

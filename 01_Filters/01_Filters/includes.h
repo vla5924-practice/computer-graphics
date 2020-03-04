@@ -9,6 +9,7 @@
 #include <cstring>
 #include <ciso646>
 #include <iostream>
+#include <vector>
 
 /* Point filters */
 #include "TInvertFilter.h"
@@ -26,9 +27,15 @@
 #include "TGaussianBlurFilter.h"
 #include "TSobelYFilter.h"
 #include "TSharpnessFilter.h"
-#include "TMedianFilter.h"
 #include "TMotionBlurFilter.h"
+
+/* Dynamic matrix filters */
+#include "TMedianFilter.h"
 #include "TMaximumFilter.h"
+
+/* Morphology matrix filters */
+#include "TDilationFilter.h"
+#include "TErosionFilter.h"
 
 /* Complex filters */
 #include "TGlowingEdgesFilter.h"
