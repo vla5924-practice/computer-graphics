@@ -98,6 +98,9 @@
     <ClCompile Include="TGrayWorldFilter.cpp">
       <Filter>TFilter\TCorrectionFilter\TGrayWorldFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TPerfectReflectorFilter.cpp">
+      <Filter>TFilter\TCorrectionFilter\TPerfectReflectorFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -201,6 +204,9 @@
     <Filter Include="TFilter\TCorrectionFilter\TGrayWorldFilter">
       <UniqueIdentifier>{dbe69416-7347-4df7-b7b3-a8cc5e4176fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TCorrectionFilter\TPerfectReflectorFilter">
+      <UniqueIdentifier>{a22fdcf7-4410-4e48-8147-fedbe8532b9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -300,6 +306,9 @@
     </ClInclude>
     <ClInclude Include="TGrayWorldFilter.h">
       <Filter>TFilter\TCorrectionFilter\TGrayWorldFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TPerfectReflectorFilter.h">
+      <Filter>TFilter\TCorrectionFilter\TPerfectReflectorFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

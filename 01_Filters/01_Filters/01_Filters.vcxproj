@@ -105,6 +105,7 @@
     <ClCompile Include="TMorphMatrixFilter.cpp" />
     <ClCompile Include="TMotionBlurFilter.cpp" />
     <ClCompile Include="TOpeningFilter.cpp" />
+    <ClCompile Include="TPerfectReflectorFilter.cpp" />
     <ClCompile Include="TPointFilter.cpp" />
     <ClCompile Include="TRotateFilter.cpp" />
     <ClCompile Include="TSepiaFilter.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="TMorphMatrixFilter.h" />
     <ClInclude Include="TMotionBlurFilter.h" />
     <ClInclude Include="TOpeningFilter.h" />
+    <ClInclude Include="TPerfectReflectorFilter.h" />
     <ClInclude Include="TPointFilter.h" />
     <ClInclude Include="TRotateFilter.h" />
     <ClInclude Include="TSepiaFilter.h" />

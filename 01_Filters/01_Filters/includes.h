@@ -47,3 +47,4 @@
 /* Correction filters */
 #include "TLinearCorrectionFilter.h"
 #include "TGrayWorldFilter.h"
+#include "TPerfectReflectorFilter.h"
