@@ -36,6 +36,7 @@
 /* Morphology matrix filters */
 #include "TDilationFilter.h"
 #include "TErosionFilter.h"
+#include "TOpeningFilter.h"
 
 /* Complex filters */
 #include "TGlowingEdgesFilter.h"

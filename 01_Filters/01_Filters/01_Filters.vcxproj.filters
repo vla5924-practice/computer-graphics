@@ -77,6 +77,12 @@
     <ClCompile Include="TErosionFilter.cpp">
       <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TErosionFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TOpeningFilter.cpp">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TOpeningFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TClosingFilter.cpp">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TClosingFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -120,11 +126,6 @@
     <Filter Include="TFilter\TDirectPointFilter\TRotateFilter">
       <UniqueIdentifier>{dead774b-b440-4407-92dc-73d785645505}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-      <ParseFiles>true</ParseFiles>
-    </Filter>
     <Filter Include="TFilter\TBaseMatrixFilter">
       <UniqueIdentifier>{a11cd2dc-90b5-4be4-a049-1f965c64038c}</UniqueIdentifier>
     </Filter>
@@ -163,6 +164,12 @@
     </Filter>
     <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TErosionFilter">
       <UniqueIdentifier>{69ec4de4-c023-4752-8f1d-e172f471d3d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TOpeningFilter">
+      <UniqueIdentifier>{a36c93f6-d470-41e9-8200-58046caf057a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TClosingFilter">
+      <UniqueIdentifier>{f734deb4-c779-44ed-afe0-5f563012621c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +249,12 @@
     </ClInclude>
     <ClInclude Include="TErosionFilter.h">
       <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TErosionFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TOpeningFilter.h">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TOpeningFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TClosingFilter.h">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphMatrixFilter\TClosingFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

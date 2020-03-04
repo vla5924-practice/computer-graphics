@@ -9,6 +9,7 @@ protected:
     ~TFilter() = default;
     template <typename Ty> Ty clamp(Ty value, int min, int max) const;
     bool validCoordinate(QPoint point, int width, int height) const;
+    //forEachPixel(const QImage& image, QImage& resultImage, void(*procedure)(QImage& image, int x, int y)) const;
 public:
     virtual QImage applyToImage(const QImage& image) = 0;
 };

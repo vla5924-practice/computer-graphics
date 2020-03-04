@@ -83,6 +83,7 @@
     <ClCompile Include="TBaseMatrixFilter.cpp" />
     <ClCompile Include="TBlurFilter.cpp" />
     <ClCompile Include="TBrightnessFilter.cpp" />
+    <ClCompile Include="TClosingFilter.cpp" />
     <ClCompile Include="TComplexFilter.cpp" />
     <ClCompile Include="TDilationFilter.cpp" />
     <ClCompile Include="TDirectPointFilter.cpp" />
@@ -99,6 +100,7 @@
     <ClCompile Include="TMedianFilter.cpp" />
     <ClCompile Include="TMorphMatrixFilter.cpp" />
     <ClCompile Include="TMotionBlurFilter.cpp" />
+    <ClCompile Include="TOpeningFilter.cpp" />
     <ClCompile Include="TPointFilter.cpp" />
     <ClCompile Include="TRotateFilter.cpp" />
     <ClCompile Include="TSepiaFilter.cpp" />
@@ -113,6 +115,7 @@
     <ClInclude Include="TBaseMatrixFilter.h" />
     <ClInclude Include="TBlurFilter.h" />
     <ClInclude Include="TBrightnessFilter.h" />
+    <ClInclude Include="TClosingFilter.h" />
     <ClInclude Include="TComplexFilter.h" />
     <ClInclude Include="TDilationFilter.h" />
     <ClInclude Include="TDirectPointFilter.h" />
@@ -128,6 +131,7 @@
     <ClInclude Include="TMedianFilter.h" />
     <ClInclude Include="TMorphMatrixFilter.h" />
     <ClInclude Include="TMotionBlurFilter.h" />
+    <ClInclude Include="TOpeningFilter.h" />
     <ClInclude Include="TPointFilter.h" />
     <ClInclude Include="TRotateFilter.h" />
     <ClInclude Include="TSepiaFilter.h" />
