@@ -1,12 +1,10 @@
 #pragma once
-#include "TMatrixFilter.h"
+#include "TDynamicMatrixFilter.h"
 
-class TMedianFilter : public TMatrixFilter
+class TMedianFilter : public TDynamicMatrixFilter
 {
 protected:
-    int calculateMedian(std::vector<int>& values) const;
-    QColor calculateMedianColor(const std::vector<QColor>& colors) const;
-    QColor calculatePixelColor(const QImage& image, int x, int y) const;
+    int calculateProperty(std::vector<int>& values) const;
 public:
     explicit TMedianFilter(int radius = 1);
     ~TMedianFilter() = default;

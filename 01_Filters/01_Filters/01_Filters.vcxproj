@@ -80,10 +80,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="TBaseMatrixFilter.cpp" />
     <ClCompile Include="TBlurFilter.cpp" />
     <ClCompile Include="TBrightnessFilter.cpp" />
     <ClCompile Include="TComplexFilter.cpp" />
     <ClCompile Include="TDirectPointFilter.cpp" />
+    <ClCompile Include="TDynamicMatrixFilter.cpp" />
     <ClCompile Include="TFilter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TGaussianBlurFilter.cpp" />
@@ -105,6 +107,7 @@
   <ItemGroup>
     <ClInclude Include="Exception.h" />
     <ClInclude Include="includes.h" />
+    <ClInclude Include="TBaseMatrixFilter.h" />
     <ClInclude Include="TBlurFilter.h" />
     <ClInclude Include="TBrightnessFilter.h" />
     <ClInclude Include="TComplexFilter.h" />

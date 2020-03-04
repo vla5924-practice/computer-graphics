@@ -9,13 +9,13 @@
       <Filter>TFilter\TPointFilter\TInvertFilter</Filter>
     </ClCompile>
     <ClCompile Include="TMatrixFilter.cpp">
-      <Filter>TFilter\TMatrixFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter</Filter>
     </ClCompile>
     <ClCompile Include="TBlurFilter.cpp">
-      <Filter>TFilter\TMatrixFilter\TBlurFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TBlurFilter</Filter>
     </ClCompile>
     <ClCompile Include="TGaussianBlurFilter.cpp">
-      <Filter>TFilter\TMatrixFilter\TGaussianBlurFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TGaussianBlurFilter</Filter>
     </ClCompile>
     <ClCompile Include="TPointFilter.cpp">
       <Filter>TFilter\TPointFilter</Filter>
@@ -30,13 +30,13 @@
       <Filter>TFilter\TPointFilter\TBrightnessFilter</Filter>
     </ClCompile>
     <ClCompile Include="TSobelYFilter.cpp">
-      <Filter>TFilter\TMatrixFilter\TSobelYFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TSobelYFilter</Filter>
     </ClCompile>
     <ClCompile Include="TSharpnessFilter.cpp">
-      <Filter>TFilter\TMatrixFilter\TSharpnessFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TSharpnessFilter</Filter>
     </ClCompile>
     <ClCompile Include="TMedianFilter.cpp">
-      <Filter>TFilter\TMatrixFilter\TMedianFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter</Filter>
     </ClCompile>
     <ClCompile Include="TDirectPointFilter.cpp">
       <Filter>TFilter\TDirectPointFilter</Filter>
@@ -48,7 +48,7 @@
       <Filter>TFilter\TDirectPointFilter\TWavesFilter</Filter>
     </ClCompile>
     <ClCompile Include="TMotionBlurFilter.cpp">
-      <Filter>TFilter\TMatrixFilter\TMotionBlurFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TMotionBlurFilter</Filter>
     </ClCompile>
     <ClCompile Include="TComplexFilter.cpp">
       <Filter>TFilter\TComplexFilter</Filter>
@@ -57,10 +57,16 @@
       <Filter>TFilter\TComplexFilter\TGlowingEdgesFilter</Filter>
     </ClCompile>
     <ClCompile Include="TMaximumFilter.cpp">
-      <Filter>TFilter\TMatrixFilter\TMaximumFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter\TMaximumFilter</Filter>
     </ClCompile>
     <ClCompile Include="TRotateFilter.cpp">
       <Filter>TFilter\TDirectPointFilter\TRotateFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TDynamicMatrixFilter.cpp">
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="TBaseMatrixFilter.cpp">
+      <Filter>TFilter\TBaseMatrixFilter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,15 +77,6 @@
     </Filter>
     <Filter Include="TFilter">
       <UniqueIdentifier>{7fd82cbd-3b90-4ab0-b583-e0734cc2d65a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TFilter\TMatrixFilter">
-      <UniqueIdentifier>{c285eb8e-5bc5-4391-903c-ef2eb7359467}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TFilter\TMatrixFilter\TBlurFilter">
-      <UniqueIdentifier>{e32ace34-a61e-474c-ae12-d6c2f8d58a9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TFilter\TMatrixFilter\TGaussianBlurFilter">
-      <UniqueIdentifier>{f5936a4b-2118-40da-9fb9-ec59230081e5}</UniqueIdentifier>
     </Filter>
     <Filter Include="TFilter\TPointFilter">
       <UniqueIdentifier>{35bae201-9593-4250-86f0-6f943458928d}</UniqueIdentifier>
@@ -96,15 +93,6 @@
     <Filter Include="TFilter\TPointFilter\TBrightnessFilter">
       <UniqueIdentifier>{15884604-169c-4661-b83d-20175b167397}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TFilter\TMatrixFilter\TSobelYFilter">
-      <UniqueIdentifier>{0b8796f6-5a8c-4d29-830f-2ee32b783371}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TFilter\TMatrixFilter\TSharpnessFilter">
-      <UniqueIdentifier>{a5428cf3-9367-41a1-af0d-606495b0b827}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TFilter\TMatrixFilter\TMedianFilter">
-      <UniqueIdentifier>{40e93e19-1ed7-41a4-9797-a44a20c1ad81}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TFilter\TDirectPointFilter">
       <UniqueIdentifier>{2c01af67-ea99-4a07-9613-626506172236}</UniqueIdentifier>
     </Filter>
@@ -114,23 +102,49 @@
     <Filter Include="TFilter\TDirectPointFilter\TWavesFilter">
       <UniqueIdentifier>{d6caa873-6d31-47c0-aac8-bd0588068c3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TFilter\TMatrixFilter\TMotionBlurFilter">
-      <UniqueIdentifier>{da6bb59f-effe-4a06-b55c-f19941e5a0a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TFilter\TComplexFilter">
       <UniqueIdentifier>{0493c232-7e74-414a-b918-15407062de39}</UniqueIdentifier>
     </Filter>
     <Filter Include="TFilter\TComplexFilter\TGlowingEdgesFilter">
       <UniqueIdentifier>{bb07d845-8d32-47c0-ab6e-e06b42b5fbfe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TFilter\TMatrixFilter\TMaximumFilter">
-      <UniqueIdentifier>{9300c085-37c1-4317-a0eb-760fe0d8fe70}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TFilter\TDirectPointFilter\TRotateFilter">
       <UniqueIdentifier>{dead774b-b440-4407-92dc-73d785645505}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TFilter\TDynamicMatrixFilter">
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter">
+      <UniqueIdentifier>{a11cd2dc-90b5-4be4-a049-1f965c64038c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter">
       <UniqueIdentifier>{d22e8fed-b838-451e-b344-b21d0f3369c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TMatrixFilter">
+      <UniqueIdentifier>{c285eb8e-5bc5-4391-903c-ef2eb7359467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TMatrixFilter\TBlurFilter">
+      <UniqueIdentifier>{e32ace34-a61e-474c-ae12-d6c2f8d58a9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TMatrixFilter\TGaussianBlurFilter">
+      <UniqueIdentifier>{f5936a4b-2118-40da-9fb9-ec59230081e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TMatrixFilter\TSobelYFilter">
+      <UniqueIdentifier>{0b8796f6-5a8c-4d29-830f-2ee32b783371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TMatrixFilter\TSharpnessFilter">
+      <UniqueIdentifier>{a5428cf3-9367-41a1-af0d-606495b0b827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TMatrixFilter\TMotionBlurFilter">
+      <UniqueIdentifier>{da6bb59f-effe-4a06-b55c-f19941e5a0a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter">
+      <UniqueIdentifier>{40e93e19-1ed7-41a4-9797-a44a20c1ad81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter\TMaximumFilter">
+      <UniqueIdentifier>{9300c085-37c1-4317-a0eb-760fe0d8fe70}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -142,13 +156,13 @@
     </ClInclude>
     <ClInclude Include="includes.h" />
     <ClInclude Include="TMatrixFilter.h">
-      <Filter>TFilter\TMatrixFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter</Filter>
     </ClInclude>
     <ClInclude Include="TBlurFilter.h">
-      <Filter>TFilter\TMatrixFilter\TBlurFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TBlurFilter</Filter>
     </ClInclude>
     <ClInclude Include="TGaussianBlurFilter.h">
-      <Filter>TFilter\TMatrixFilter\TGaussianBlurFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TGaussianBlurFilter</Filter>
     </ClInclude>
     <ClInclude Include="Exception.h" />
     <ClInclude Include="TPointFilter.h">
@@ -164,13 +178,13 @@
       <Filter>TFilter\TPointFilter\TBrightnessFilter</Filter>
     </ClInclude>
     <ClInclude Include="TSobelYFilter.h">
-      <Filter>TFilter\TMatrixFilter\TSobelYFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TSobelYFilter</Filter>
     </ClInclude>
     <ClInclude Include="TSharpnessFilter.h">
-      <Filter>TFilter\TMatrixFilter\TSharpnessFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TSharpnessFilter</Filter>
     </ClInclude>
     <ClInclude Include="TMedianFilter.h">
-      <Filter>TFilter\TMatrixFilter\TMedianFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter</Filter>
     </ClInclude>
     <ClInclude Include="TDirectPointFilter.h">
       <Filter>TFilter\TDirectPointFilter</Filter>
@@ -182,7 +196,7 @@
       <Filter>TFilter\TDirectPointFilter\TWavesFilter</Filter>
     </ClInclude>
     <ClInclude Include="TMotionBlurFilter.h">
-      <Filter>TFilter\TMatrixFilter\TMotionBlurFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TMatrixFilter\TMotionBlurFilter</Filter>
     </ClInclude>
     <ClInclude Include="TComplexFilter.h">
       <Filter>TFilter\TComplexFilter</Filter>
@@ -191,13 +205,16 @@
       <Filter>TFilter\TComplexFilter\TGlowingEdgesFilter</Filter>
     </ClInclude>
     <ClInclude Include="TMaximumFilter.h">
-      <Filter>TFilter\TMatrixFilter\TMaximumFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMedianFilter\TMaximumFilter</Filter>
     </ClInclude>
     <ClInclude Include="TRotateFilter.h">
       <Filter>TFilter\TDirectPointFilter\TRotateFilter</Filter>
     </ClInclude>
     <ClInclude Include="TDynamicMatrixFilter.h">
-      <Filter>TFilter\TDynamicMatrixFilter</Filter>
+      <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TBaseMatrixFilter.h">
+      <Filter>TFilter\TBaseMatrixFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

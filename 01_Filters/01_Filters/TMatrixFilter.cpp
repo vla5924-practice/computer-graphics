@@ -1,10 +1,5 @@
 #include "TMatrixFilter.h"
 
-inline int TMatrixFilter::getMatrixSize() const
-{
-    return 2 * matrixRadius + 1;
-}
-
 QColor TMatrixFilter::calculatePixelColor(const QImage& image, int x, int y) const
 {
     int red = 0, green = 0, blue = 0;
@@ -26,23 +21,8 @@ QColor TMatrixFilter::calculatePixelColor(const QImage& image, int x, int y) con
     return QColor(red, green, blue);
 }
 
-TMatrixFilter::TMatrixFilter(int matrixRadius_)
+TMatrixFilter::TMatrixFilter(int matrixRadius_) : TBaseMatrixFilter(matrixRadius_)
 {
-    if (matrixRadius_ <= 0)
-        throw InvalidRadiusError();
-    matrixRadius = matrixRadius_;
     int matrixSize = getMatrixSize();
     matrix.resize(static_cast<size_t>(matrixSize * matrixSize));
-}
-
-QImage TMatrixFilter::applyToImage(const QImage& image)
-{
-    QImage filteredImage(image);
-    for (int x = 0; x < image.width(); x++)
-        for (int y = 0; y < image.height(); y++)
-        {
-            QColor color = calculatePixelColor(image, x, y);
-            filteredImage.setPixelColor(x, y, color);
-        }
-    return filteredImage;
 }
