@@ -16,7 +16,7 @@ QImage TBlackHatFilter::applyToImage(const QImage& image)
     for (int x = 0; x < image.width(); x++)
         for (int y = 0; y < image.height(); y++)
         {
-            QColor color = colorSubtraction(filteredImage.pixelColor(x, y), filteredImage.pixelColor(x, y));
+            QColor color = colorSubtraction(filteredImage.pixelColor(x, y), image.pixelColor(x, y));
             filteredImage.setPixelColor(x, y, color);
         }
     return filteredImage;

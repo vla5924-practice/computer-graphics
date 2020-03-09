@@ -14,8 +14,7 @@ TClosingFilter::TClosingFilter(const std::vector<bool>& mask) : TMorphMatrixFilt
 
 QImage TClosingFilter::applyToImage(const QImage& image)
 {
-    QImage filteredImage;
-    filteredImage = dilation.applyToImage(filteredImage);
+    QImage filteredImage = dilation.applyToImage(image);
     filteredImage = erosion.applyToImage(filteredImage);
     return filteredImage;
 }

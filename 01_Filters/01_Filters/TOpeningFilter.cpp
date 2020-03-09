@@ -14,8 +14,7 @@ TOpeningFilter::TOpeningFilter(const std::vector<bool>& mask) : TMorphMatrixFilt
 
 QImage TOpeningFilter::applyToImage(const QImage& image)
 {
-    QImage filteredImage;
-    filteredImage = erosion.applyToImage(filteredImage);
+    QImage filteredImage = erosion.applyToImage(image);;
     filteredImage = dilation.applyToImage(filteredImage);
     return filteredImage;
 }
