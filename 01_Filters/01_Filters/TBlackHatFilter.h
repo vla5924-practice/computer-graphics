@@ -1,8 +1,8 @@
 #pragma once
-#include "TMorphMatrixFilter.h"
+#include "TMorphologyFilter.h"
 #include "TClosingFilter.h"
 
-class TBlackHatFilter : public TMorphMatrixFilter
+class TBlackHatFilter : public TMorphologyFilter
 {
 protected:
     TClosingFilter closing;

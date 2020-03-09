@@ -1,7 +1,7 @@
 #pragma once
-#include "TMorphMatrixFilter.h"
+#include "TMorphologyFilter.h"
 
-class TErosionFilter : public TMorphMatrixFilter
+class TErosionFilter : public TMorphologyFilter
 {
 protected:
     int calculateProperty(int* values, int valuesCount) const;

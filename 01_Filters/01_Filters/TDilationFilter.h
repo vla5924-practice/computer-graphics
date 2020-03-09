@@ -1,7 +1,7 @@
 #pragma once
-#include "TMorphMatrixFilter.h"
+#include "TMorphologyFilter.h"
 
-class TDilationFilter : public TMorphMatrixFilter
+class TDilationFilter : public TMorphologyFilter
 {
     friend class TOpeningFilter;
 protected:

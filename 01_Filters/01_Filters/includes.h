@@ -33,7 +33,7 @@
 #include "TMedianFilter.h"
 #include "TMaximumFilter.h"
 
-/* Morphology matrix filters */
+/* Morphology filters */
 #include "TDilationFilter.h"
 #include "TErosionFilter.h"
 #include "TOpeningFilter.h"

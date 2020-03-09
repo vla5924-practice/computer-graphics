@@ -9,10 +9,10 @@ int TErosionFilter::calculateProperty(int* values, int valuesCount) const
     return min;
 }
 
-TErosionFilter::TErosionFilter(int radius) : TMorphMatrixFilter(radius)
+TErosionFilter::TErosionFilter(int radius) : TMorphologyFilter(radius)
 {
 }
 
-TErosionFilter::TErosionFilter(const std::vector<bool>& mask) : TMorphMatrixFilter(mask)
+TErosionFilter::TErosionFilter(const std::vector<bool>& mask) : TMorphologyFilter(mask)
 {
 }

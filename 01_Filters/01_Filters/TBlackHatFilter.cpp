@@ -1,11 +1,11 @@
 #include "TBlackHatFilter.h"
 
-TBlackHatFilter::TBlackHatFilter(int radius) : TMorphMatrixFilter(radius)
+TBlackHatFilter::TBlackHatFilter(int radius) : TMorphologyFilter(radius)
 {
     closing = TClosingFilter(radius);
 }
 
-TBlackHatFilter::TBlackHatFilter(const std::vector<bool>& mask) : TMorphMatrixFilter(mask)
+TBlackHatFilter::TBlackHatFilter(const std::vector<bool>& mask) : TMorphologyFilter(mask)
 {
     closing = TClosingFilter(mask);
 }

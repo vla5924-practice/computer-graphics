@@ -102,7 +102,7 @@
     <ClCompile Include="TMatrixFilter.cpp" />
     <ClCompile Include="TMaximumFilter.cpp" />
     <ClCompile Include="TMedianFilter.cpp" />
-    <ClCompile Include="TMorphMatrixFilter.cpp" />
+    <ClCompile Include="TMorphologyFilter.cpp" />
     <ClCompile Include="TMotionBlurFilter.cpp" />
     <ClCompile Include="TOpeningFilter.cpp" />
     <ClCompile Include="TPerfectReflectorFilter.cpp" />
@@ -140,7 +140,7 @@
     <ClInclude Include="TMatrixFilter.h" />
     <ClInclude Include="TMaximumFilter.h" />
     <ClInclude Include="TMedianFilter.h" />
-    <ClInclude Include="TMorphMatrixFilter.h" />
+    <ClInclude Include="TMorphologyFilter.h" />
     <ClInclude Include="TMotionBlurFilter.h" />
     <ClInclude Include="TOpeningFilter.h" />
     <ClInclude Include="TPerfectReflectorFilter.h" />

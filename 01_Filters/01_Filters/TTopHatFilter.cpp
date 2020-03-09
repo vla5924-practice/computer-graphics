@@ -1,11 +1,11 @@
 #include "TTopHatFilter.h"
 
-TTopHatFilter::TTopHatFilter(int radius) : TMorphMatrixFilter(radius)
+TTopHatFilter::TTopHatFilter(int radius) : TMorphologyFilter(radius)
 {
     opening = TOpeningFilter(radius);
 }
 
-TTopHatFilter::TTopHatFilter(const std::vector<bool>& mask) : TMorphMatrixFilter(mask)
+TTopHatFilter::TTopHatFilter(const std::vector<bool>& mask) : TMorphologyFilter(mask)
 {
     opening = TOpeningFilter(mask);
 }

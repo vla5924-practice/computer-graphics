@@ -1,6 +1,6 @@
-#include "TMorphMatrixFilter.h"
+#include "TMorphologyFilter.h"
 
-TMorphMatrixFilter::TMorphMatrixFilter(int matrixRadius_) : TDynamicMatrixFilter(matrixRadius_)
+TMorphologyFilter::TMorphologyFilter(int matrixRadius_) : TDynamicMatrixFilter(matrixRadius_)
 {
     int matrixSize = getMatrixSize();
     maskMatrix.resize(matrixRealSize, false);
@@ -11,7 +11,7 @@ TMorphMatrixFilter::TMorphMatrixFilter(int matrixRadius_) : TDynamicMatrixFilter
     maskPower = matrixRadius * 4 + 1;
 }
 
-TMorphMatrixFilter::TMorphMatrixFilter(const std::vector<bool>& maskMatrix_)
+TMorphologyFilter::TMorphologyFilter(const std::vector<bool>& maskMatrix_)
 {
     float eps = std::numeric_limits<float>::epsilon();
     float matrixRadius_ = (sqrt(maskMatrix_.size()) - 1) / 2.0f;
@@ -25,7 +25,7 @@ TMorphMatrixFilter::TMorphMatrixFilter(const std::vector<bool>& maskMatrix_)
         maskPower += static_cast<int>(mark);
 }
 
-QColor TMorphMatrixFilter::calculatePixelColor(const QImage& image, int x, int y) const
+QColor TMorphologyFilter::calculatePixelColor(const QImage& image, int x, int y) const
 {
     QColor* colors = new QColor[maskPower];
     int index = 0, k = 0;

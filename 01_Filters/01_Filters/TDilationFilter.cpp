@@ -9,10 +9,10 @@ int TDilationFilter::calculateProperty(int* values, int valuesCount) const
     return max;
 }
 
-TDilationFilter::TDilationFilter(int radius) : TMorphMatrixFilter(radius)
+TDilationFilter::TDilationFilter(int radius) : TMorphologyFilter(radius)
 {
 }
 
-TDilationFilter::TDilationFilter(const std::vector<bool>& mask) : TMorphMatrixFilter(mask)
+TDilationFilter::TDilationFilter(const std::vector<bool>& mask) : TMorphologyFilter(mask)
 {
 }

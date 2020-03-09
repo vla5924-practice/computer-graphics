@@ -1,12 +1,12 @@
 #include "TClosingFilter.h"
 
-TClosingFilter::TClosingFilter(int radius) : TMorphMatrixFilter(radius)
+TClosingFilter::TClosingFilter(int radius) : TMorphologyFilter(radius)
 {
     dilation = TDilationFilter(radius);
     erosion = TErosionFilter(radius);
 }
 
-TClosingFilter::TClosingFilter(const std::vector<bool>& mask) : TMorphMatrixFilter(mask)
+TClosingFilter::TClosingFilter(const std::vector<bool>& mask) : TMorphologyFilter(mask)
 {
     dilation = TDilationFilter(mask);
     erosion = TErosionFilter(mask);

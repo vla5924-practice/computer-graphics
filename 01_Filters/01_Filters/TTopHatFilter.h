@@ -1,8 +1,8 @@
 #pragma once
-#include "TMorphMatrixFilter.h"
+#include "TMorphologyFilter.h"
 #include "TOpeningFilter.h"
 
-class TTopHatFilter : public TMorphMatrixFilter
+class TTopHatFilter : public TMorphologyFilter
 {
 protected:
     TOpeningFilter opening;
