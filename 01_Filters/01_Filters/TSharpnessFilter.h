@@ -5,5 +5,4 @@ class TSharpnessFilter : public TMatrixFilter
 {
 public:
     TSharpnessFilter();
-    ~TSharpnessFilter() = default;
 };

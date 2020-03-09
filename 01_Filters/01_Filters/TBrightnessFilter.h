@@ -8,5 +8,4 @@ protected:
 public:
     int delta;
     explicit TBrightnessFilter(int delta = 0);
-    ~TBrightnessFilter() = default;
 };

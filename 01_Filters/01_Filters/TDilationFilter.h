@@ -5,9 +5,8 @@ class TDilationFilter : public TMorphMatrixFilter
 {
     friend class TOpeningFilter;
 protected:
-    int calculateProperty(std::vector<int>& values) const;
+    int calculateProperty(int* values, int valuesCount) const;
 public:
     explicit TDilationFilter(int radius = 1);
-    TDilationFilter(std::vector<bool> mask);
-    ~TDilationFilter() = default;
+    TDilationFilter(const std::vector<bool>& mask);
 };

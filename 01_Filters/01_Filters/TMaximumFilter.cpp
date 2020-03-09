@@ -1,11 +1,11 @@
 #include "TMaximumFilter.h"
 
-int TMaximumFilter::calculateProperty(std::vector<int>& values) const
+int TMaximumFilter::calculateProperty(int* values, int valuesCount) const
 {
     int max = values[0];
-    for (int value : values)
-        if (value > max)
-            max = value;
+    for (int i = 1; i < valuesCount; i++)
+        if (values[i] > max)
+            max = values[i];
     return max;
 }
 

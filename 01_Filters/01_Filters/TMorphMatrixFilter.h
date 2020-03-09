@@ -5,11 +5,10 @@ class TMorphMatrixFilter : public TDynamicMatrixFilter
 {
 protected:
     std::vector<bool> maskMatrix;
+    int maskPower;
     explicit TMorphMatrixFilter(int matrixRadius_ = 1);
-    TMorphMatrixFilter(std::vector<bool> maskMatrix_);
-    ~TMorphMatrixFilter() = default;
-    QColor calculatePixelColor(const QImage & image, int x, int y) const;
-    virtual int calculateProperty(std::vector<int> & values) const = 0;
+    TMorphMatrixFilter(const std::vector<bool>& maskMatrix_);
+    QColor calculatePixelColor(const QImage& image, int x, int y) const;
 public:
     classException(InvalidMaskMatrixSize, "Error...");
 };

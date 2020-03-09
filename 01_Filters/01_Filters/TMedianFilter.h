@@ -4,8 +4,7 @@
 class TMedianFilter : public TDynamicMatrixFilter
 {
 protected:
-    int calculateProperty(std::vector<int>& values) const;
+    int calculateProperty(int* values, int valuesCount) const;
 public:
     explicit TMedianFilter(int radius = 1);
-    ~TMedianFilter() = default;
 };

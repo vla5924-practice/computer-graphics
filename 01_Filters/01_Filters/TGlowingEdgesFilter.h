@@ -7,7 +7,5 @@
 class TGlowingEdgesFilter : public TComplexFilter
 {
 public:
-    TGlowingEdgesFilter() = default;
-    ~TGlowingEdgesFilter() = default;
     QImage applyToImage(const QImage& image);
 };

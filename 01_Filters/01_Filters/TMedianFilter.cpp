@@ -1,9 +1,9 @@
 #include "TMedianFilter.h"
 
-int TMedianFilter::calculateProperty(std::vector<int>& values) const
+int TMedianFilter::calculateProperty(int* values, int valuesCount) const
 {
-    std::sort(values.begin(), values.end());
-    return values[values.size() / 2U];
+    std::sort(values, values + valuesCount);
+    return values[valuesCount / 2U];
 }
 
 

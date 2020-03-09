@@ -1,28 +1,21 @@
 #include "TOpeningFilter.h"
 
-TOpeningFilter::TOpeningFilter(int radius) : TErosionFilter(radius), TDilationFilter(radius)
+TOpeningFilter::TOpeningFilter(int radius) : TMorphMatrixFilter(radius)
 {
+    dilation = TDilationFilter(radius);
+    erosion = TErosionFilter(radius);
 }
 
-TOpeningFilter::TOpeningFilter(std::vector<bool> mask) : TErosionFilter(mask), TDilationFilter(mask)
+TOpeningFilter::TOpeningFilter(const std::vector<bool>& mask) : TMorphMatrixFilter(mask)
 {
-
+    dilation = TDilationFilter(mask);
+    erosion = TErosionFilter(mask);
 }
 
 QImage TOpeningFilter::applyToImage(const QImage& image)
 {
-    QImage filteredImage(image);
-    for (int x = 0; x < image.width(); x++)
-        for (int y = 0; y < image.height(); y++)
-        {
-            QColor color = TErosionFilter::calculatePixelColor(image, x, y);
-            filteredImage.setPixelColor(x, y, color);
-        }
-    for (int x = 0; x < image.width(); x++)
-        for (int y = 0; y < image.height(); y++)
-        {
-            QColor color = TDilationFilter::calculatePixelColor(image, x, y);
-            filteredImage.setPixelColor(x, y, color);
-        }
+    QImage filteredImage;
+    filteredImage = erosion.applyToImage(filteredImage);
+    filteredImage = dilation.applyToImage(filteredImage);
     return filteredImage;
 }

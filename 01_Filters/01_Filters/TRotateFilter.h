@@ -10,5 +10,4 @@ public:
     int xCenter, yCenter;
     int angle;
     explicit TRotateFilter(int xCenter_ = 0, int yCenter_ = 0, int angle_ = 0);
-    ~TRotateFilter() = default;
 };

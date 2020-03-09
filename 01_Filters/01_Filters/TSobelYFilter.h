@@ -5,5 +5,4 @@ class TSobelYFilter : public TMatrixFilter
 {
 public:
     TSobelYFilter();
-    ~TSobelYFilter() = default;
 };

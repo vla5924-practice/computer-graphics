@@ -4,8 +4,8 @@
 class TMatrixFilter : public TBaseMatrixFilter
 {
 protected:
-    std::vector<float> matrix;
+    float* matrix;
     explicit TMatrixFilter(int matrixRadius_ = 1);
-    ~TMatrixFilter() = default;
+    ~TMatrixFilter();
     QColor calculatePixelColor(const QImage& image, int x, int y) const;
 };

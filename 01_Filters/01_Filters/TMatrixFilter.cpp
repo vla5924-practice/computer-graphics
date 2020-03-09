@@ -24,5 +24,10 @@ QColor TMatrixFilter::calculatePixelColor(const QImage& image, int x, int y) con
 TMatrixFilter::TMatrixFilter(int matrixRadius_) : TBaseMatrixFilter(matrixRadius_)
 {
     int matrixSize = getMatrixSize();
-    matrix.resize(static_cast<size_t>(matrixSize * matrixSize));
+    matrix = new float[matrixSize * matrixSize];
+}
+
+TMatrixFilter::~TMatrixFilter()
+{
+    delete[] matrix;
 }

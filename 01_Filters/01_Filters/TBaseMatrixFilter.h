@@ -6,8 +6,8 @@ class TBaseMatrixFilter : public TFilter
 {
 protected:
     int matrixRadius;
+    int matrixRealSize;
     explicit TBaseMatrixFilter(int matrixRadius_ = 1);
-    ~TBaseMatrixFilter() = default;
     int getMatrixSize() const { return 2 * matrixRadius + 1; }
     virtual QColor calculatePixelColor(const QImage& image, int x, int y) const = 0;
 public:

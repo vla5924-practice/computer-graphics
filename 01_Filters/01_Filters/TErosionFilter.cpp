@@ -1,11 +1,11 @@
 #include "TErosionFilter.h"
 
-int TErosionFilter::calculateProperty(std::vector<int>& values) const
+int TErosionFilter::calculateProperty(int* values, int valuesCount) const
 {
     int min = values[0];
-    for (int value : values)
-        if (value < min)
-            min = value;
+    for (int i = 1; i < valuesCount; i++)
+        if (values[i] < min)
+            min = values[i];
     return min;
 }
 
@@ -13,6 +13,6 @@ TErosionFilter::TErosionFilter(int radius) : TMorphMatrixFilter(radius)
 {
 }
 
-TErosionFilter::TErosionFilter(std::vector<bool> mask) : TMorphMatrixFilter(mask)
+TErosionFilter::TErosionFilter(const std::vector<bool>& mask) : TMorphMatrixFilter(mask)
 {
 }

@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QImage image, filteredImage;
     image.load(fileName.c_str());
 
-    /*std::cout << "Copying\n";
+    std::cout << "Copying\n";
     image.save("test_copy.png");
 
     std::cout << "Applying filter: Invert\n";
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
     std::cout << "Applying filter: Glowing Edges\n";
     TGlowingEdgesFilter glowingEdgesFilter;
     filteredImage = glowingEdgesFilter.applyToImage(image);
-    filteredImage.save("test_gedges.png");*/
+    filteredImage.save("test_gedges.png");
 
     std::vector<bool> morphMask = {
         1, 0, 0, 0, 1,
@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
         0, 1, 1, 1, 0
     };
 
-    /*std::cout << "Applying filter: Dilation(2)\n";
+    std::cout << "Applying filter: Dilation(2)\n";
     TDilationFilter dilationFilter(morphMask);
     filteredImage = dilationFilter.applyToImage(image);
     filteredImage.save("test_dilation.png");
@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
     std::cout << "Applying filter: Linear correction\n";
     TLinearCorrectionFilter linearFilter;
     filteredImage = linearFilter.applyToImage(image);
-    filteredImage.save("test_linear.png");*/
+    filteredImage.save("test_linear.png");
 
     std::cout << "Applying filter: Gray World\n";
     TGrayWorldFilter grayWorldFilter;

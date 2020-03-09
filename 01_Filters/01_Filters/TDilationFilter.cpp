@@ -1,11 +1,11 @@
 #include "TDilationFilter.h"
 
-int TDilationFilter::calculateProperty(std::vector<int>& values) const
+int TDilationFilter::calculateProperty(int* values, int valuesCount) const
 {
     int max = values[0];
-    for (int value : values)
-        if (value > max)
-            max = value;
+    for (int i = 1; i < valuesCount; i++)
+        if (values[i] > max)
+            max = values[i];
     return max;
 }
 
@@ -13,6 +13,6 @@ TDilationFilter::TDilationFilter(int radius) : TMorphMatrixFilter(radius)
 {
 }
 
-TDilationFilter::TDilationFilter(std::vector<bool> mask) : TMorphMatrixFilter(mask)
+TDilationFilter::TDilationFilter(const std::vector<bool>& mask) : TMorphMatrixFilter(mask)
 {
 }

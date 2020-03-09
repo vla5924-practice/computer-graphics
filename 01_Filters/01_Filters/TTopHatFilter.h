@@ -1,11 +1,13 @@
 #pragma once
+#include "TMorphMatrixFilter.h"
 #include "TOpeningFilter.h"
 
-class TTopHatFilter : public TOpeningFilter
+class TTopHatFilter : public TMorphMatrixFilter
 {
+protected:
+    TOpeningFilter opening;
 public:
     explicit TTopHatFilter(int radius = 1);
-    TTopHatFilter(std::vector<bool> mask);
-    ~TTopHatFilter() = default;
+    TTopHatFilter(const std::vector<bool>& mask);
     QImage applyToImage(const QImage & image);
 };

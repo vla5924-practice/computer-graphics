@@ -1,27 +1,21 @@
 #include "TClosingFilter.h"
 
-TClosingFilter::TClosingFilter(int radius) : TDilationFilter(radius), TErosionFilter(radius)
+TClosingFilter::TClosingFilter(int radius) : TMorphMatrixFilter(radius)
 {
+    dilation = TDilationFilter(radius);
+    erosion = TErosionFilter(radius);
 }
 
-TClosingFilter::TClosingFilter(std::vector<bool> mask) : TDilationFilter(mask), TErosionFilter(mask)
+TClosingFilter::TClosingFilter(const std::vector<bool>& mask) : TMorphMatrixFilter(mask)
 {
+    dilation = TDilationFilter(mask);
+    erosion = TErosionFilter(mask);
 }
 
 QImage TClosingFilter::applyToImage(const QImage& image)
 {
-    QImage filteredImage(image);
-    for (int x = 0; x < image.width(); x++)
-        for (int y = 0; y < image.height(); y++)
-        {
-            QColor color = TDilationFilter::calculatePixelColor(image, x, y);
-            filteredImage.setPixelColor(x, y, color);
-        }
-    for (int x = 0; x < image.width(); x++)
-        for (int y = 0; y < image.height(); y++)
-        {
-            QColor color = TErosionFilter::calculatePixelColor(image, x, y);
-            filteredImage.setPixelColor(x, y, color);
-        }
+    QImage filteredImage;
+    filteredImage = dilation.applyToImage(filteredImage);
+    filteredImage = erosion.applyToImage(filteredImage);
     return filteredImage;
 }

@@ -5,6 +5,7 @@ TBaseMatrixFilter::TBaseMatrixFilter(int matrixRadius_)
     if (matrixRadius_ < 1)
         throw InvalidRadiusError();
     matrixRadius = matrixRadius_;
+    matrixRealSize = getMatrixSize() * getMatrixSize();
 }
 
 QImage TBaseMatrixFilter::applyToImage(const QImage& image)

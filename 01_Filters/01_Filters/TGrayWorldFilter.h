@@ -7,7 +7,4 @@ protected:
     enum metric { redAvg, greenAvg, blueAvg, avg };
     virtual QColor caclulatePixelColor(QColor color, const std::vector<float>& metrics);
     virtual std::vector<float> calculateMetrics(const QImage& image);
-public:
-    TGrayWorldFilter() = default;
-    ~TGrayWorldFilter() = default;
 };

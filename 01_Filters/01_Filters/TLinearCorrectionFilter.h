@@ -7,7 +7,4 @@ protected:
     enum metric { redMin, greenMin, blueMin, redMax, greenMax, blueMax };
     virtual QColor caclulatePixelColor(QColor color, const std::vector<float> & metrics);
     virtual std::vector<float> calculateMetrics(const QImage & image);
-public:
-    TLinearCorrectionFilter() = default;
-    ~TLinearCorrectionFilter() = default;
 };
