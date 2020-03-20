@@ -81,7 +81,7 @@ void TVisualizerWidget::drawTest()
 TVisualizerWidget::TVisualizerWidget(const char* fileName, QWidget* pWidget) : QGLWidget(pWidget)
 {
     bin = TBinaryFile(fileName);
-    currentLayer = 40;
+    currentLayer = 30;
 }
 
 void TVisualizerWidget::resizeAuto()
@@ -89,4 +89,12 @@ void TVisualizerWidget::resizeAuto()
     resize(bin.x, bin.y);
 }
 
+int TVisualizerWidget::getVisWidth() const
+{
+    return bin.x;
+}
 
+int TVisualizerWidget::getVisHeight() const
+{
+    return bin.y;
+}

@@ -3,7 +3,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TVisualizerWidget.cpp">
-      <Filter>TGLWidget</Filter>
+      <Filter>TVisualizerWidget</Filter>
     </ClCompile>
     <ClCompile Include="TBinaryFile.cpp">
       <Filter>TBinaryFile</Filter>
@@ -15,16 +15,11 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="TGLWidget">
-      <UniqueIdentifier>{cc6a6acf-8463-4aac-9a3f-e3e780c58821}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TBinaryFile">
       <UniqueIdentifier>{e3683ed8-a5fc-4415-8ee4-150da72f19ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-      <ParseFiles>true</ParseFiles>
+    <Filter Include="TVisualizerWidget">
+      <UniqueIdentifier>{cc6a6acf-8463-4aac-9a3f-e3e780c58821}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,7 +28,13 @@
     </ClInclude>
     <ClInclude Include="Exception.h" />
     <ClInclude Include="TVisualizerWidget.h">
-      <Filter>TGLWidget</Filter>
+      <Filter>TVisualizerWidget</Filter>
     </ClInclude>
+    <ClInclude Include="includes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="testdata.bin">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

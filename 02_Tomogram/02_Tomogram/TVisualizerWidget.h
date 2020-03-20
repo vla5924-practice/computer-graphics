@@ -29,6 +29,8 @@ protected:
 public:
     explicit TVisualizerWidget(const char* fileName, QWidget* pWidget = nullptr);
     void resizeAuto();
+    int getVisWidth() const;
+    int getVisHeight() const;
 };
 
 template<typename Ty>
