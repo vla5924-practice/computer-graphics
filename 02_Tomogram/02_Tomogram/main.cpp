@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
             fileName = argv[i + 1];
 
     TVisualizerWidget visualizer(fileName.c_str());
-    visualizer.resize(400, 200);
+    visualizer.resizeAuto();
     visualizer.show();
 
     return app.exec();
