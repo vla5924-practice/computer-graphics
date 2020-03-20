@@ -104,6 +104,9 @@
     <ClCompile Include="TMorphologyFilter.cpp">
       <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphologyFilter</Filter>
     </ClCompile>
+    <ClCompile Include="TGammaCorrectionFilter.cpp">
+      <Filter>TFilter\TCorrectionFilter\TGammaCorrectionFilter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -213,6 +216,9 @@
     <Filter Include="TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphologyFilter\TBlackHatFilter">
       <UniqueIdentifier>{658dd651-6b70-4777-a528-942567e14864}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TFilter\TCorrectionFilter\TGammaCorrectionFilter">
+      <UniqueIdentifier>{fe2b43df-8b53-4a45-aac4-75068e764c2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFilter.h">
@@ -318,6 +324,9 @@
     </ClInclude>
     <ClInclude Include="TMorphologyFilter.h">
       <Filter>TFilter\TBaseMatrixFilter\TDynamicMatrixFilter\TMorphologyFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="TGammaCorrectionFilter.h">
+      <Filter>TFilter\TCorrectionFilter\TGammaCorrectionFilter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

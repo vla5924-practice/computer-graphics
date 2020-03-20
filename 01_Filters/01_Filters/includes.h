@@ -49,3 +49,4 @@
 #include "TGrayWorldFilter.h"
 #include "TPerfectReflectorFilter.h"
 #include "TReferenceColorFilter.h"
+#include "TGammaCorrectionFilter.h"

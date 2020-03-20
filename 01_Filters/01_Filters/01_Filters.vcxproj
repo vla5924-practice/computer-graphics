@@ -93,6 +93,7 @@
     <ClCompile Include="TErosionFilter.cpp" />
     <ClCompile Include="TFilter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TGammaCorrectionFilter.cpp" />
     <ClCompile Include="TGaussianBlurFilter.cpp" />
     <ClCompile Include="TGlowingEdgesFilter.cpp" />
     <ClCompile Include="TGrayScaleFilter.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="TDynamicMatrixFilter.h" />
     <ClInclude Include="TErosionFilter.h" />
     <ClInclude Include="TFilter.h" />
+    <ClInclude Include="TGammaCorrectionFilter.h" />
     <ClInclude Include="TGaussianBlurFilter.h" />
     <ClInclude Include="TGlowingEdgesFilter.h" />
     <ClInclude Include="TGrayScaleFilter.h" />
