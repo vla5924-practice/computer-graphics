@@ -2,8 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TGLWidget.cpp">
+    <ClCompile Include="TVisualizerWidget.cpp">
       <Filter>TGLWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="TBinaryFile.cpp">
+      <Filter>TBinaryFile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -15,9 +18,21 @@
     <Filter Include="TGLWidget">
       <UniqueIdentifier>{cc6a6acf-8463-4aac-9a3f-e3e780c58821}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TBinaryFile">
+      <UniqueIdentifier>{e3683ed8-a5fc-4415-8ee4-150da72f19ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TGLWidget.h">
+    <ClInclude Include="TBinaryFile.h">
+      <Filter>TBinaryFile</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception.h" />
+    <ClInclude Include="TVisualizerWidget.h">
       <Filter>TGLWidget</Filter>
     </ClInclude>
   </ItemGroup>

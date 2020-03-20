@@ -82,10 +82,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TGLWidget.cpp" />
+    <ClCompile Include="TBinaryFile.cpp" />
+    <ClCompile Include="TVisualizerWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TGLWidget.h" />
+    <ClInclude Include="Exception.h" />
+    <ClInclude Include="TBinaryFile.h" />
+    <ClInclude Include="TVisualizerWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
