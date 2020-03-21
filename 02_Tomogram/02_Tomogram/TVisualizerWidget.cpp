@@ -25,7 +25,7 @@ void TVisualizerWidget::resizeGL(int width, int height)
     glShadeModel(GL_SMOOTH);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(0, bin.x, 0, bin.y, -1, 1);
+    glOrtho(0, bin->x, 0, bin->y, -1, 1);
     glViewport(0, 0, width, height);
 }
 
@@ -40,24 +40,24 @@ void TVisualizerWidget::paintGL()
 void TVisualizerWidget::drawQuads(int32_t layerNumber)
 {
     glBegin(GL_QUADS);
-    for (int32_t x = 0; x < bin.x - 1; x++)
-        for (int32_t y = 0; y < bin.y - 1; y++)
+    for (int32_t x = 0; x < bin->x - 1; x++)
+        for (int32_t y = 0; y < bin->y - 1; y++)
         {
             float intensity;
 
-            intensity = getIntensity(bin.get(x, y, layerNumber));
+            intensity = getIntensity(bin->get(x, y, layerNumber));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x, y);
 
-            intensity = getIntensity(bin.get(x, y + 1, layerNumber));
+            intensity = getIntensity(bin->get(x, y + 1, layerNumber));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x, y + 1);
 
-            intensity = getIntensity(bin.get(x + 1, y + 1, layerNumber));
+            intensity = getIntensity(bin->get(x + 1, y + 1, layerNumber));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x + 1, y + 1);
 
-            intensity = getIntensity(bin.get(x + 1, y, layerNumber));
+            intensity = getIntensity(bin->get(x + 1, y, layerNumber));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x + 1, y);
         }
@@ -78,23 +78,41 @@ void TVisualizerWidget::drawTest()
     glEnd();
 }
 
-TVisualizerWidget::TVisualizerWidget(const char* fileName, QWidget* pWidget) : QGLWidget(pWidget)
+TVisualizerWidget::TVisualizerWidget(QWidget* parent) : QGLWidget(parent)
 {
-    bin = TBinaryFile(fileName);
+    currentLayer = 0;
+    bin = nullptr;
+}
+
+TVisualizerWidget::TVisualizerWidget(const char* fileName, QWidget* parent) : QGLWidget(parent)
+{
     currentLayer = 30;
+    loadDatasetFile(fileName);
+}
+
+TVisualizerWidget::~TVisualizerWidget()
+{
+    if (bin)
+        delete bin;
+}
+
+void TVisualizerWidget::loadDatasetFile(const char* fileName)
+{
+    bin = new TBinaryFile(fileName);
+    resizeAuto();
 }
 
 void TVisualizerWidget::resizeAuto()
 {
-    resize(bin.x, bin.y);
+    resize(bin->x, bin->y);
 }
 
 int TVisualizerWidget::getVisWidth() const
 {
-    return bin.x;
+    return bin->x;
 }
 
 int TVisualizerWidget::getVisHeight() const
 {
-    return bin.y;
+    return bin->y;
 }

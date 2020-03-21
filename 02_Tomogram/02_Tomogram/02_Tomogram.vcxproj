@@ -83,12 +83,14 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TBinaryFile.cpp" />
+    <ClCompile Include="TMainWindow.cpp" />
     <ClCompile Include="TVisualizerWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Exception.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="TBinaryFile.h" />
+    <QtMoc Include="TMainWindow.h" />
     <ClInclude Include="TVisualizerWidget.h" />
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,7 @@ constexpr float VIS_TRANSFER_FMAX = 500.0f;
 class TVisualizerWidget : public QGLWidget
 {
 protected:
-    TBinaryFile bin;
+    TBinaryFile* bin;
     int32_t currentLayer;
 
     template <typename Ty> Ty clamp(Ty value, int min, int max) const;
@@ -24,10 +24,11 @@ protected:
     void drawQuads(int32_t layerNumber);
     void drawTest();
 
-    TVisualizerWidget() = default;
-
 public:
-    explicit TVisualizerWidget(const char* fileName, QWidget* pWidget = nullptr);
+    explicit TVisualizerWidget(QWidget* parent = nullptr);
+    explicit TVisualizerWidget(const char* fileName, QWidget* parent = nullptr);
+    virtual ~TVisualizerWidget();
+    void loadDatasetFile(const char* fileName);
     void resizeAuto();
     int getVisWidth() const;
     int getVisHeight() const;

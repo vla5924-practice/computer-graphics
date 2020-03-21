@@ -13,3 +13,4 @@
 
 /* Application classes */
 #include "TVisualizerWidget.h"
+#include "TMainWindow.h"
