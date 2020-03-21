@@ -34,7 +34,7 @@ void TVisualizerWidget::paintGL()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     drawQuads(currentLayer);
     //drawTest();
-    //swapBuffers();
+    swapBuffers();
 }
 
 void TVisualizerWidget::drawQuads(int32_t layerNumber)
@@ -86,7 +86,7 @@ TVisualizerWidget::TVisualizerWidget(QWidget* parent) : QGLWidget(parent)
 
 TVisualizerWidget::TVisualizerWidget(const char* fileName, QWidget* parent) : QGLWidget(parent)
 {
-    currentLayer = 30;
+    currentLayer = 0;
     loadDatasetFile(fileName);
 }
 
@@ -104,15 +104,33 @@ void TVisualizerWidget::loadDatasetFile(const char* fileName)
 
 void TVisualizerWidget::resizeAuto()
 {
-    resize(bin->x, bin->y);
+    resize(getVisWidth(), getVisHeight());
+}
+
+void TVisualizerWidget::setLayerNumber(int32_t layerNumber)
+{
+    if (!bin)
+        return;
+    if ((layerNumber >= 0) && (layerNumber < bin->z))
+    {
+        currentLayer = layerNumber;
+        paintGL();
+    }
+    else
+        throw IncorrectLayerNumberError();
 }
 
 int TVisualizerWidget::getVisWidth() const
 {
-    return bin->x;
+    return bin ? bin->x : 0;
 }
 
 int TVisualizerWidget::getVisHeight() const
 {
-    return bin->y;
+    return bin ? bin->y : 0;
+}
+
+int TVisualizerWidget::getLayersCount() const
+{
+    return bin ? bin->z : 0;
 }

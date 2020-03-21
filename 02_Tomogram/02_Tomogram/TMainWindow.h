@@ -1,6 +1,8 @@
 #pragma once
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
+#include <QtWidgets/QLabel>
 #include "TVisualizerWidget.h"
 
 namespace Ui
@@ -19,8 +21,20 @@ public:
 
 private slots:
     void handleButton();
+    void onRenderModeButtonClick();
+    void onSliderChange();
 
 private:
-    QPushButton* button;
+    bool autoRenderEnabled;
+
+    QPushButton* openButton;
+    QPushButton* renderModeButton;
+    QSlider* slider;
+    QLabel* labelLayersCount;
+    QLabel* labelCurrentLayer;
     TVisualizerWidget* visualizer;
+
+    void setAutoFixedSize();
+    void setLabelLayersCountValue(int value);
+    void setLabelCurrentLayerValue(int value);
 };
