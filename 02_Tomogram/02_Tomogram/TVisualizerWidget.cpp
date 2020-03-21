@@ -25,7 +25,7 @@ void TVisualizerWidget::resizeGL(int width, int height)
     glShadeModel(GL_SMOOTH);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(0, bin->x, 0, bin->y, -1, 1);
+    glOrtho(0, getVisWidth(), 0, getVisHeight(), -1, 1);
     glViewport(0, 0, width, height);
 }
 
@@ -81,12 +81,13 @@ void TVisualizerWidget::drawTest()
 TVisualizerWidget::TVisualizerWidget(QWidget* parent) : QGLWidget(parent)
 {
     currentLayer = 0;
-    bin = nullptr;
+    bin = new TBinaryFile;
 }
 
-TVisualizerWidget::TVisualizerWidget(const char* fileName, QWidget* parent) : QGLWidget(parent)
+TVisualizerWidget::TVisualizerWidget(const char* fileName, QWidget* parent)
 {
     currentLayer = 0;
+    bin = nullptr;
     loadDatasetFile(fileName);
 }
 
@@ -98,6 +99,8 @@ TVisualizerWidget::~TVisualizerWidget()
 
 void TVisualizerWidget::loadDatasetFile(const char* fileName)
 {
+    if (bin)
+        delete bin;
     bin = new TBinaryFile(fileName);
     resizeAuto();
 }

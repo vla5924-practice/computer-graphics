@@ -3,6 +3,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QFileDialog>
 #include "TVisualizerWidget.h"
 
 namespace Ui
@@ -20,7 +21,7 @@ public:
     void visualizeDataset(const char* fileName);
 
 private slots:
-    void handleButton();
+    void onOpenButtonClick();
     void onRenderModeButtonClick();
     void onSliderChange();
 
@@ -29,9 +30,10 @@ private:
 
     QPushButton* openButton;
     QPushButton* renderModeButton;
-    QSlider* slider;
+    QSlider* sliderCurrentLayer;
     QLabel* labelLayersCount;
     QLabel* labelCurrentLayer;
+    QLabel* labelErrorMessage;
     TVisualizerWidget* visualizer;
 
     void setAutoFixedSize();
