@@ -1,37 +1,18 @@
 #include "TBinaryFile.h"
 
 TBinaryFile::TBinaryFile()
+    : x(0), y(0), z(0), min(0), max(0), dataset(nullptr)
 {
-    x = y = z = 0;
-    dataset = nullptr;
 }
 
 TBinaryFile::TBinaryFile(TBinaryFile&& other)
+    : x(other.x), y(other.y), z(other.z), dataset(other.dataset)
 {
-    x = other.x;
-    y = other.y;
-    z = other.z;
-    dataset = other.dataset;
     other.dataset = nullptr;
 }
 
 TBinaryFile::TBinaryFile(const char* fileName) : TBinaryFile()
 {
-    /*std::ifstream file;
-    file.open(fileName, std::ios::in | std::ios::binary);
-    if (!file.is_open())
-        throw IncorrectFileNameError();
-    file >> x;
-    file >> y;
-    file >> z;
-    if ((x <= 0) || (y <= 0) || (z <= 0))
-        throw IncorrectDimensionsError();
-    size_t datasetSize = static_cast<size_t>(x * y * z);
-    dataset = new int16_t[datasetSize];
-    for (size_t i = 0; i < datasetSize; i++)
-        file >> dataset[i];
-    file.close();*/
-
     FILE* file;
     file = fopen(fileName, "rb");
     if (!file)
@@ -43,8 +24,16 @@ TBinaryFile::TBinaryFile(const char* fileName) : TBinaryFile()
         throw IncorrectDimensionsError();
     size_t datasetSize = static_cast<size_t>(x * y * z);
     dataset = new int16_t[datasetSize];
+    min = std::numeric_limits<int16_t>::max();
+    max = std::numeric_limits<int16_t>::min();
     for (size_t i = 0; i < datasetSize; i++)
+    {
         fread(dataset + i, sizeof(int16_t), 1, file);
+        if (dataset[i] > max)
+            max = dataset[i];
+        if (dataset[i] < min)
+            min = dataset[i];
+    }
     fclose(file);
 }
 

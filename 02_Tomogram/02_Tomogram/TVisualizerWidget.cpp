@@ -1,23 +1,14 @@
 #include "TVisualizerWidget.h"
 
-QColor TVisualizerWidget::transfer(int16_t value) const
-{
-    int intensity = clamp((value - VIS_TRANSFER_IMIN) * 255 / (VIS_TRANSFER_IMAX - VIS_TRANSFER_IMIN), 0, 255);
-    return QColor(intensity, intensity, intensity);
-}
-
 float TVisualizerWidget::getIntensity(int16_t value) const
 {
-    float val = static_cast<float>(value);
-    float intensity = (val - VIS_TRANSFER_FMIN) / (VIS_TRANSFER_FMAX - VIS_TRANSFER_FMIN);
-    return clamp(intensity, 0, 255);
+    float intensity = (static_cast<float>(value) - bin->getMin()) / (bin->getMax() - bin->getMin());
+    return clamp(intensity, 0, 1);
 }
 
 void TVisualizerWidget::initializeGL()
 {
-    //QGLFunctions* pFunc = QGLContext::currentContext()->functions();
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void TVisualizerWidget::resizeGL(int width, int height)
@@ -32,36 +23,56 @@ void TVisualizerWidget::resizeGL(int width, int height)
 void TVisualizerWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    drawQuads(currentLayer);
-    //drawTest();
+    switch (renderMode)
+    {
+    case RenderMode::Quads:
+        visualizeQuads();
+        break;
+    case RenderMode::QuadStrip:
+        visualizeQuadStrip();
+        break;
+    case RenderMode::Texture:
+        visualizeTexture();
+        break;
+    }
     swapBuffers();
 }
 
-void TVisualizerWidget::drawQuads(int32_t layerNumber)
+void TVisualizerWidget::visualizeQuads()
 {
     glBegin(GL_QUADS);
-    for (int32_t x = 0; x < bin->x - 1; x++)
-        for (int32_t y = 0; y < bin->y - 1; y++)
+    for (int32_t x = 0; x < bin->getX() - 1; x++)
+        for (int32_t y = 0; y < bin->getY() - 1; y++)
         {
             float intensity;
 
-            intensity = getIntensity(bin->get(x, y, layerNumber));
+            intensity = getIntensity(bin->get(x, y, currentLayer));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x, y);
 
-            intensity = getIntensity(bin->get(x, y + 1, layerNumber));
+            intensity = getIntensity(bin->get(x, y + 1, currentLayer));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x, y + 1);
 
-            intensity = getIntensity(bin->get(x + 1, y + 1, layerNumber));
+            intensity = getIntensity(bin->get(x + 1, y + 1, currentLayer));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x + 1, y + 1);
 
-            intensity = getIntensity(bin->get(x + 1, y, layerNumber));
+            intensity = getIntensity(bin->get(x + 1, y, currentLayer));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x + 1, y);
         }
     glEnd();
+}
+
+void TVisualizerWidget::visualizeTexture()
+{
+
+}
+
+void TVisualizerWidget::visualizeQuadStrip()
+{
+
 }
 
 void TVisualizerWidget::drawTest()
@@ -78,16 +89,16 @@ void TVisualizerWidget::drawTest()
     glEnd();
 }
 
-TVisualizerWidget::TVisualizerWidget(QWidget* parent) : QGLWidget(parent)
+TVisualizerWidget::TVisualizerWidget(QWidget* parent)
+    : QGLWidget(parent), currentLayer(0), renderMode(RenderMode::Quads)
 {
     currentLayer = 0;
     bin = new TBinaryFile;
 }
 
 TVisualizerWidget::TVisualizerWidget(const char* fileName, QWidget* parent)
+    : QGLWidget(parent), currentLayer(0), renderMode(RenderMode::Quads), bin(nullptr)
 {
-    currentLayer = 0;
-    bin = nullptr;
     loadDatasetFile(fileName);
 }
 
@@ -114,7 +125,7 @@ void TVisualizerWidget::setLayerNumber(int32_t layerNumber)
 {
     if (!bin)
         return;
-    if ((layerNumber >= 0) && (layerNumber < bin->z))
+    if ((layerNumber >= 0) && (layerNumber < bin->getZ()))
     {
         currentLayer = layerNumber;
         paintGL();
@@ -123,17 +134,23 @@ void TVisualizerWidget::setLayerNumber(int32_t layerNumber)
         throw IncorrectLayerNumberError();
 }
 
+void TVisualizerWidget::setRenderMode(RenderMode renderMode_)
+{
+    renderMode = renderMode_;
+    updateGL();
+}
+
 int TVisualizerWidget::getVisWidth() const
 {
-    return bin ? bin->x : 0;
+    return bin ? bin->getX() : 0;
 }
 
 int TVisualizerWidget::getVisHeight() const
 {
-    return bin ? bin->y : 0;
+    return bin ? bin->getY() : 0;
 }
 
 int TVisualizerWidget::getLayersCount() const
 {
-    return bin ? bin->z : 0;
+    return bin ? bin->getZ() : 0;
 }

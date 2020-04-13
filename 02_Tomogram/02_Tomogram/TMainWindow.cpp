@@ -1,8 +1,8 @@
 #include "TMainWindow.h"
 
-TMainWindow::TMainWindow(QWidget* parent) : QMainWindow(parent)
+TMainWindow::TMainWindow(QWidget* parent)
+    : QMainWindow(parent), autoRenderEnabled(false)
 {
-    autoRenderEnabled = false;
     setWindowTitle("Tomogram Visualizer");
 
     openButton = new QPushButton("Open dataset", this);
@@ -117,7 +117,7 @@ void TMainWindow::onSliderChange()
         visualizer->setLayerNumber(value - 1);
         setLabelCurrentLayerValue(value);
     }
-    catch (std::exception & e)
+    catch (std::exception& e)
     {
         labelErrorMessage->setText(e.what());
     }
