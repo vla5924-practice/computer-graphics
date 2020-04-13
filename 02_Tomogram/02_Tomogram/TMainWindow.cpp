@@ -5,11 +5,11 @@ TMainWindow::TMainWindow(QWidget* parent)
 {
     setWindowTitle("Tomogram Visualizer");
 
-    openButton = new QPushButton("&Open dataset", this);
-    openButton->move(5, 5);
+    buttonOpen = new QPushButton("&Open dataset", this);
+    buttonOpen->move(5, 5);
 
-    renderModeButton = new QPushButton("&Auto-Render", this);
-    renderModeButton->move(110, 5);
+    buttonRenderMode = new QPushButton("&Auto-Render", this);
+    buttonRenderMode->move(110, 5);
 
     visualizer = new TVisualizerWidget(this);
     visualizer->move(0, 60);
@@ -18,17 +18,14 @@ TMainWindow::TMainWindow(QWidget* parent)
     sliderCurrentLayer->move(215, 6);
     sliderCurrentLayer->setRange(0, 0);
     sliderCurrentLayer->resize(200, 30);
-    sliderCurrentLayer->setVisible(false);
 
     labelLayersCount = new QLabel(this);
     labelLayersCount->move(420, 0);
     setLabelLayersCountValue(0);
-    labelLayersCount->setVisible(false);
 
     labelCurrentLayer = new QLabel(this);
     labelCurrentLayer->move(420, 12);
     setLabelCurrentLayerValue(0);
-    labelCurrentLayer->setVisible(false);
 
     labelErrorMessage = new QLabel("Dataset not opened.", this);
     labelErrorMessage->move(6, 30);
@@ -41,26 +38,29 @@ TMainWindow::TMainWindow(QWidget* parent)
     radioRenderQuadStrip = new QRadioButton("Quad&Strip", this);
     radioRenderQuadStrip->move(420, 30);
 
-    connect(openButton, SIGNAL(released()), this, SLOT(onOpenButtonClick()));
-    connect(renderModeButton, SIGNAL(released()), this, SLOT(onRenderModeButtonClick()));
-    connect(radioRenderQuads, SIGNAL(released()), this, SLOT(onRadioRenderQuadsClick()));
-    connect(radioRenderTexture, SIGNAL(released()), this, SLOT(onRadioRenderTextureClick()));
+    connect(buttonOpen,           SIGNAL(released()), this, SLOT(onOpenButtonClick())          );
+    connect(buttonRenderMode,     SIGNAL(released()), this, SLOT(onRenderModeButtonClick())    );
+    connect(radioRenderQuads,     SIGNAL(released()), this, SLOT(onRadioRenderQuadsClick())    );
+    connect(radioRenderTexture,   SIGNAL(released()), this, SLOT(onRadioRenderTextureClick())  );
     connect(radioRenderQuadStrip, SIGNAL(released()), this, SLOT(onRadioRenderQuadStripClick()));
 
     onRenderModeButtonClick();
-
+    setControlsVisible(false);
     setAutoFixedSize();
 }
 
 TMainWindow::~TMainWindow()
 {
-    delete openButton;
-    delete renderModeButton;
+    delete buttonOpen;
+    delete buttonRenderMode;
     delete visualizer;
     delete sliderCurrentLayer;
     delete labelLayersCount;
     delete labelCurrentLayer;
     delete labelErrorMessage;
+    delete radioRenderQuads;
+    delete radioRenderTexture;
+    delete radioRenderQuadStrip;
 }
 
 void TMainWindow::visualizeDataset(const char* fileName)
@@ -76,8 +76,8 @@ void TMainWindow::visualizeDataset(const char* fileName)
 
 void TMainWindow::onOpenButtonClick()
 {
-    openButton->setDisabled(true);
-    openButton->setText("Processing...");
+    buttonOpen->setDisabled(true);
+    buttonOpen->setText("Processing...");
     QFileDialog dialog(this);
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setNameFilter("Dataset binaries (*.bin)");
@@ -88,9 +88,7 @@ void TMainWindow::onOpenButtonClick()
         try
         {
             visualizeDataset(fileName.c_str());
-            labelCurrentLayer->setVisible(true);
-            labelLayersCount->setVisible(true);
-            sliderCurrentLayer->setVisible(true);
+            setControlsVisible(true);
             labelErrorMessage->setText("");
         }
         catch (std::exception & e)
@@ -98,22 +96,22 @@ void TMainWindow::onOpenButtonClick()
             labelErrorMessage->setText(e.what());
         }
     }
-    openButton->setDisabled(false);
-    openButton->setText("&Open dataset");
+    buttonOpen->setDisabled(false);
+    buttonOpen->setText("&Open dataset");
 }
 
 void TMainWindow::onRenderModeButtonClick()
 {
     if (autoRenderEnabled)
     {
-        renderModeButton->setText("&Auto-render: OFF");
+        buttonRenderMode->setText("&Auto-render: OFF");
         autoRenderEnabled = false;
         disconnect(sliderCurrentLayer, &QSlider::valueChanged, this, &TMainWindow::onSliderChange);
         connect(sliderCurrentLayer, SIGNAL(sliderReleased()), this, SLOT(onSliderChange()));
     }
     else
     {
-        renderModeButton->setText("&Auto-render: ON");
+        buttonRenderMode->setText("&Auto-render: ON");
         autoRenderEnabled = true;
         disconnect(sliderCurrentLayer, SIGNAL(sliderReleased()), this, SLOT(onSliderChange()));
         connect(sliderCurrentLayer, &QSlider::valueChanged, this, &TMainWindow::onSliderChange);
@@ -169,4 +167,15 @@ void TMainWindow::setLabelLayersCountValue(int value)
 void TMainWindow::setLabelCurrentLayerValue(int value)
 {
     labelCurrentLayer->setText(("Current layer: " + std::to_string(value)).c_str());
+}
+
+void TMainWindow::setControlsVisible(bool isVisible)
+{
+    buttonRenderMode->setVisible(isVisible);
+    labelCurrentLayer->setVisible(isVisible);
+    labelLayersCount->setVisible(isVisible);
+    sliderCurrentLayer->setVisible(isVisible);
+    radioRenderQuads->setVisible(isVisible);
+    radioRenderTexture->setVisible(isVisible);
+    radioRenderQuadStrip->setVisible(isVisible);
 }

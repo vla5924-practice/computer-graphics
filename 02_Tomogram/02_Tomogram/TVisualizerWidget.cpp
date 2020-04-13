@@ -29,9 +29,18 @@ void TVisualizerWidget::loadTexture()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
+void TVisualizerWidget::setUpTexture()
+{
+    generateTextureImage();
+    loadTexture();
+    updateGL();
+}
+
 void TVisualizerWidget::initializeGL()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
     glGenTextures(1, &textureId);
 }
 
@@ -94,13 +103,13 @@ void TVisualizerWidget::visualizeTexture()
     glBegin(GL_QUADS);
     glColor3f(1, 1, 1);
     glTexCoord2f(0, 0);
-    glVertex2f(0, 0);
+    glVertex2i(0, 0);
     glTexCoord2f(0, 1);
-    glVertex2f(0, 1);
+    glVertex2i(0, bin->getY());
     glTexCoord2f(1, 1);
-    glVertex2f(1, 1);
+    glVertex2i(bin->getX(), bin->getY());
     glTexCoord2f(1, 0);
-    glVertex2f(1, 0);
+    glVertex2i(bin->getX(), 0);
     glEnd();
 }
 
@@ -162,6 +171,8 @@ void TVisualizerWidget::setLayerNumber(int32_t layerNumber)
     if ((layerNumber >= 0) && (layerNumber < bin->getZ()))
     {
         currentLayer = layerNumber;
+        if (renderMode == RenderMode::Texture)
+            setUpTexture();
         paintGL();
     }
     else
@@ -173,7 +184,14 @@ void TVisualizerWidget::setRenderMode(RenderMode renderMode_)
     renderMode = renderMode_;
     if (!bin)
         return;
-    updateGL();
+    if (renderMode == RenderMode::Texture)
+    {
+        glEnable(GL_TEXTURE_2D);
+        setUpTexture();
+    }
+    else
+        glDisable(GL_TEXTURE_2D);
+    paintGL();
 }
 
 int TVisualizerWidget::getVisWidth() const

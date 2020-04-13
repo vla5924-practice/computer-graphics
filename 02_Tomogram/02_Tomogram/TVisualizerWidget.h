@@ -25,6 +25,7 @@ protected:
     float getIntensity(int16_t value) const;
     void generateTextureImage();
     void loadTexture();
+    void setUpTexture();
     void initializeGL();
     void resizeGL(int width, int height);
     void paintGL();

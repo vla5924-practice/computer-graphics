@@ -32,8 +32,8 @@ private slots:
 private:
     bool autoRenderEnabled;
 
-    QPushButton* openButton;
-    QPushButton* renderModeButton;
+    QPushButton* buttonOpen;
+    QPushButton* buttonRenderMode;
     QSlider* sliderCurrentLayer;
     QLabel* labelLayersCount;
     QLabel* labelCurrentLayer;
@@ -46,4 +46,5 @@ private:
     void setAutoFixedSize();
     void setLabelLayersCountValue(int value);
     void setLabelCurrentLayerValue(int value);
+    void setControlsVisible(bool isVisible);
 };
