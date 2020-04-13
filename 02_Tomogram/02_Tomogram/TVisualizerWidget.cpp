@@ -2,13 +2,37 @@
 
 float TVisualizerWidget::getIntensity(int16_t value) const
 {
-    float intensity = (static_cast<float>(value) - bin->getMin()) / (bin->getMax() - bin->getMin());
+    float intensity = (static_cast<float>(value) - bin->getMin()) 
+                      / (bin->getMax() - bin->getMin());
     return clamp(intensity, 0, 1);
+}
+
+void TVisualizerWidget::generateTextureImage()
+{
+    int width = bin->getX();
+    int height = bin->getY();
+    textureImage = QImage(width, height, QImage::Format_RGB32);
+    for(int x = 0; x < width; x++)
+        for (int y = 0; y < height; y++)
+        {
+            float intensity = getIntensity(bin->get(x, y, currentLayer));
+            textureImage.setPixelColor(x, y, QColor::fromRgbF(intensity, intensity, intensity));
+        }
+}
+
+void TVisualizerWidget::loadTexture()
+{
+    glBindTexture(GL_TEXTURE_2D, textureId);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureImage.width(), 
+        textureImage.height(), 0, GL_BGRA, GL_UNSIGNED_BYTE, textureImage.bits());
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
 void TVisualizerWidget::initializeGL()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glGenTextures(1, &textureId);
 }
 
 void TVisualizerWidget::resizeGL(int width, int height)
@@ -67,7 +91,17 @@ void TVisualizerWidget::visualizeQuads()
 
 void TVisualizerWidget::visualizeTexture()
 {
-
+    glBegin(GL_QUADS);
+    glColor3f(1, 1, 1);
+    glTexCoord2f(0, 0);
+    glVertex2f(0, 0);
+    glTexCoord2f(0, 1);
+    glVertex2f(0, 1);
+    glTexCoord2f(1, 1);
+    glVertex2f(1, 1);
+    glTexCoord2f(1, 0);
+    glVertex2f(1, 0);
+    glEnd();
 }
 
 void TVisualizerWidget::visualizeQuadStrip()
@@ -137,6 +171,8 @@ void TVisualizerWidget::setLayerNumber(int32_t layerNumber)
 void TVisualizerWidget::setRenderMode(RenderMode renderMode_)
 {
     renderMode = renderMode_;
+    if (!bin)
+        return;
     updateGL();
 }
 

@@ -5,10 +5,10 @@ TMainWindow::TMainWindow(QWidget* parent)
 {
     setWindowTitle("Tomogram Visualizer");
 
-    openButton = new QPushButton("Open dataset", this);
+    openButton = new QPushButton("&Open dataset", this);
     openButton->move(5, 5);
 
-    renderModeButton = new QPushButton("Auto-Render", this);
+    renderModeButton = new QPushButton("&Auto-Render", this);
     renderModeButton->move(110, 5);
 
     visualizer = new TVisualizerWidget(this);
@@ -33,8 +33,20 @@ TMainWindow::TMainWindow(QWidget* parent)
     labelErrorMessage = new QLabel("Dataset not opened.", this);
     labelErrorMessage->move(6, 30);
 
+    radioRenderQuads = new QRadioButton("&Quads", this);
+    radioRenderQuads->move(300, 30);
+    radioRenderQuads->setChecked(true);
+    radioRenderTexture = new QRadioButton("&Texture", this);
+    radioRenderTexture->move(360, 30);
+    radioRenderQuadStrip = new QRadioButton("Quad&Strip", this);
+    radioRenderQuadStrip->move(420, 30);
+
     connect(openButton, SIGNAL(released()), this, SLOT(onOpenButtonClick()));
     connect(renderModeButton, SIGNAL(released()), this, SLOT(onRenderModeButtonClick()));
+    connect(radioRenderQuads, SIGNAL(released()), this, SLOT(onRadioRenderQuadsClick()));
+    connect(radioRenderTexture, SIGNAL(released()), this, SLOT(onRadioRenderTextureClick()));
+    connect(radioRenderQuadStrip, SIGNAL(released()), this, SLOT(onRadioRenderQuadStripClick()));
+
     onRenderModeButtonClick();
 
     setAutoFixedSize();
@@ -87,21 +99,21 @@ void TMainWindow::onOpenButtonClick()
         }
     }
     openButton->setDisabled(false);
-    openButton->setText("Open dataset");
+    openButton->setText("&Open dataset");
 }
 
 void TMainWindow::onRenderModeButtonClick()
 {
     if (autoRenderEnabled)
     {
-        renderModeButton->setText("Auto-render: OFF");
+        renderModeButton->setText("&Auto-render: OFF");
         autoRenderEnabled = false;
         disconnect(sliderCurrentLayer, &QSlider::valueChanged, this, &TMainWindow::onSliderChange);
         connect(sliderCurrentLayer, SIGNAL(sliderReleased()), this, SLOT(onSliderChange()));
     }
     else
     {
-        renderModeButton->setText("Auto-render: ON");
+        renderModeButton->setText("&Auto-render: ON");
         autoRenderEnabled = true;
         disconnect(sliderCurrentLayer, SIGNAL(sliderReleased()), this, SLOT(onSliderChange()));
         connect(sliderCurrentLayer, &QSlider::valueChanged, this, &TMainWindow::onSliderChange);
@@ -121,6 +133,21 @@ void TMainWindow::onSliderChange()
     {
         labelErrorMessage->setText(e.what());
     }
+}
+
+void TMainWindow::onRadioRenderQuadsClick()
+{
+    visualizer->setRenderMode(TVisualizerWidget::RenderMode::Quads);
+}
+
+void TMainWindow::onRadioRenderTextureClick()
+{
+    visualizer->setRenderMode(TVisualizerWidget::RenderMode::Texture);
+}
+
+void TMainWindow::onRadioRenderQuadStripClick()
+{
+    visualizer->setRenderMode(TVisualizerWidget::RenderMode::QuadStrip);
 }
 
 void TMainWindow::setAutoFixedSize()

@@ -4,6 +4,7 @@
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QFileDialog>
+#include <QtWidgets/QRadioButton>
 #include "TVisualizerWidget.h"
 
 namespace Ui
@@ -24,6 +25,9 @@ private slots:
     void onOpenButtonClick();
     void onRenderModeButtonClick();
     void onSliderChange();
+    void onRadioRenderQuadsClick();
+    void onRadioRenderTextureClick();
+    void onRadioRenderQuadStripClick();
 
 private:
     bool autoRenderEnabled;
@@ -34,6 +38,9 @@ private:
     QLabel* labelLayersCount;
     QLabel* labelCurrentLayer;
     QLabel* labelErrorMessage;
+    QRadioButton* radioRenderQuads;
+    QRadioButton* radioRenderTexture;
+    QRadioButton* radioRenderQuadStrip;
     TVisualizerWidget* visualizer;
 
     void setAutoFixedSize();

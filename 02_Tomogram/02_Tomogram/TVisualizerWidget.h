@@ -18,9 +18,13 @@ protected:
     TBinaryFile* bin;
     int32_t currentLayer;
     RenderMode renderMode;
+    GLuint textureId;
+    QImage textureImage;
 
     template <typename Ty> Ty clamp(Ty value, int min, int max) const;
     float getIntensity(int16_t value) const;
+    void generateTextureImage();
+    void loadTexture();
     void initializeGL();
     void resizeGL(int width, int height);
     void paintGL();
