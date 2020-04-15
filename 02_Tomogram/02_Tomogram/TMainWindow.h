@@ -4,7 +4,10 @@
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QFileDialog>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QRadioButton>
+#include <QtWidgets/QLineEdit>
+#include <QtGui/QIntValidator>
 #include "TVisualizerWidget.h"
 
 namespace Ui
@@ -28,6 +31,10 @@ private slots:
     void onRadioRenderQuadsClick();
     void onRadioRenderTextureClick();
     void onRadioRenderQuadStripClick();
+    void onRadioProjectionXYZClick();
+    void onRadioProjectionYZXClick();
+    void onRadioProjectionXZYClick();
+    void onButtonSetLimitsClick();
 
 private:
     bool autoRenderEnabled;
@@ -38,13 +45,25 @@ private:
     QLabel* labelLayersCount;
     QLabel* labelCurrentLayer;
     QLabel* labelErrorMessage;
+    QButtonGroup* groupRenderMode;
     QRadioButton* radioRenderQuads;
     QRadioButton* radioRenderTexture;
     QRadioButton* radioRenderQuadStrip;
+    QButtonGroup* groupProjectionDir;
+    QRadioButton* radioProjectionXYZ;
+    QRadioButton* radioProjectionYZX;
+    QRadioButton* radioProjectionXZY;
+    QLineEdit* lineLimitMin;
+    QLineEdit* lineLimitMax;
+    QIntValidator* intValidatorLimits;
+    QPushButton* buttonSetLimits;
     TVisualizerWidget* visualizer;
 
     void setAutoFixedSize();
     void setLabelLayersCountValue(int value);
     void setLabelCurrentLayerValue(int value);
     void setControlsVisible(bool isVisible);
+    void connectButtons();
+    void updateLayersCounters();
+    void setErrorMessage(const char* message);
 };

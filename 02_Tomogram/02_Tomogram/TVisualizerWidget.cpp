@@ -2,8 +2,7 @@
 
 float TVisualizerWidget::getIntensity(int16_t value) const
 {
-    float intensity = (static_cast<float>(value) - bin->getMin()) 
-                      / (bin->getMax() - bin->getMin());
+    float intensity = (value - dataMin) / float(dataMax - dataMin);
     return clamp(intensity, 0, 1);
 }
 
@@ -74,24 +73,24 @@ void TVisualizerWidget::paintGL()
 void TVisualizerWidget::visualizeQuads()
 {
     glBegin(GL_QUADS);
-    for (int32_t x = 0; x < bin->getX() - 1; x++)
-        for (int32_t y = 0; y < bin->getY() - 1; y++)
+    for (int32_t x = 0; x < getVisWidth() - 1; x++)
+        for (int32_t y = 0; y < getVisHeight() - 1; y++)
         {
             float intensity;
 
-            intensity = getIntensity(bin->get(x, y, currentLayer));
+            intensity = getIntensity(getProjectedValue(x, y, currentLayer));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x, y);
 
-            intensity = getIntensity(bin->get(x, y + 1, currentLayer));
+            intensity = getIntensity(getProjectedValue(x, y + 1, currentLayer));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x, y + 1);
 
-            intensity = getIntensity(bin->get(x + 1, y + 1, currentLayer));
+            intensity = getIntensity(getProjectedValue(x + 1, y + 1, currentLayer));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x + 1, y + 1);
 
-            intensity = getIntensity(bin->get(x + 1, y, currentLayer));
+            intensity = getIntensity(getProjectedValue(x + 1, y, currentLayer));
             glColor3f(intensity, intensity, intensity);
             glVertex2i(x + 1, y);
         }
@@ -132,16 +131,53 @@ void TVisualizerWidget::drawTest()
     glEnd();
 }
 
-TVisualizerWidget::TVisualizerWidget(QWidget* parent)
-    : QGLWidget(parent), currentLayer(0), renderMode(RenderMode::Quads)
+void TVisualizerWidget::setDimensionGetters(ProjectionDir projectionDir)
 {
-    currentLayer = 0;
-    bin = new TBinaryFile;
+    switch (projectionDir)
+    {
+    case ProjectionDir::XYZ:
+        getHorizontal = &TBinaryFile::getX;
+        getVertical = &TBinaryFile::getY;
+        getDeep = &TBinaryFile::getZ;
+        break;
+    case ProjectionDir::XZY:
+        getHorizontal = &TBinaryFile::getX;
+        getVertical = &TBinaryFile::getZ;
+        getDeep = &TBinaryFile::getY;
+        break;
+    case ProjectionDir::YZX:
+        getHorizontal = &TBinaryFile::getY;
+        getVertical = &TBinaryFile::getZ;
+        getDeep = &TBinaryFile::getX;
+        break;
+    }
+}
+
+int16_t TVisualizerWidget::getProjectedValue(int x, int y, int z) const
+{
+    switch (projectionDir)
+    {
+    case ProjectionDir::XYZ:
+        return bin->get(x, y, z);
+    case ProjectionDir::XZY:
+        return bin->get(x, z, y);
+    case ProjectionDir::YZX:
+        return bin->get(y, z, x);
+    }
+    return 0;
+}
+
+TVisualizerWidget::TVisualizerWidget(QWidget* parent)
+    : QGLWidget(parent), currentLayer(0), renderMode(RenderMode::Quads), 
+    dataMin(0), dataMax(1), bin(nullptr)
+{
+    setProjectionDir(ProjectionDir::XYZ);
 }
 
 TVisualizerWidget::TVisualizerWidget(const char* fileName, QWidget* parent)
     : QGLWidget(parent), currentLayer(0), renderMode(RenderMode::Quads), bin(nullptr)
 {
+    setProjectionDir(ProjectionDir::XYZ);
     loadDatasetFile(fileName);
 }
 
@@ -156,6 +192,8 @@ void TVisualizerWidget::loadDatasetFile(const char* fileName)
     if (bin)
         delete bin;
     bin = new TBinaryFile(fileName);
+    dataMin = bin->getMin();
+    dataMax = bin->getMax();
     resizeAuto();
 }
 
@@ -168,7 +206,7 @@ void TVisualizerWidget::setLayerNumber(int32_t layerNumber)
 {
     if (!bin)
         return;
-    if ((layerNumber >= 0) && (layerNumber < bin->getZ()))
+    if ((layerNumber >= 0) && (layerNumber < getLayersCount()))
     {
         currentLayer = layerNumber;
         if (renderMode == RenderMode::Texture)
@@ -181,9 +219,9 @@ void TVisualizerWidget::setLayerNumber(int32_t layerNumber)
 
 void TVisualizerWidget::setRenderMode(RenderMode renderMode_)
 {
-    renderMode = renderMode_;
     if (!bin)
         return;
+    renderMode = renderMode_;
     if (renderMode == RenderMode::Texture)
     {
         glEnable(GL_TEXTURE_2D);
@@ -194,17 +232,43 @@ void TVisualizerWidget::setRenderMode(RenderMode renderMode_)
     paintGL();
 }
 
+void TVisualizerWidget::setVisibleDataLimits(int16_t min, int16_t max)
+{
+    if ((min >= max) || (min < bin->getMin()) || (max > bin->getMax()))
+        throw IncorrectDataLimitsError();
+    dataMin = min;
+    dataMax = max;
+    setRenderMode(renderMode);
+}
+
+void TVisualizerWidget::setProjectionDir(ProjectionDir projectionDir_)
+{
+    setDimensionGetters(projectionDir_);
+    projectionDir = projectionDir_;
+    setRenderMode(renderMode);
+}
+
 int TVisualizerWidget::getVisWidth() const
 {
-    return bin ? bin->getX() : 0;
+    return bin ? (bin->*getHorizontal)() : 0;
 }
 
 int TVisualizerWidget::getVisHeight() const
 {
-    return bin ? bin->getY() : 0;
+    return bin ? (bin->*getVertical)() : 0;
 }
 
 int TVisualizerWidget::getLayersCount() const
 {
-    return bin ? bin->getZ() : 0;
+    return bin ? (bin->*getDeep)() : 0;
+}
+
+int TVisualizerWidget::getDataMin() const
+{
+    return dataMin;
+}
+
+int TVisualizerWidget::getDataMax() const
+{
+    return dataMax;
 }
