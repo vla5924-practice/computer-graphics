@@ -62,13 +62,22 @@ private:
     QPushButton* buttonReset;
     TVisualizerWidget* visualizer;
 
+    void setUpWidgets();
+    void setUpLayersCounters();
+    void setUpProjectionRadios();
+    void setUpRenderModeRadios();
+    void setUpLimitControls();
+
+    void connectButtons();
+    void updateLayersCounters();
+    void updateLabelVisSize();
+    void updateControls();
+    void resetLimitsLines();
+
     void setAutoFixedSize();
     void setLabelLayersCountValue(int value);
     void setLabelCurrentLayerValue(int value);
     void setControlsVisible(bool isVisible);
-    void connectButtons();
-    void updateLayersCounters();
-    void updateLabelVisSize();
     void setErrorMessage(const char* message);
     void setLabelVisSize(int width, int height);
 };

@@ -4,73 +4,7 @@ TMainWindow::TMainWindow(QWidget* parent)
     : QMainWindow(parent), autoRenderEnabled(false)
 {
     setWindowTitle("Tomogram Visualizer");
-
-    buttonOpen = new QPushButton("&Open dataset", this);
-    buttonOpen->move(5, 5);
-
-    buttonRenderMode = new QPushButton("&Auto-Render", this);
-    buttonRenderMode->move(110, 5);
-
-    visualizer = new TVisualizerWidget(this);
-    visualizer->move(0, 95);
-
-    sliderCurrentLayer = new QSlider(Qt::Orientation::Horizontal, this);
-    sliderCurrentLayer->move(215, 6);
-    sliderCurrentLayer->setRange(0, 0);
-    sliderCurrentLayer->resize(200, 30);
-
-    labelLayersCount = new QLabel(this);
-    labelLayersCount->move(420, 0);
-    setLabelLayersCountValue(0);
-
-    labelCurrentLayer = new QLabel(this);
-    labelCurrentLayer->move(420, 12);
-    setLabelCurrentLayerValue(0);
-
-    labelErrorMessage = new QLabel("Dataset not opened.", this);
-    labelErrorMessage->move(346, 35);
-
-    radioProjectionXYZ = new QRadioButton("XY&Z", this);
-    radioProjectionXYZ->move(6, 35);
-    radioProjectionXYZ->setChecked(true);
-    radioProjectionZXY = new QRadioButton("ZX&Y", this);
-    radioProjectionZXY->move(46, 35);
-    radioProjectionYZX = new QRadioButton("YZ&X", this);
-    radioProjectionYZX->move(86, 35);
-    groupProjectionDir = new QButtonGroup(this);
-    groupProjectionDir->addButton(radioProjectionXYZ);
-    groupProjectionDir->addButton(radioProjectionZXY);
-    groupProjectionDir->addButton(radioProjectionYZX);
-
-    radioRenderQuads = new QRadioButton("&Quads", this);
-    radioRenderQuads->move(146, 35);
-    radioRenderQuads->setChecked(true);
-    radioRenderTexture = new QRadioButton("&Texture", this);
-    radioRenderTexture->move(206, 35);
-    radioRenderQuadStrip = new QRadioButton("Quad&Strip", this);
-    radioRenderQuadStrip->move(266, 35);
-    groupRenderMode = new QButtonGroup(this);
-    groupRenderMode->addButton(radioRenderQuads);
-    groupRenderMode->addButton(radioRenderTexture);
-    groupRenderMode->addButton(radioRenderTexture);
-
-    intValidatorLimits = new QIntValidator(this);
-    lineLimitMin = new QLineEdit(this);
-    lineLimitMin->setPlaceholderText("Min");
-    lineLimitMin->move(6, 60);
-    lineLimitMin->setValidator(intValidatorLimits);
-    lineLimitMax = new QLineEdit(this);
-    lineLimitMax->setPlaceholderText("Max");
-    lineLimitMax->move(111, 60);
-    lineLimitMax->setValidator(intValidatorLimits);
-    buttonSetLimits = new QPushButton("Apply limits", this);
-    buttonSetLimits->move(216, 60);
-    buttonReset = new QPushButton("&Reset", this);
-    buttonReset->move(321, 60);
-
-    labelVisSize = new QLabel("Size: 0x0", this);
-    labelVisSize->move(426, 60);
-
+    setUpWidgets();
     connectButtons();
     onRenderModeButtonClick();
     setControlsVisible(false);
@@ -105,11 +39,8 @@ TMainWindow::~TMainWindow()
 void TMainWindow::visualizeDataset(const char* fileName)
 {
     visualizer->loadDatasetFile(fileName);
-    setAutoFixedSize();
-    updateLayersCounters();
-    lineLimitMin->setText(QString::number(visualizer->getDataMin()));
-    lineLimitMax->setText(QString::number(visualizer->getDataMax()));
-    updateLabelVisSize();
+    updateControls();
+    resetLimitsLines();
 }
 
 void TMainWindow::onOpenButtonClick()
@@ -190,25 +121,19 @@ void TMainWindow::onRadioRenderQuadStripClick()
 void TMainWindow::onRadioProjectionXYZClick()
 {
     visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::XYZ);
-    setAutoFixedSize();
-    updateLayersCounters();
-    updateLabelVisSize();
+    updateControls();
 }
 
 void TMainWindow::onRadioProjectionYZXClick()
 {
     visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::YZX);
-    setAutoFixedSize();
-    updateLayersCounters();
-    updateLabelVisSize();
+    updateControls();
 }
 
 void TMainWindow::onRadioProjectionZXYClick()
 {
     visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::ZXY);
-    setAutoFixedSize();
-    updateLayersCounters();
-    updateLabelVisSize();
+    updateControls();
 }
 
 void TMainWindow::onButtonSetLimitsClick()
@@ -233,10 +158,88 @@ void TMainWindow::onButtonSetLimitsClick()
 
 void TMainWindow::onButtonResetClick()
 {
-    lineLimitMin->setText(QString::number(visualizer->getDataMin()));
-    lineLimitMax->setText(QString::number(visualizer->getDataMax()));
+    resetLimitsLines();
     onButtonSetLimitsClick();
     updateLayersCounters();
+}
+
+void TMainWindow::setUpWidgets()
+{
+    buttonOpen = new QPushButton("&Open dataset", this);
+    buttonOpen->move(5, 5);
+    buttonRenderMode = new QPushButton("&Auto-Render", this);
+    buttonRenderMode->move(110, 5);
+    visualizer = new TVisualizerWidget(this);
+    visualizer->move(0, 95);
+    labelErrorMessage = new QLabel("Dataset not opened.", this);
+    labelErrorMessage->move(346, 35);
+    labelVisSize = new QLabel("Size: 0x0", this);
+    labelVisSize->move(426, 60);
+    setUpLayersCounters();
+    setUpProjectionRadios();
+    setUpRenderModeRadios();
+    setUpLimitControls();
+}
+
+void TMainWindow::setUpLayersCounters()
+{
+    sliderCurrentLayer = new QSlider(Qt::Orientation::Horizontal, this);
+    sliderCurrentLayer->move(215, 6);
+    sliderCurrentLayer->setRange(0, 0);
+    sliderCurrentLayer->resize(200, 30);
+    labelLayersCount = new QLabel(this);
+    labelLayersCount->move(420, 0);
+    setLabelLayersCountValue(0);
+    labelCurrentLayer = new QLabel(this);
+    labelCurrentLayer->move(420, 12);
+    setLabelCurrentLayerValue(0);
+}
+
+void TMainWindow::setUpProjectionRadios()
+{
+    radioProjectionXYZ = new QRadioButton("XY&Z", this);
+    radioProjectionXYZ->move(6, 35);
+    radioProjectionXYZ->setChecked(true);
+    radioProjectionZXY = new QRadioButton("ZX&Y", this);
+    radioProjectionZXY->move(46, 35);
+    radioProjectionYZX = new QRadioButton("YZ&X", this);
+    radioProjectionYZX->move(86, 35);
+    groupProjectionDir = new QButtonGroup(this);
+    groupProjectionDir->addButton(radioProjectionXYZ);
+    groupProjectionDir->addButton(radioProjectionZXY);
+    groupProjectionDir->addButton(radioProjectionYZX);
+}
+
+void TMainWindow::setUpRenderModeRadios()
+{
+    radioRenderQuads = new QRadioButton("&Quads", this);
+    radioRenderQuads->move(146, 35);
+    radioRenderQuads->setChecked(true);
+    radioRenderTexture = new QRadioButton("&Texture", this);
+    radioRenderTexture->move(206, 35);
+    radioRenderQuadStrip = new QRadioButton("Quad&Strip", this);
+    radioRenderQuadStrip->move(266, 35);
+    groupRenderMode = new QButtonGroup(this);
+    groupRenderMode->addButton(radioRenderQuads);
+    groupRenderMode->addButton(radioRenderTexture);
+    groupRenderMode->addButton(radioRenderTexture);
+}
+
+void TMainWindow::setUpLimitControls()
+{
+    intValidatorLimits = new QIntValidator(this);
+    lineLimitMin = new QLineEdit(this);
+    lineLimitMin->setPlaceholderText("Min");
+    lineLimitMin->move(6, 60);
+    lineLimitMin->setValidator(intValidatorLimits);
+    lineLimitMax = new QLineEdit(this);
+    lineLimitMax->setPlaceholderText("Max");
+    lineLimitMax->move(111, 60);
+    lineLimitMax->setValidator(intValidatorLimits);
+    buttonSetLimits = new QPushButton("Apply limits", this);
+    buttonSetLimits->move(216, 60);
+    buttonReset = new QPushButton("&Reset", this);
+    buttonReset->move(321, 60);
 }
 
 void TMainWindow::setAutoFixedSize()
@@ -307,6 +310,19 @@ void TMainWindow::updateLabelVisSize()
     int width = visualizer->getVisWidth();
     int height = visualizer->getVisHeight();
     setLabelVisSize(width, height);
+}
+
+void TMainWindow::updateControls()
+{
+    setAutoFixedSize();
+    updateLayersCounters();
+    updateLabelVisSize();
+}
+
+void TMainWindow::resetLimitsLines()
+{
+    lineLimitMin->setText(QString::number(visualizer->getDataMin()));
+    lineLimitMax->setText(QString::number(visualizer->getDataMax()));
 }
 
 void TMainWindow::setErrorMessage(const char* message)
