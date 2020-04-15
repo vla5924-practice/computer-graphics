@@ -120,18 +120,21 @@ void TMainWindow::onRadioRenderQuadStripClick()
 
 void TMainWindow::onRadioProjectionXYZClick()
 {
+    visualizer->setLayerNumber(0);
     visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::XYZ);
     updateControls();
 }
 
 void TMainWindow::onRadioProjectionYZXClick()
 {
+    visualizer->setLayerNumber(0);
     visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::YZX);
     updateControls();
 }
 
 void TMainWindow::onRadioProjectionZXYClick()
 {
+    visualizer->setLayerNumber(0);
     visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::ZXY);
     updateControls();
 }
@@ -222,7 +225,7 @@ void TMainWindow::setUpRenderModeRadios()
     groupRenderMode = new QButtonGroup(this);
     groupRenderMode->addButton(radioRenderQuads);
     groupRenderMode->addButton(radioRenderTexture);
-    groupRenderMode->addButton(radioRenderTexture);
+    groupRenderMode->addButton(radioRenderQuadStrip);
 }
 
 void TMainWindow::setUpLimitControls()

@@ -118,7 +118,28 @@ void TVisualizerWidget::visualizeTexture()
 
 void TVisualizerWidget::visualizeQuadStrip()
 {
+    glBegin(GL_QUAD_STRIP);
+    int32_t xMax = getVisWidth() - 2;
+    int32_t yMax = getVisHeight() - 2;
+    float intensity;
+    intensity = getIntensity(getProjectedValue(0, 0, currentLayer));
+    glColor3f(intensity, intensity, intensity);
+    glVertex2i(0, 0);
+    intensity = getIntensity(getProjectedValue(0, 1, currentLayer));
+    glColor3f(intensity, intensity, intensity);
+    glVertex2i(0, 1);
+    for (int32_t x = 1; x <= xMax; x++)
+        for (int32_t y = 1; y <= yMax; y++)
+        {
+            intensity = getIntensity(getProjectedValue(x, y, currentLayer));
+            glColor3f(intensity, intensity, intensity);
+            glVertex2i(x, y);
 
+            intensity = getIntensity(getProjectedValue(x, y + 1, currentLayer));
+            glColor3f(intensity, intensity, intensity);
+            glVertex2i(x, y + 1);
+        }
+    glEnd();
 }
 
 void TVisualizerWidget::drawTest()
