@@ -8,13 +8,13 @@ float TVisualizerWidget::getIntensity(int16_t value) const
 
 void TVisualizerWidget::generateTextureImage()
 {
-    int width = bin->getX();
-    int height = bin->getY();
+    int width = getVisWidth();
+    int height = getVisHeight();
     textureImage = QImage(width, height, QImage::Format_RGB32);
     for(int x = 0; x < width; x++)
         for (int y = 0; y < height; y++)
         {
-            float intensity = getIntensity(bin->get(x, y, currentLayer));
+            float intensity = getIntensity(getProjectedValue(x, y, currentLayer));
             textureImage.setPixelColor(x, y, QColor::fromRgbF(intensity, intensity, intensity));
         }
 }
@@ -73,8 +73,10 @@ void TVisualizerWidget::paintGL()
 void TVisualizerWidget::visualizeQuads()
 {
     glBegin(GL_QUADS);
-    for (int32_t x = 0; x < getVisWidth() - 1; x++)
-        for (int32_t y = 0; y < getVisHeight() - 1; y++)
+    int32_t xMax = getVisWidth() - 2;
+    int32_t yMax = getVisHeight() - 2;
+    for (int32_t x = 0; x <= xMax ; x++)
+        for (int32_t y = 0; y <= yMax; y++)
         {
             float intensity;
 
@@ -100,15 +102,17 @@ void TVisualizerWidget::visualizeQuads()
 void TVisualizerWidget::visualizeTexture()
 {
     glBegin(GL_QUADS);
+    int height = getVisHeight();
+    int width = getVisWidth();
     glColor3f(1, 1, 1);
     glTexCoord2f(0, 0);
     glVertex2i(0, 0);
     glTexCoord2f(0, 1);
-    glVertex2i(0, bin->getY());
+    glVertex2i(0, height);
     glTexCoord2f(1, 1);
-    glVertex2i(bin->getX(), bin->getY());
+    glVertex2i(width, height);
     glTexCoord2f(1, 0);
-    glVertex2i(bin->getX(), 0);
+    glVertex2i(width, 0);
     glEnd();
 }
 
@@ -140,14 +144,14 @@ void TVisualizerWidget::setDimensionGetters(ProjectionDir projectionDir)
         getVertical = &TBinaryFile::getY;
         getDeep = &TBinaryFile::getZ;
         break;
-    case ProjectionDir::XZY:
+    case ProjectionDir::ZXY:
         getHorizontal = &TBinaryFile::getX;
         getVertical = &TBinaryFile::getZ;
         getDeep = &TBinaryFile::getY;
         break;
     case ProjectionDir::YZX:
-        getHorizontal = &TBinaryFile::getY;
-        getVertical = &TBinaryFile::getZ;
+        getHorizontal = &TBinaryFile::getZ;
+        getVertical = &TBinaryFile::getY;
         getDeep = &TBinaryFile::getX;
         break;
     }
@@ -159,8 +163,8 @@ int16_t TVisualizerWidget::getProjectedValue(int x, int y, int z) const
     {
     case ProjectionDir::XYZ:
         return bin->get(x, y, z);
-    case ProjectionDir::XZY:
-        return bin->get(x, z, y);
+    case ProjectionDir::ZXY:
+        return bin->get(z, x, y);
     case ProjectionDir::YZX:
         return bin->get(y, z, x);
     }
@@ -246,6 +250,7 @@ void TVisualizerWidget::setProjectionDir(ProjectionDir projectionDir_)
     setDimensionGetters(projectionDir_);
     projectionDir = projectionDir_;
     setRenderMode(renderMode);
+    resizeAuto();
 }
 
 int TVisualizerWidget::getVisWidth() const
@@ -263,12 +268,22 @@ int TVisualizerWidget::getLayersCount() const
     return bin ? (bin->*getDeep)() : 0;
 }
 
-int TVisualizerWidget::getDataMin() const
+int TVisualizerWidget::getCurrentDataMin() const
 {
     return dataMin;
 }
 
-int TVisualizerWidget::getDataMax() const
+int TVisualizerWidget::getCurrentDataMax() const
 {
     return dataMax;
+}
+
+int TVisualizerWidget::getDataMin() const
+{
+    return bin ? bin->getMin() : 0;
+}
+
+int TVisualizerWidget::getDataMax() const
+{
+    return bin ? bin->getMax() : 1;
 }

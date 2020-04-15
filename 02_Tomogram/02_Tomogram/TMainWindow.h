@@ -33,8 +33,9 @@ private slots:
     void onRadioRenderQuadStripClick();
     void onRadioProjectionXYZClick();
     void onRadioProjectionYZXClick();
-    void onRadioProjectionXZYClick();
+    void onRadioProjectionZXYClick();
     void onButtonSetLimitsClick();
+    void onButtonResetClick();
 
 private:
     bool autoRenderEnabled;
@@ -45,6 +46,7 @@ private:
     QLabel* labelLayersCount;
     QLabel* labelCurrentLayer;
     QLabel* labelErrorMessage;
+    QLabel* labelVisSize;
     QButtonGroup* groupRenderMode;
     QRadioButton* radioRenderQuads;
     QRadioButton* radioRenderTexture;
@@ -52,11 +54,12 @@ private:
     QButtonGroup* groupProjectionDir;
     QRadioButton* radioProjectionXYZ;
     QRadioButton* radioProjectionYZX;
-    QRadioButton* radioProjectionXZY;
+    QRadioButton* radioProjectionZXY;
     QLineEdit* lineLimitMin;
     QLineEdit* lineLimitMax;
     QIntValidator* intValidatorLimits;
     QPushButton* buttonSetLimits;
+    QPushButton* buttonReset;
     TVisualizerWidget* visualizer;
 
     void setAutoFixedSize();
@@ -65,5 +68,7 @@ private:
     void setControlsVisible(bool isVisible);
     void connectButtons();
     void updateLayersCounters();
+    void updateLabelVisSize();
     void setErrorMessage(const char* message);
+    void setLabelVisSize(int width, int height);
 };

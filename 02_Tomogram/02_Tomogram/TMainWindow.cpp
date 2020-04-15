@@ -12,7 +12,7 @@ TMainWindow::TMainWindow(QWidget* parent)
     buttonRenderMode->move(110, 5);
 
     visualizer = new TVisualizerWidget(this);
-    visualizer->move(0, 90);
+    visualizer->move(0, 95);
 
     sliderCurrentLayer = new QSlider(Qt::Orientation::Horizontal, this);
     sliderCurrentLayer->move(215, 6);
@@ -28,18 +28,18 @@ TMainWindow::TMainWindow(QWidget* parent)
     setLabelCurrentLayerValue(0);
 
     labelErrorMessage = new QLabel("Dataset not opened.", this);
-    labelErrorMessage->move(306, 60);
+    labelErrorMessage->move(346, 35);
 
     radioProjectionXYZ = new QRadioButton("XY&Z", this);
     radioProjectionXYZ->move(6, 35);
     radioProjectionXYZ->setChecked(true);
-    radioProjectionXZY = new QRadioButton("YZ&X", this);
-    radioProjectionXZY->move(46, 35);
-    radioProjectionYZX = new QRadioButton("XZ&Y", this);
+    radioProjectionZXY = new QRadioButton("ZX&Y", this);
+    radioProjectionZXY->move(46, 35);
+    radioProjectionYZX = new QRadioButton("YZ&X", this);
     radioProjectionYZX->move(86, 35);
     groupProjectionDir = new QButtonGroup(this);
     groupProjectionDir->addButton(radioProjectionXYZ);
-    groupProjectionDir->addButton(radioProjectionXZY);
+    groupProjectionDir->addButton(radioProjectionZXY);
     groupProjectionDir->addButton(radioProjectionYZX);
 
     radioRenderQuads = new QRadioButton("&Quads", this);
@@ -61,10 +61,15 @@ TMainWindow::TMainWindow(QWidget* parent)
     lineLimitMin->setValidator(intValidatorLimits);
     lineLimitMax = new QLineEdit(this);
     lineLimitMax->setPlaceholderText("Max");
-    lineLimitMax->move(106, 60);
+    lineLimitMax->move(111, 60);
     lineLimitMax->setValidator(intValidatorLimits);
     buttonSetLimits = new QPushButton("Apply limits", this);
-    buttonSetLimits->move(206, 60);
+    buttonSetLimits->move(216, 60);
+    buttonReset = new QPushButton("&Reset", this);
+    buttonReset->move(321, 60);
+
+    labelVisSize = new QLabel("Size: 0x0", this);
+    labelVisSize->move(426, 60);
 
     connectButtons();
     onRenderModeButtonClick();
@@ -81,17 +86,19 @@ TMainWindow::~TMainWindow()
     delete labelLayersCount;
     delete labelCurrentLayer;
     delete labelErrorMessage;
+    delete labelVisSize;
     delete radioRenderQuads;
     delete radioRenderTexture;
     delete radioRenderQuadStrip;
     delete groupRenderMode;
     delete radioProjectionXYZ;
-    delete radioProjectionXZY;
+    delete radioProjectionZXY;
     delete radioProjectionYZX;
     delete groupProjectionDir;
     delete lineLimitMin;
     delete lineLimitMax;
     delete buttonSetLimits;
+    delete buttonReset;
     delete intValidatorLimits;
 }
 
@@ -100,6 +107,9 @@ void TMainWindow::visualizeDataset(const char* fileName)
     visualizer->loadDatasetFile(fileName);
     setAutoFixedSize();
     updateLayersCounters();
+    lineLimitMin->setText(QString::number(visualizer->getDataMin()));
+    lineLimitMax->setText(QString::number(visualizer->getDataMax()));
+    updateLabelVisSize();
 }
 
 void TMainWindow::onOpenButtonClick()
@@ -182,6 +192,7 @@ void TMainWindow::onRadioProjectionXYZClick()
     visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::XYZ);
     setAutoFixedSize();
     updateLayersCounters();
+    updateLabelVisSize();
 }
 
 void TMainWindow::onRadioProjectionYZXClick()
@@ -189,22 +200,24 @@ void TMainWindow::onRadioProjectionYZXClick()
     visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::YZX);
     setAutoFixedSize();
     updateLayersCounters();
+    updateLabelVisSize();
 }
 
-void TMainWindow::onRadioProjectionXZYClick()
+void TMainWindow::onRadioProjectionZXYClick()
 {
-    visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::XZY);
+    visualizer->setProjectionDir(TVisualizerWidget::ProjectionDir::ZXY);
     setAutoFixedSize();
     updateLayersCounters();
+    updateLabelVisSize();
 }
 
 void TMainWindow::onButtonSetLimitsClick()
 {
     int16_t min = lineLimitMin->text().toInt();
-    int16_t max = lineLimitMin->text().toInt();
+    int16_t max = lineLimitMax->text().toInt();
     if (min >= max)
     {
-        setErrorMessage("Limits are incorrect (min >= max).");
+        setErrorMessage("Min cannot be greater than Max.");
         return;
     }
     try
@@ -218,14 +231,22 @@ void TMainWindow::onButtonSetLimitsClick()
     }
 }
 
+void TMainWindow::onButtonResetClick()
+{
+    lineLimitMin->setText(QString::number(visualizer->getDataMin()));
+    lineLimitMax->setText(QString::number(visualizer->getDataMax()));
+    onButtonSetLimitsClick();
+    updateLayersCounters();
+}
+
 void TMainWindow::setAutoFixedSize()
 {
     int width = visualizer->getVisWidth();
-    int height = visualizer->getVisHeight() + 90;
+    int height = visualizer->getVisHeight() + 95;
     if (width < 512)
         width = 512;
-    if (height < 90)
-        height = 90;
+    if (height < 95)
+        height = 95;
     setFixedSize(width, height);
 }
 
@@ -246,7 +267,7 @@ void TMainWindow::setControlsVisible(bool isVisible)
     labelLayersCount->setVisible(isVisible);
     sliderCurrentLayer->setVisible(isVisible);
     radioProjectionXYZ->setVisible(isVisible);
-    radioProjectionXZY->setVisible(isVisible);
+    radioProjectionZXY->setVisible(isVisible);
     radioProjectionYZX->setVisible(isVisible);
     radioRenderQuads->setVisible(isVisible);
     radioRenderTexture->setVisible(isVisible);
@@ -254,6 +275,8 @@ void TMainWindow::setControlsVisible(bool isVisible)
     lineLimitMin->setVisible(isVisible);
     lineLimitMax->setVisible(isVisible);
     buttonSetLimits->setVisible(isVisible);
+    buttonReset->setVisible(isVisible);
+    labelVisSize->setVisible(isVisible);
 }
 
 void TMainWindow::connectButtons()
@@ -264,9 +287,10 @@ void TMainWindow::connectButtons()
     connect(radioRenderTexture, SIGNAL(released()), this, SLOT(onRadioRenderTextureClick()));
     connect(radioRenderQuadStrip, SIGNAL(released()), this, SLOT(onRadioRenderQuadStripClick()));
     connect(radioProjectionXYZ, SIGNAL(released()), this, SLOT(onRadioProjectionXYZClick()));
-    connect(radioProjectionXZY, SIGNAL(released()), this, SLOT(onRadioProjectionXZYClick()));
+    connect(radioProjectionZXY, SIGNAL(released()), this, SLOT(onRadioProjectionZXYClick()));
     connect(radioProjectionYZX, SIGNAL(released()), this, SLOT(onRadioProjectionYZXClick()));
     connect(buttonSetLimits, SIGNAL(released()), this, SLOT(onButtonSetLimitsClick()));
+    connect(buttonReset, SIGNAL(released()), this, SLOT(onButtonResetClick()));
 }
 
 void TMainWindow::updateLayersCounters()
@@ -278,7 +302,20 @@ void TMainWindow::updateLayersCounters()
     setLabelLayersCountValue(layersCount);
 }
 
+void TMainWindow::updateLabelVisSize()
+{
+    int width = visualizer->getVisWidth();
+    int height = visualizer->getVisHeight();
+    setLabelVisSize(width, height);
+}
+
 void TMainWindow::setErrorMessage(const char* message)
 {
     labelErrorMessage->setText(message);
+}
+
+void TMainWindow::setLabelVisSize(int width, int height)
+{
+    QString text = QString("Size: ") + QString::number(width) + "x" + QString::number(height);
+    labelVisSize->setText(text);
 }

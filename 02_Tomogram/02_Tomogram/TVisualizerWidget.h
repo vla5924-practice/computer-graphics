@@ -18,7 +18,7 @@ public:
     {
         XYZ,
         YZX,
-        XZY
+        ZXY
     };
 
 protected:
@@ -66,6 +66,8 @@ public:
 
     int getDataMin() const;
     int getDataMax() const;
+    int getCurrentDataMin() const;
+    int getCurrentDataMax() const;
 
     classException(IncorrectLayerNumberError, "Layer does not exist.");
     classException(IncorrectDataLimitsError, "Given values are not in widest data limits.");
