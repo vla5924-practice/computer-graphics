@@ -17,16 +17,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TShaderWidget.h">
-      <Filter>TShaderWidget</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="rtx.vert">
       <Filter>Шейдеры</Filter>
     </None>
     <None Include="rtx.frag">
       <Filter>Шейдеры</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TShaderWidget.h">
+      <Filter>TShaderWidget</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

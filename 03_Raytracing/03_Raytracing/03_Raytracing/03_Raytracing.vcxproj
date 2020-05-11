@@ -88,7 +88,7 @@
     <ClCompile Include="TShaderWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TShaderWidget.h" />
+    <QtMoc Include="TShaderWidget.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="rtx.frag" />
