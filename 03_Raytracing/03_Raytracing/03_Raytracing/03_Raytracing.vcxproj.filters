@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TShaderWidget.cpp">
+      <Filter>TShaderWidget</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="TShaderWidget">
+      <UniqueIdentifier>{6542abfa-1811-436f-aa6b-2fbb7f0c5242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Шейдеры">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TShaderWidget.h">
+      <Filter>TShaderWidget</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="rtx.vert">
+      <Filter>Шейдеры</Filter>
+    </None>
+    <None Include="rtx.frag">
+      <Filter>Шейдеры</Filter>
+    </None>
+  </ItemGroup>
+</Project>
