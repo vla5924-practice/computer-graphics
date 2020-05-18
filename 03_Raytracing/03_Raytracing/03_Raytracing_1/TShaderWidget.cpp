@@ -8,6 +8,8 @@ TShaderWidget::TShaderWidget(QWidget* parent)
     vertData = new GLfloat[size];
     for (int i = 0; i < size; i++)
         vertData[i] = temp[i];
+    spheres = nullptr;
+    spheresCount = 0;
 }
 
 TShaderWidget::~TShaderWidget()
@@ -18,20 +20,12 @@ TShaderWidget::~TShaderWidget()
 void TShaderWidget::initializeGL()
 {
     initializeOpenGLFunctions();
-
-    /*QOpenGLFunctions_4_3_Core* F = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
-    GLuint ssbo = 0;
-    spheresCount = 1;
-    spheres = new Sphere;
-    F->glGenBuffers(1, &ssbo);
-    F->glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo);
-    F->glBufferData(GL_SHADER_STORAGE_BUFFER, spheresCount * sizeof(Sphere), spheres, GL_DYNAMIC_COPY);
-    // Now bind the buffer to the zeroth GL_SHADER_STORAGE_BUFFER binding point
-    F->glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, ssbo);*/
-
+    std::cout << "OpenGL " << glGetString(GL_VERSION) << '\n';
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-
+    readSpheres();
+    //initializeBuffers();
     initializeShaders();
+    readCamera();
 }
 
 void TShaderWidget::resizeGL(int w, int h)
@@ -54,11 +48,11 @@ void TShaderWidget::paintGL()
 
 void TShaderWidget::initializeShaders()
 {
-    std::ifstream config("config.dat");
-    if (!config.is_open())
+    std::ifstream file("config.dat");
+    if (!file.is_open())
         return;
     std::string vertPath, fragPath;
-    config >> vertPath >> fragPath;
+    file >> vertPath >> fragPath;
     QOpenGLShader vert(QOpenGLShader::Vertex);
     vert.compileSourceFile(vertPath.c_str());
     QOpenGLShader frag(QOpenGLShader::Fragment);
@@ -72,19 +66,67 @@ void TShaderWidget::initializeShaders()
     }
     vertDataLocation = program.attributeLocation("vertex");
     qDebug() << program.log();
+}
+
+void TShaderWidget::initializeBuffers()
+{
+    QOpenGLFunctions_4_4_Core* F = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_4_Core>();
+    GLuint ssbo = 0;
+    GLsizeiptr bufferSize = spheresCount * sizeof(Sphere);
+    F->glGenBuffers(1, &ssbo);
+    std::cerr << F->glGetError();
+    F->glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo);
+    std::cerr << F->glGetError();
+    F->glBufferData(GL_SHADER_STORAGE_BUFFER, bufferSize, spheres, GL_DYNAMIC_COPY);
+    std::cerr << F->glGetError();
+    // Now bind the buffer to the zeroth GL_SHADER_STORAGE_BUFFER binding point
+    F->glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 1, ssbo);
+    std::cerr << F->glGetError();
+    //for (int i = 0; i < spheresCount; i++)
+    //    F->glBufferSubData(GL_SHADER_STORAGE_BUFFER, i * sizeof(Sphere), sizeof(Sphere), spheres + i);
+}
+
+void TShaderWidget::readCamera()
+{
+    std::ifstream file("camera.dat");
+    if (!file.is_open())
+        return;
     if (!program.bind())
         qWarning("Error while shader binding");
-    program.setUniformValue("camera.position", readVector(config));
-    program.setUniformValue("camera.view", readVector(config));
-    program.setUniformValue("camera.up", readVector(config));
-    program.setUniformValue("camera.side", readVector(config));
+    program.setUniformValue("camera.position", scanVector(file));
+    program.setUniformValue("camera.view", scanVector(file));
+    program.setUniformValue("camera.up", scanVector(file));
+    program.setUniformValue("camera.side", scanVector(file));
     program.setUniformValue("scale", QVector2D(width(), height()));
     program.release();
 }
 
-QVector3D TShaderWidget::readVector(std::ifstream& in)
+void TShaderWidget::readSpheres()
+{
+    std::ifstream file("spheres.dat");
+    if (!file.is_open())
+        return;
+    file >> spheresCount;
+    spheres = new Sphere[spheresCount];
+    for (int i = 0; i < spheresCount; i++)
+    {
+        GLfloat x, y, z, radius, r, g, b;
+        GLint materialIdx;
+        file >> x >> y >> z >> radius >> r >> g >> b >> materialIdx;
+        spheres[i] = Sphere(x, y, z, radius, r, g, b, materialIdx);
+    }
+}
+
+QVector3D TShaderWidget::scanVector(std::ifstream& in)
 {
     float x, y, z;
     in >> x >> y >> z;
     return QVector3D(x, y, z);
+}
+
+int TShaderWidget::scanInt(std::ifstream& in)
+{
+    int n;
+    in >> n;
+    return n;
 }

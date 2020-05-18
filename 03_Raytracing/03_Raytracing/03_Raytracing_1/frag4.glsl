@@ -28,15 +28,20 @@ struct Ray
 
 struct Sphere
 {
-	vec3  center;
+	vec4  center;
 	float radius;
-	vec3  color;
+	vec4  color;
 	int   materialIdx;
+};
+
+layout(std430, binding = 1) buffer SphereBuffer
+{
+	Sphere spheres[];
 };
 
 struct Material
 {
-	vec3 color;
+	vec3  color;
 	float ambient;
 	float diffuse;
 	float specular;
@@ -67,11 +72,7 @@ out vec4 fragmentColor;
 
 uniform Camera camera;
 uniform vec2   scale;
-
 Light light = { vec3(1, 0, -8) };
-Sphere spheres[] = {
-	{ vec3(1, 2, 3), 10, vec3(1, 0, 1), 0 }
-};
 Material materials[] = {
 	{ vec3(0.8, 0, 0), 0.4, 0.9, 0.0, 512.0 }
 };
@@ -90,7 +91,7 @@ Ray generateRay(Camera camera)
 
 bool intersectSphere(Sphere sphere, Ray ray, float start, float final, out float time)
 {
-	ray.origin -= sphere.center;
+	ray.origin -= sphere.center.xyz; // !!!
 	float A = dot(ray.direction, ray.direction);
 	float B = dot(ray.direction, ray.origin);
 	float C = dot(ray.origin, ray.origin) - sphere.radius * sphere.radius;
@@ -124,8 +125,8 @@ bool intersectAll(Ray ray, float start, float final, inout Intersection is)
 		{
 			is.time = time;
 			is.point = ray.origin + ray.direction * time;
-			is.normal = normalize(is.point - spheres[i].center);
-			is.color = spheres[i].color;
+			is.normal = normalize(is.point - spheres[i].center.xyz); // !!!
+			is.color = spheres[i].color.rgb; // !!!
 			is.materialIdx = spheres[i].materialIdx;
 			result = true;
 		}

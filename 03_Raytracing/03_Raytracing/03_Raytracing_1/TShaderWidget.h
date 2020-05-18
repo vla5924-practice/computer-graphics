@@ -5,16 +5,29 @@
 #include <QtWidgets/QOpenGLWidget>
 #include <QtGui/QOpenGLFunctions>
 #include <QtGui/QOpenGLShaderProgram>
-#include <QtGui/QOpenGLFunctions_4_3_Core>
+#include <QtGui/QOpenGLFunctions_4_4_Core>
+#include <QtGui/QOpenGLBuffer>
 #include <GL/glu.h>
 #include <GL/gl.h>
 
 struct Sphere
 {
-    QVector3D center = QVector3D(0, 0, 0);
-    float radius = 10;
-    QVector3D color = QVector3D(1, 0, 0);
-    int materialIdx = 0;
+    GLfloat center[4];
+    GLfloat radius;
+    GLfloat color[4];
+    GLint materialIdx;
+
+    Sphere() = default;
+    Sphere(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLfloat r, GLfloat g, GLfloat b, GLint materialIdx)
+        : radius(radius), materialIdx(materialIdx)
+    {
+        center[0] = x;
+        center[1] = y;
+        center[2] = z;
+        color[0] = r;
+        color[1] = g;
+        color[2] = b;
+    }
 };
 
 class TShaderWidget : public QOpenGLWidget, protected QOpenGLFunctions
@@ -31,7 +44,11 @@ protected:
     void resizeGL(int w, int h) override;
     void paintGL() override;
     void initializeShaders();
-    QVector3D readVector(std::ifstream& in);
+    void initializeBuffers();
+    void readCamera();
+    void readSpheres();
+    QVector3D scanVector(std::ifstream& in);
+    int scanInt(std::ifstream& in);
 public:
     TShaderWidget(QWidget* = nullptr);
     ~TShaderWidget();
