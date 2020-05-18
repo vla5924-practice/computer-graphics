@@ -1,1 +1,6 @@
-vert.glsl frag.glsl
+vert.glsl
+frag1.glsl
+0.0 0.0 -10
+0.0 0.0 1.0
+0.0 1.0 0.0
+1.0 0.0 0.0

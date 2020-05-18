@@ -25,13 +25,16 @@
     <None Include="frag.glsl">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="frag2.glsl">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="frag1.glsl">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="config.dat">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="frag3.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="frag2.glsl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

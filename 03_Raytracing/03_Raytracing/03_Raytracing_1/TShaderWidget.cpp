@@ -51,10 +51,10 @@ void TShaderWidget::initializeGL()
     qDebug() << program.log();
     if (!program.bind())
         qWarning("Error while shader binding");
-    program.setUniformValue("camera.position", QVector3D(0.0, 0.0, -10));
-    program.setUniformValue("camera.view", QVector3D(0.0, 0.0, 1.0));
-    program.setUniformValue("camera.up", QVector3D(0.0, 1.0, 0.0));
-    program.setUniformValue("camera.side", QVector3D(1.0, 0.0, 0.0));
+    program.setUniformValue("camera.position", readQVector3D(config));
+    program.setUniformValue("camera.view", readQVector3D(config));
+    program.setUniformValue("camera.up", readQVector3D(config));
+    program.setUniformValue("camera.side", readQVector3D(config));
     program.setUniformValue("scale", QVector2D(width(), height()));
     program.release();
 }
