@@ -91,6 +91,7 @@
     <None Include="frag.glsl" />
     <None Include="frag1.glsl" />
     <None Include="frag2.glsl" />
+    <None Include="frag10.glsl" />
     <None Include="frag3.glsl" />
     <None Include="vert.glsl" />
   </ItemGroup>

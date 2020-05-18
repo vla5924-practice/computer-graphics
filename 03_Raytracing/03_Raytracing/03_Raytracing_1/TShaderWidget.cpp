@@ -19,14 +19,15 @@ void TShaderWidget::initializeGL()
 {
     initializeOpenGLFunctions();
 
-    QOpenGLFunctions_4_3_Core* F = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
+    /*QOpenGLFunctions_4_3_Core* F = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
     GLuint ssbo = 0;
     spheresCount = 1;
+    spheres = new Sphere;
     F->glGenBuffers(1, &ssbo);
     F->glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo);
     F->glBufferData(GL_SHADER_STORAGE_BUFFER, spheresCount * sizeof(Sphere), spheres, GL_DYNAMIC_COPY);
     // Now bind the buffer to the zeroth GL_SHADER_STORAGE_BUFFER binding point
-    F->glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, ssbo);
+    F->glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, ssbo);*/
 
     std::ifstream config("config.dat");
     if (!config.is_open())

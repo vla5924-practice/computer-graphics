@@ -11,10 +11,10 @@
 
 struct Sphere
 {
-    QVector3D center;
-    float radius;
-    QVector3D color;
-    int materialIdx;
+    QVector3D center = QVector3D(0, 0, 0);
+    float radius = 10;
+    QVector3D color = QVector3D(1, 0, 0);
+    int materialIdx = 0;
 };
 
 class TShaderWidget : public QOpenGLWidget, protected QOpenGLFunctions
