@@ -29,35 +29,9 @@ void TShaderWidget::initializeGL()
     // Now bind the buffer to the zeroth GL_SHADER_STORAGE_BUFFER binding point
     F->glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, ssbo);*/
 
-    std::ifstream config("config.dat");
-    if (!config.is_open())
-        return;
-    std::string vertPath, fragPath;
-    config >> vertPath >> fragPath;
-
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-    QOpenGLShader vert(QOpenGLShader::Vertex);
-    vert.compileSourceFile(vertPath.c_str());
-    QOpenGLShader frag(QOpenGLShader::Fragment);
-    frag.compileSourceFile(fragPath.c_str());
-    program.addShader(&vert);
-    program.addShader(&frag);
-    if (!program.link())
-    {
-        qWarning("Error while linking\n");
-        return;
-    }
-    vertDataLocation = program.attributeLocation("vertex");
-    qDebug() << QString("Log program");
-    qDebug() << program.log();
-    if (!program.bind())
-        qWarning("Error while shader binding");
-    program.setUniformValue("camera.position", readQVector3D(config));
-    program.setUniformValue("camera.view", readQVector3D(config));
-    program.setUniformValue("camera.up", readQVector3D(config));
-    program.setUniformValue("camera.side", readQVector3D(config));
-    program.setUniformValue("scale", QVector2D(width(), height()));
-    program.release();
+
+    initializeShaders();
 }
 
 void TShaderWidget::resizeGL(int w, int h)
@@ -76,4 +50,41 @@ void TShaderWidget::paintGL()
     glDrawArrays(GL_QUADS, 0, 4);
     program.disableAttributeArray(vertDataLocation);
     program.release();
+}
+
+void TShaderWidget::initializeShaders()
+{
+    std::ifstream config("config.dat");
+    if (!config.is_open())
+        return;
+    std::string vertPath, fragPath;
+    config >> vertPath >> fragPath;
+    QOpenGLShader vert(QOpenGLShader::Vertex);
+    vert.compileSourceFile(vertPath.c_str());
+    QOpenGLShader frag(QOpenGLShader::Fragment);
+    frag.compileSourceFile(fragPath.c_str());
+    program.addShader(&vert);
+    program.addShader(&frag);
+    if (!program.link())
+    {
+        qWarning("Error while linking\n");
+        return;
+    }
+    vertDataLocation = program.attributeLocation("vertex");
+    qDebug() << program.log();
+    if (!program.bind())
+        qWarning("Error while shader binding");
+    program.setUniformValue("camera.position", readVector(config));
+    program.setUniformValue("camera.view", readVector(config));
+    program.setUniformValue("camera.up", readVector(config));
+    program.setUniformValue("camera.side", readVector(config));
+    program.setUniformValue("scale", QVector2D(width(), height()));
+    program.release();
+}
+
+QVector3D TShaderWidget::readVector(std::ifstream& in)
+{
+    float x, y, z;
+    in >> x >> y >> z;
+    return QVector3D(x, y, z);
 }

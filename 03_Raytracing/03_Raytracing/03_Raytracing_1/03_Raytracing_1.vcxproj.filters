@@ -34,9 +34,6 @@
     <None Include="frag2.glsl">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="frag10.glsl">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="frag3.glsl">
       <Filter>Resource Files</Filter>
     </None>

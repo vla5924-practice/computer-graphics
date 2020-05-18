@@ -30,14 +30,10 @@ protected:
     void initializeGL() override;
     void resizeGL(int w, int h) override;
     void paintGL() override;
+    void initializeShaders();
+    QVector3D readVector(std::ifstream& in);
 public:
     TShaderWidget(QWidget* = nullptr);
     ~TShaderWidget();
 
-    QVector3D readQVector3D(std::ifstream& in)
-    {
-        float x, y, z;
-        in >> x >> y >> z;
-        return QVector3D(x, y, z);
-    }
 };
