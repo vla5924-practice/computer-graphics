@@ -87,7 +87,10 @@
     <QtMoc Include="TShaderWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="config.dat" />
     <None Include="frag.glsl" />
+    <None Include="frag1.glsl" />
+    <None Include="frag2.glsl" />
     <None Include="vert.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

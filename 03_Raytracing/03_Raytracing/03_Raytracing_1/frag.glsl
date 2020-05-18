@@ -5,5 +5,5 @@ out vec4 fragmentColor;
 
 void main()
 {
-    fragmentColor = vec4(abs(interpolatedVertex.xy), 0, 1.0);
+	fragmentColor = vec4 ( abs(interpolatedVertex.xy), 0, 1.0);
 }
