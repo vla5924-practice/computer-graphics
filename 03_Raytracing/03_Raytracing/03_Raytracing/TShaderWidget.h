@@ -13,7 +13,7 @@ class TShaderWidget : public QGLWidget
 {
     Q_OBJECT
     //QOpenGLFunctions* F;
-    QGLShaderProgram shaderProg;
+    QGLShaderProgram* program;
     //QGLShaderProgram shaderProg;
     GLfloat* vertexData;
     int vertexDataLocation;
