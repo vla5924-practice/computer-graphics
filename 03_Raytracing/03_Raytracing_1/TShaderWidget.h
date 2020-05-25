@@ -35,26 +35,35 @@ struct Sphere
 class TShaderWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
+
 private:
     QOpenGLShaderProgram program;
     GLfloat* vertData;
     int vertDataLocation;
     int spheresCount;
     Sphere* spheres;
+
     float camPosX, camPosY, camPosZ;
+    float lightPosX, lightPosY, lightPosZ;
+
 protected:
     void initializeGL() override;
     void resizeGL(int w, int h) override;
     void paintGL() override;
+
     void initializeShaders();
     void initializeBuffers();
+
     void readCamera();
+    void readLight();
     void readSpheres();
+
     QVector3D scanVector(std::ifstream& in);
     int scanInt(std::ifstream& in);
 
     void keyPressEvent(QKeyEvent* e) override;
     void wheelEvent(QWheelEvent* e) override;
+
 public:
     TShaderWidget(QWidget* = nullptr);
     ~TShaderWidget();

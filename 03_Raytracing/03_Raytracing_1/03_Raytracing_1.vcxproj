@@ -94,6 +94,7 @@
     <None Include="frag2.glsl" />
     <None Include="frag3.glsl" />
     <None Include="frag4.glsl" />
+    <None Include="light.dat" />
     <None Include="spheres.dat" />
     <None Include="vert.glsl" />
   </ItemGroup>

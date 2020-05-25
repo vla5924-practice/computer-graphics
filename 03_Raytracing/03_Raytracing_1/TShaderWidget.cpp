@@ -1,7 +1,9 @@
 #include "TShaderWidget.h"
 
 TShaderWidget::TShaderWidget(QWidget* parent)
-    : QOpenGLWidget(parent), camPosX(0), camPosY(0), camPosZ(0)
+    : QOpenGLWidget(parent), 
+    camPosX(0), camPosY(0), camPosZ(0), 
+    lightPosX(0), lightPosY(0), lightPosZ(0)
 {
     constexpr int size = 12;
     GLfloat temp[] = { -1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0 };
@@ -26,6 +28,7 @@ void TShaderWidget::initializeGL()
     //initializeBuffers();
     initializeShaders();
     readCamera();
+    readLight();
 }
 
 void TShaderWidget::resizeGL(int w, int h)
@@ -100,6 +103,21 @@ void TShaderWidget::readCamera()
     program.release();
 }
 
+void TShaderWidget::readLight()
+{
+    std::ifstream file("light.dat");
+    if (!file.is_open())
+        return;
+    if (!program.bind())
+        qWarning("Error while shader binding");
+    QVector3D lightPos = scanVector(file);
+    lightPosX = lightPos.x();
+    lightPosY = lightPos.y();
+    lightPosZ = lightPos.z();
+    program.setUniformValue("light.position", lightPos);
+    program.release();
+}
+
 void TShaderWidget::readSpheres()
 {
     std::ifstream file("spheres.dat");
@@ -142,10 +160,28 @@ void TShaderWidget::keyPressEvent(QKeyEvent* e)
         camPosY -= delta;
     else if (key == Qt::Key_D)
         camPosX += delta;
+    else if (key == Qt::Key_T)
+        lightPosY += delta;
+    else if (key == Qt::Key_F)
+        lightPosX -= delta;
+    else if (key == Qt::Key_G)
+        lightPosY -= delta;
+    else if (key == Qt::Key_H)
+        lightPosX += delta;
+    else if (key == Qt::Key_V)
+        lightPosZ -= delta;
+    else if (key == Qt::Key_B)
+        lightPosZ += delta;
+    else if (key == Qt::Key_L)
+        std::cout << "light.position = { " << lightPosX << ", " << lightPosY << ", " << lightPosZ << " };\n";
+    else if (key == Qt::Key_C)
+        std::cout << "camera.position = { " << camPosX << ", " << camPosY << ", " << camPosZ << " };\n";
     if (!program.bind())
         return;
     QVector3D camPos(camPosX, camPosY, camPosZ);
+    QVector3D lightPos(lightPosX, lightPosY, lightPosZ);
     program.setUniformValue("camera.position", camPos);
+    program.setUniformValue("light.position", lightPos);
     program.release();
     update();
 }

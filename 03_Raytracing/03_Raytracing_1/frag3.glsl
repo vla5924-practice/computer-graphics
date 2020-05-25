@@ -67,13 +67,13 @@ out vec4 fragmentColor;
 uniform Camera camera;
 uniform vec2   scale;
 
-Light light = { vec3(1, 0, -8) };
+uniform Light light = { vec3(4, 4, -1) };
 Sphere spheres[] = {
-	{ vec3(-2, -4, -6), 5, vec3(0, 1, 1), 0 },
-	{ vec3(1, 2, 3), 2, vec3(1, 1, 0), 0 },
+	{ vec3(-1, -4, -6), 3, vec3(0, 1, 0), 0 },
+	{ vec3(1, 2, 3), 5, vec3(1, 1, 0), 0 },
 };
 Material materials[] = {
-	{ 0.4, 0.9, 0, 512 }
+	{ 0.4, 0.9, 1, 512 }
 };
 
 
@@ -133,14 +133,14 @@ bool intersectAll(Ray ray, float start, float final, inout Intersection is)
 	return result;
 }
 
-float shadow(Intersection is)
+float shadow(vec3 point)
 {
 	float coef = 1;
-	vec3 direction = normalize(light.position - is.point);
-	float distanceLight = distance(light.position, is.point);
-	Ray shadowRay = { is.point + direction * EPSILON, direction };
+	vec3 direction = normalize(light.position - point);
+	float distanceLight = distance(light.position, point);
+	Ray shadowRay = { point + direction * EPSILON, direction };
 	Intersection shadowIs;
-	shadowIs.time = BIG;
+	shadowIs.time = distanceLight;
 	if(intersectAll(shadowRay, 0, distanceLight, shadowIs))
 		coef = 0;
 	return coef;
@@ -149,13 +149,13 @@ float shadow(Intersection is)
 
 vec3 phong(Intersection is, float shadowing)
 {
-	vec3 light = normalize ( light.position - is.point );
+	vec3 light = normalize(light.position - is.point);
 	float diffuse = max(dot(light, is.normal), 0);
 	vec3 view = normalize(camera.position - is.point);
-	vec3 reflected = reflect(-view, is.normal);
+	vec3 reflected = -reflect(view, is.normal);
 	Material material = materials[is.materialIdx];
 	float specular = pow(max(dot(reflected, light), 0), material.specularPower);
-	return material.ambient * is.color + (material.diffuse * diffuse * is.color + material.specular * specular) * shadowing;
+	return material.ambient * is.color + (material.diffuse * diffuse * is.color + material.specular * specular * vec3(1, 1, 1)) * shadowing;
 }
 
 vec4 trace(Ray primaryRay)
@@ -168,7 +168,7 @@ vec4 trace(Ray primaryRay)
 	float final = BIG;
 	if (intersectAll(ray, start, final, is))
 	{
-		float shadowing = shadow(is);
+		float shadowing = shadow(is.point);
 		resultColor += vec4(phong(is, shadowing), 0);
 	}
 	return resultColor;

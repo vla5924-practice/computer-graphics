@@ -51,6 +51,9 @@
     <None Include="camera.dat">
       <Filter>Config</Filter>
     </None>
+    <None Include="light.dat">
+      <Filter>Config</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="TShaderWidget.h">
