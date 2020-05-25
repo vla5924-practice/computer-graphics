@@ -1,7 +1,7 @@
 #include "TShaderWidget.h"
 
 TShaderWidget::TShaderWidget(QWidget* parent)
-    : QOpenGLWidget(parent), dx(0), dy(0), dz(0)
+    : QOpenGLWidget(parent), camPosX(0), camPosY(0), camPosZ(0)
 {
     constexpr int size = 12;
     GLfloat temp[] = { -1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0 };
@@ -70,18 +70,13 @@ void TShaderWidget::initializeShaders()
 
 void TShaderWidget::initializeBuffers()
 {
-    QOpenGLFunctions_4_4_Core* F = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_4_Core>();
+    QOpenGLFunctions_4_3_Core* F = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_4_3_Core>();
     GLuint ssbo = 0;
     GLsizeiptr bufferSize = spheresCount * sizeof(Sphere);
     F->glGenBuffers(1, &ssbo);
-    std::cerr << F->glGetError();
     F->glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo);
-    std::cerr << F->glGetError();
     F->glBufferData(GL_SHADER_STORAGE_BUFFER, bufferSize, spheres, GL_DYNAMIC_COPY);
-    std::cerr << F->glGetError();
-    // Now bind the buffer to the zeroth GL_SHADER_STORAGE_BUFFER binding point
     F->glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 1, ssbo);
-    std::cerr << F->glGetError();
     //for (int i = 0; i < spheresCount; i++)
     //    F->glBufferSubData(GL_SHADER_STORAGE_BUFFER, i * sizeof(Sphere), sizeof(Sphere), spheres + i);
 }
@@ -93,7 +88,11 @@ void TShaderWidget::readCamera()
         return;
     if (!program.bind())
         qWarning("Error while shader binding");
-    program.setUniformValue("camera.position", scanVector(file));
+    QVector3D camPos = scanVector(file);
+    camPosX = camPos.x();
+    camPosY = camPos.y();
+    camPosZ = camPos.z();
+    program.setUniformValue("camera.position", camPos);
     program.setUniformValue("camera.view", scanVector(file));
     program.setUniformValue("camera.up", scanVector(file));
     program.setUniformValue("camera.side", scanVector(file));
@@ -129,4 +128,37 @@ int TShaderWidget::scanInt(std::ifstream& in)
     int n;
     in >> n;
     return n;
+}
+
+void TShaderWidget::keyPressEvent(QKeyEvent* e)
+{
+    quint32 key = e->nativeVirtualKey();
+    constexpr float delta = 2;
+    if (key == Qt::Key_W)
+        camPosY += delta;
+    else if (key == Qt::Key_A)
+        camPosX -= delta;
+    else if (key == Qt::Key_S)
+        camPosY -= delta;
+    else if (key == Qt::Key_D)
+        camPosX += delta;
+    if (!program.bind())
+        return;
+    QVector3D camPos(camPosX, camPosY, camPosZ);
+    program.setUniformValue("camera.position", camPos);
+    program.release();
+    update();
+}
+
+void TShaderWidget::wheelEvent(QWheelEvent* e)
+{
+    QPoint angleDelta = e->angleDelta();
+    const float delta = angleDelta.y() / 40.0f;
+    camPosZ += delta;
+    if (!program.bind())
+        return;
+    QVector3D camPos(camPosX, camPosY, camPosZ);
+    program.setUniformValue("camera.position", camPos);
+    program.release();
+    update();
 }

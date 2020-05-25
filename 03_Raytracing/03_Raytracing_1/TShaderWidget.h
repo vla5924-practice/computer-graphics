@@ -5,10 +5,12 @@
 #include <QtWidgets/QOpenGLWidget>
 #include <QtGui/QOpenGLFunctions>
 #include <QtGui/QOpenGLShaderProgram>
-#include <QtGui/QOpenGLFunctions_4_4_Core>
+#include <QtGui/QOpenGLFunctions_4_3_Core>
 #include <QtGui/QOpenGLBuffer>
 #include <GL/glu.h>
 #include <GL/gl.h>
+#include <QKeyEvent>
+#include <QWheelEvent>
 
 struct Sphere
 {
@@ -39,7 +41,7 @@ private:
     int vertDataLocation;
     int spheresCount;
     Sphere* spheres;
-    float dx, dy, dz;
+    float camPosX, camPosY, camPosZ;
 protected:
     void initializeGL() override;
     void resizeGL(int w, int h) override;
@@ -50,6 +52,9 @@ protected:
     void readSpheres();
     QVector3D scanVector(std::ifstream& in);
     int scanInt(std::ifstream& in);
+
+    void keyPressEvent(QKeyEvent* e) override;
+    void wheelEvent(QWheelEvent* e) override;
 public:
     TShaderWidget(QWidget* = nullptr);
     ~TShaderWidget();
