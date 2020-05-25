@@ -53,6 +53,7 @@ protected:
 
     void initializeShaders();
     void initializeBuffers();
+    void initializeBuffersPseudo();
 
     void readCamera();
     void readLight();

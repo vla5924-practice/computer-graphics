@@ -25,8 +25,8 @@ void TShaderWidget::initializeGL()
     std::cout << "OpenGL " << glGetString(GL_VERSION) << '\n';
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     readSpheres();
-    initializeBuffers();
     initializeShaders();
+    //initializeBuffersPseudo();
     readCamera();
     readLight();
 }
@@ -82,6 +82,24 @@ void TShaderWidget::initializeBuffers()
     F->glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 1, ssbo);
     //for (int i = 0; i < spheresCount; i++)
     //    F->glBufferSubData(GL_SHADER_STORAGE_BUFFER, i * sizeof(Sphere), sizeof(Sphere), spheres + i);
+}
+
+void TShaderWidget::initializeBuffersPseudo()
+{
+    const std::string prefix = "spheres[";
+    const std::string postfix = "]";
+    const std::string fields[] = { ".center", ".radius", ".color", ".materialIdx" };
+    program.bind();
+    program.setUniformValue("spheresCount", spheresCount);
+    for (int i = 0; i < spheresCount; i++)
+    {
+        const std::string var = prefix + std::to_string(i) + postfix;
+        program.setUniformValue((var + fields[0]).c_str(), QVector4D(spheres[i].center[0], spheres[i].center[1], spheres[i].center[2], spheres[i].center[3]));
+        program.setUniformValue((var + fields[1]).c_str(), spheres[i].radius);
+        program.setUniformValue((var + fields[2]).c_str(), QVector4D(spheres[i].color[0], spheres[i].color[1], spheres[i].color[2], spheres[i].color[3]));
+        program.setUniformValue((var + fields[3]).c_str(), spheres[i].materialIdx);
+    }
+    program.release();
 }
 
 void TShaderWidget::readCamera()
@@ -152,7 +170,9 @@ void TShaderWidget::keyPressEvent(QKeyEvent* e)
 {
     quint32 key = e->nativeVirtualKey();
     constexpr float delta = 2;
-    if (key == Qt::Key_W)
+    if (key == Qt::Key_U)
+        update();
+    else if (key == Qt::Key_W)
         camPosY += delta;
     else if (key == Qt::Key_A)
         camPosX -= delta;

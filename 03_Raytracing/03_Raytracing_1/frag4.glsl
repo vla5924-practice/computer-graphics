@@ -72,6 +72,8 @@ uniform Camera camera;
 uniform vec2   scale;
 
 uniform Light light = { vec3(4, 4, -1) };
+//uniform int sphereCount;
+//uniform Sphere spheres[];
 //Sphere spheres[] = {
 //	{ vec4(-1, -4, -6, 0), 3, vec4(0, 1, 0, 0), 0 },
 //	{ vec4(1, 2, 3, 0), 5, vec4(1, 1, 0, 0), 0 },
