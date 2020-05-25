@@ -39,6 +39,7 @@ private:
     int vertDataLocation;
     int spheresCount;
     Sphere* spheres;
+    float dx, dy, dz;
 protected:
     void initializeGL() override;
     void resizeGL(int w, int h) override;

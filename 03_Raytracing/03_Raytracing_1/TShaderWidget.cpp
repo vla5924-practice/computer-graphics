@@ -1,7 +1,7 @@
 #include "TShaderWidget.h"
 
 TShaderWidget::TShaderWidget(QWidget* parent)
-    : QOpenGLWidget(parent)
+    : QOpenGLWidget(parent), dx(0), dy(0), dz(0)
 {
     constexpr int size = 12;
     GLfloat temp[] = { -1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0 };
