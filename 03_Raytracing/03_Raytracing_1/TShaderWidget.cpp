@@ -25,7 +25,7 @@ void TShaderWidget::initializeGL()
     std::cout << "OpenGL " << glGetString(GL_VERSION) << '\n';
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     readSpheres();
-    //initializeBuffers();
+    initializeBuffers();
     initializeShaders();
     readCamera();
     readLight();
