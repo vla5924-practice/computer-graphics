@@ -69,7 +69,8 @@ uniform vec2   scale;
 
 Light light = { vec3(1, 0, -8) };
 Sphere spheres[] = {
-	{ vec3(1, 2, 3), 10, vec3(1, 0, 1), 0 }
+	{ vec3(-2, -4, -6), 5, vec3(0, 1, 1), 0 },
+	{ vec3(1, 2, 3), 2, vec3(1, 1, 0), 0 },
 };
 Material materials[] = {
 	{ 0.4, 0.9, 0, 512 }
